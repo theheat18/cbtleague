@@ -1,0 +1,52 @@
+/* Center all elements */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: black !important;
+}
+
+h1 {
+  text-align: center;
+  color: white;
+}
+.navbar,.navbar-item, .has-dropdown.is-hoverable,.navbar-link,.navbar-dropdown{
+  background-color: black !important;
+}
+caption {
+  text-align: center;
+  font-size: x-large;
+  color: white;
+}
+
+a {
+  color: white !important;
+}
+.teamName {
+  color: black !important;
+}
+
+table {
+  margin: 0 auto;
+  border-collapse: collapse;
+  text-align: center !important;
+  font-size: small !important;
+}
+
+th {
+  background-color: black;
+  color: white !important;
+  text-align: center !important;
+}
+
+#team-filter {
+  margin: 0 auto;
+  height: 25px;
+  width: 175px;
+  text-align: center;
+}
+
+
+

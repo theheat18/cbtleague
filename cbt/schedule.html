@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+
+<head>
+    <title>Schedule</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<script>
+    function filterSchedule(team) {
+        // Get all rows in the schedule table
+        var rows = document.querySelectorAll("tbody tr");
+
+        // Loop through each row and hide rows that do not match the selected team
+        for (var i = 0; i < rows.length; i++) {
+            if (rows[i].querySelector("td:first-child").textContent !== team) {
+                rows[i].style.display = "none";
+            } else {
+                rows[i].style.display = "table-row";
+            }
+        }
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // Get all "navbar-burger" elements
+        const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+        // Add a click event on each of them
+        $navbarBurgers.forEach(el => {
+            el.addEventListener('click', () => {
+
+                // Get the target from the "data-target" attribute
+                const target = el.dataset.target;
+                const $target = document.getElementById(target);
+
+                // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+                el.classList.toggle('is-active');
+                $target.classList.toggle('is-active');
+
+            });
+        });
+
+    });
+</script>
+
+<body>
+    <div class="container">
+        <h1>
+            <img src="assets/img/cbt-logo1.jpg" alt="" width="200px">
+        </h1>
+    </div>
+
+    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+
+        <div class="navbar-brand">
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+                data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+
+            <a href="index.html" class="navbar-item">
+                Home
+            </a>
+
+            <a href="schedule.html" class="navbar-item">
+                Schedule
+            </a>
+            <a href="standings.html" class="navbar-item">
+                Standings
+            </a>
+
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a href="stats.html" class="navbar-link">
+                    Stats
+                </a>
+
+                <div class="navbar-dropdown">
+                    <a href="stats.html" class="navbar-item">
+                        Team Stats
+                    </a>
+                    <a href="playerstats.html" class="navbar-item">
+                        Player Stats
+                    </a>
+                    <a href="leagueleaders.html" class="navbar-item">
+                        League Leaders
+                    </a>
+                </div>
+            </div>
+            <a href="playoffs.html" class="navbar-item">
+                Playoffs
+            </a>
+
+
+        </div>
+
+    </nav>
+
+    <h1>Schedule</h1>
+
+
+    <div class="container is-max-desktop">
+        <div class="select is-small is-centered">
+            <select onchange="filterSchedule(this.value)">
+                <option>All Teams</option>
+                <option value="Hidden Mist">Hidden Mist</option>
+                <option value="Team 2">Team 2</option>
+                <option value="Team 3">Team 3</option>
+
+            </select>
+        </div>
+        <br>
+        <br>
+        <table class="table is-striped is-bordered is-fullwidth">
+            <thead>
+                <tr>
+                    <th>Home Team</th>
+                    <th>Score</th>
+                    <th>Away Team</th>
+                    <th>Score</th>
+                    <th>Date & Time</th>
+                    <th>Box Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="6" style="text-align: center;"><strong>Week 1</strong></td>
+                </tr>
+                <tr>
+                    <td>Hidden Mist</td>
+                    <td>n/a</td>
+                    <td>Team 2</td>
+                    <td>n/a</td>
+                    <td>March 1st @ 6 PM</td>
+                    <td>View</td>
+                </tr>
+                <tr>
+                    <td>Team 2</td>
+                    <td>n/a</td>
+                    <td>Hidden Mist</td>
+                    <td>n/a</td>
+                    <td>March 20st @ 7 PM</td>
+                    <td>View</td>
+                </tr>
+                <tr>
+                    <td>Team 3</td>
+                    <td>n/a</td>
+                    <td>Team 2</td>
+                    <td>n/a</td>
+                    <td>March 20st @ 8 PM</td>
+                    <td>View</td>
+                </tr>
+                <tr>
+                    <td>Team 4</td>
+                    <td>n/a</td>
+                    <td>Team 5</td>
+                    <td>n/a</td>
+                    <td>March 20st @ 8 PM</td>
+                    <td>View</td>
+                </tr>
+                <tr>
+                    <td colspan="6" style="text-align: center;"><strong>Week 2</strong></td>
+                </tr>
+                <tr>
+                    <td>Hidden Mist</td>
+                    <td>n/a</td>
+                    <td>Team 2</td>
+                    <td>n/a</td>
+                    <td>March 1st @ 6 PM</td>
+                    <td>View</td>
+                </tr>
+                <tr>
+                    <td>Team 2</td>
+                    <td>n/a</td>
+                    <td>Hidden Mist</td>
+                    <td>n/a</td>
+                    <td>March 20st @ 7 PM</td>
+                    <td>View</td>
+                </tr>
+                <tr>
+                    <td>Team 3</td>
+                    <td>n/a</td>
+                    <td>Team 2</td>
+                    <td>n/a</td>
+                    <td>March 20st @ 8 PM</td>
+                    <td>View</td>
+                </tr>
+                <tr>
+                    <td>Team 4</td>
+                    <td>n/a</td>
+                    <td>Team 5</td>
+                    <td>n/a</td>
+                    <td>March 20st @ 8 PM</td>
+                    <td>View</td>
+                </tr>
+                <tr>
+                    <td colspan="6" style="text-align: center;"><strong>Week 3</strong></td>
+                </tr>
+                <tr>
+                    <td>Hidden Mist</td>
+                    <td>n/a</td>
+                    <td>Team 2</td>
+                    <td>n/a</td>
+                    <td>March 1st @ 6 PM</td>
+                    <td>View</td>
+                </tr>
+                <tr>
+                    <td>Team 2</td>
+                    <td>n/a</td>
+                    <td>Hidden Mist</td>
+                    <td>n/a</td>
+                    <td>March 20st @ 7 PM</td>
+                    <td>View</td>
+                </tr>
+                <tr>
+                    <td>Team 3</td>
+                    <td>n/a</td>
+                    <td>Team 2</td>
+                    <td>n/a</td>
+                    <td>March 20st @ 8 PM</td>
+                    <td>View</td>
+                </tr>
+                <tr>
+                    <td>Team 4</td>
+                    <td>n/a</td>
+                    <td>Team 5</td>
+                    <td>n/a</td>
+                    <td>March 20st @ 8 PM</td>
+                    <td>View</td>
+                </tr>
+                <tr>
+                    <td colspan="6" style="text-align: center;"><strong>Week 4</strong></td>
+                </tr>
+                <tr>
+                    <td>Hidden Mist</td>
+                    <td>n/a</td>
+                    <td>Team 2</td>
+                    <td>n/a</td>
+                    <td>March 1st @ 6 PM</td>
+                    <td>View</td>
+                </tr>
+                <tr>
+                    <td>Team 2</td>
+                    <td>n/a</td>
+                    <td>Hidden Mist</td>
+                    <td>n/a</td>
+                    <td>March 20st @ 7 PM</td>
+                    <td>View</td>
+                </tr>
+                <tr>
+                    <td>Team 3</td>
+                    <td>n/a</td>
+                    <td>Team 2</td>
+                    <td>n/a</td>
+                    <td>March 20st @ 8 PM</td>
+                    <td>View</td>
+                </tr>
+                <tr>
+                    <td>Team 4</td>
+                    <td>n/a</td>
+                    <td>Team 5</td>
+                    <td>n/a</td>
+                    <td>March 20st @ 8 PM</td>
+                    <td>View</td>
+                </tr>
+                <tr>
+                    <td colspan="6" style="text-align: center;"><strong>Week 5</strong></td>
+                </tr>
+                <tr>
+                    <td>Hidden Mist</td>
+                    <td>n/a</td>
+                    <td>Team 2</td>
+                    <td>n/a</td>
+                    <td>March 1st @ 6 PM</td>
+                    <td>View</td>
+                </tr>
+                <tr>
+                    <td>Team 2</td>
+                    <td>n/a</td>
+                    <td>Hidden Mist</td>
+                    <td>n/a</td>
+                    <td>March 20st @ 7 PM</td>
+                    <td>View</td>
+                </tr>
+                <tr>
+                    <td>Team 3</td>
+                    <td>n/a</td>
+                    <td>Team 2</td>
+                    <td>n/a</td>
+                    <td>March 20st @ 8 PM</td>
+                    <td>View</td>
+                </tr>
+                <tr>
+                    <td>Team 4</td>
+                    <td>n/a</td>
+                    <td>Team 5</td>
+                    <td>n/a</td>
+                    <td>March 20st @ 8 PM</td>
+                    <td>View</td>
+                </tr>
+                <tr>
+                    <td colspan="6" style="text-align: center;"><strong>Week 6</strong></td>
+                </tr>
+                <tr>
+                    <td>Hidden Mist</td>
+                    <td>n/a</td>
+                    <td>Team 2</td>
+                    <td>n/a</td>
+                    <td>March 1st @ 6 PM</td>
+                    <td>View</td>
+                </tr>
+                <tr>
+                    <td>Team 2</td>
+                    <td>n/a</td>
+                    <td>Hidden Mist</td>
+                    <td>n/a</td>
+                    <td>March 20st @ 7 PM</td>
+                    <td>View</td>
+                </tr>
+                <tr>
+                    <td>Team 3</td>
+                    <td>n/a</td>
+                    <td>Team 2</td>
+                    <td>n/a</td>
+                    <td>March 20st @ 8 PM</td>
+                    <td>View</td>
+                </tr>
+                <tr>
+                    <td>Team 4</td>
+                    <td>n/a</td>
+                    <td>Team 5</td>
+                    <td>n/a</td>
+                    <td>March 20st @ 8 PM</td>
+                    <td>View</td>
+                </tr>
+                <tr>
+                    <td colspan="6" style="text-align: center;"><strong>Week 7</strong></td>
+                </tr>
+                <tr>
+                    <td>Hidden Mist</td>
+                    <td>n/a</td>
+                    <td>Team 2</td>
+                    <td>n/a</td>
+                    <td>March 1st @ 6 PM</td>
+                    <td>View</td>
+                </tr>
+                <tr>
+                    <td>Team 2</td>
+                    <td>n/a</td>
+                    <td>Hidden Mist</td>
+                    <td>n/a</td>
+                    <td>March 20st @ 7 PM</td>
+                    <td>View</td>
+                </tr>
+                <tr>
+                    <td>Team 3</td>
+                    <td>n/a</td>
+                    <td>Team 2</td>
+                    <td>n/a</td>
+                    <td>March 20st @ 8 PM</td>
+                    <td>View</td>
+                </tr>
+                <tr>
+                    <td>Team 4</td>
+                    <td>n/a</td>
+                    <td>Team 5</td>
+                    <td>n/a</td>
+                    <td>March 20st @ 8 PM</td>
+                    <td>View</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+</html>

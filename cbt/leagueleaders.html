@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+
+<head>
+    <title>League Leaders</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // Get all "navbar-burger" elements
+            const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+            // Add a click event on each of them
+            $navbarBurgers.forEach(el => {
+                el.addEventListener('click', () => {
+
+                    // Get the target from the "data-target" attribute
+                    const target = el.dataset.target;
+                    const $target = document.getElementById(target);
+
+                    // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+                    el.classList.toggle('is-active');
+                    $target.classList.toggle('is-active');
+
+                });
+            });
+
+        });
+    </script>
+</head>
+
+
+<body>
+    <div class="container">
+        <h1>
+            <img src="assets/img/cbt-logo1.jpg" alt="" width="200px">
+        </h1>
+    </div>
+    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+
+        <div class="navbar-brand">
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+    
+        <div id="navbarBasicExample" class="navbar-menu">
+    
+          <a href="index.html" class="navbar-item">
+            Home
+          </a>
+    
+          <a href="schedule.html" class="navbar-item">
+            Schedule
+          </a>
+          <a href="standings.html" class="navbar-item">
+            Standings
+          </a>
+    
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a href="stats.html" class="navbar-link">
+              Stats
+            </a>
+    
+            <div class="navbar-dropdown">
+              <a href="stats.html" class="navbar-item">
+                Team Stats
+              </a>
+              <a href="playerstats.html" class="navbar-item">
+                Player Stats
+              </a>
+              <a href="leagueleaders.html" class="navbar-item">
+                League Leaders
+              </a>
+            </div>
+          </div>
+          <a href="playoffs.html" class="navbar-item">
+            Playoffs
+          </a>
+        </div>
+      </nav>
+
+
+   <h1>CBT League Leaders</h1>
+    <div class="container">
+
+        <div class="columns is-multiline">
+            <div class="column is-one-quarter">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="content">
+                            <h2>Points</h2>
+                            <div class="table-container">
+                            <table class="table is-striped is-hoverable is-bordered" id="hiddenMist-table">
+                                <tr>
+                                  <th>#</th>
+                                  <th>Name</th>
+                                  <th>PTS</th>
+                                  <th>REB</th>
+                                  <th>AST</th>
+                                </tr>
+                              </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-one-quarter">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="content">
+                            <h2>Field Goal %</h2>
+                            <table class="table is-striped is-hoverable is-bordered" id="hiddenMist-table">
+                                <tr>
+                                  <th>#</th>
+                                  <th>Name</th>
+                                  <th>PTS</th>
+                                  <th>REB</th>
+                                  <th>AST</th>
+                                </tr>
+                              </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-one-quarter">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="content">
+                            <h2>3PT %</h2>
+                            <table class="table is-striped is-hoverable is-bordered" id="hiddenMist-table">
+                                <tr>
+                                  <th>#</th>
+                                  <th>Name</th>
+                                  <th>PTS</th>
+                                  <th>REB</th>
+                                  <th>AST</th>
+                                </tr>
+                              </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-one-quarter">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="content">
+                            <h2>Rebounds</h2>
+                            <table class="table is-striped is-hoverable is-bordered" id="hiddenMist-table">
+                                <tr>
+                                  <th>#</th>
+                                  <th>Name</th>
+                                  <th>PTS</th>
+                                  <th>REB</th>
+                                  <th>AST</th>
+                                </tr>
+                              </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-one-quarter">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="content">
+                            <h2>Assists</h2>
+                            <table class="table is-striped is-hoverable is-bordered" id="hiddenMist-table">
+                                <tr>
+                                  <th>#</th>
+                                  <th>Name</th>
+                                  <th>PTS</th>
+                                  <th>REB</th>
+                                  <th>AST</th>
+                                </tr>
+                              </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-one-quarter">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="content">
+                            <h2>Blocks</h2>
+                            <table class="table is-striped is-hoverable is-bordered" id="hiddenMist-table">
+                                <tr>
+                                  <th>#</th>
+                                  <th>Name</th>
+                                  <th>PTS</th>
+                                  <th>REB</th>
+                                  <th>AST</th>
+                                </tr>
+                              </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-one-quarter">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="content">
+                            <h2>Steals</h2>
+                            <table class="table is-striped is-hoverable is-bordered" id="hiddenMist-table">
+                                <tr>
+                                  <th>#</th>
+                                  <th>Name</th>
+                                  <th>PTS</th>
+                                  <th>REB</th>
+                                  <th>AST</th>
+                                </tr>
+                              </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-one-quarter">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="content">
+                            <h2>Turnovers</h2>
+                            <table class="table is-striped is-hoverable is-bordered" id="hiddenMist-table">
+                                <tr>
+                                  <th>#</th>
+                                  <th>Name</th>
+                                  <th>PTS</th>
+                                  <th>REB</th>
+                                  <th>AST</th>
+                                </tr>
+                              </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+[
+    {
+      "name": "Kevin Rivera",
+      "number": 3,
+      "team": "Power Rangers",
+      "points": 52,
+      "rebounds": 10,
+      "assists": 5
+    },
+    {
+      "name": "Victor Soto Jr.",
+      "number": 24,
+      "team": "Rocket Power",
+      "points": 15,
+      "rebounds": 8,
+      "assists": 10
+    },
+    {
+      "name": "Eddy Soto",
+      "number": 34,
+      "team": "Los Dominicanos",
+      "points": 25,
+      "rebounds": 12,
+      "assists": 7
+    },
+    {
+      "name": "Brian Soto",
+      "number": 35,
+      "team": "Los Dominicanos",
+      "points": 25,
+      "rebounds": 12,
+      "assists": 7
+    },
+    {
+      "name": "Ariane Bernal",
+      "number": 22,
+      "team": "Rocket Power",
+      "points": 25,
+      "rebounds": 12,
+      "assists": 7
+    },
+    {
+      "name": "Victor Soto III",
+      "number": 3,
+      "team": "Rocket Power",
+      "points": 25,
+      "rebounds": 12,
+      "assists": 7
+    },
+    {
+      "name": "Kenneth Molina",
+      "number": 18,
+      "team": "Power Rangers",
+      "points": 25,
+      "rebounds": 12,
+      "assists": 7
+    },
+    {
+      "name": "Ronte Bryd",
+      "number": 25,
+      "team": "Los Dominicanos",
+      "points": 25,
+      "rebounds": 12,
+      "assists": 7
+    }
+
+  ]
+  

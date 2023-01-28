@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+
+<head>
+    <title>Player Stats</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // Get all "navbar-burger" elements
+            const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+            // Add a click event on each of them
+            $navbarBurgers.forEach(el => {
+                el.addEventListener('click', () => {
+
+                    // Get the target from the "data-target" attribute
+                    const target = el.dataset.target;
+                    const $target = document.getElementById(target);
+
+                    // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+                    el.classList.toggle('is-active');
+                    $target.classList.toggle('is-active');
+
+                });
+            });
+
+        });
+
+            //This script gets individual team stats onto a table
+    $.getJSON("assets/json/teams.json", function (data) {
+      $.each(data, function (i, team) {
+          for (var c = 0; c < team.roster.length; c++)
+            $("#players-table").append(
+              "<tr>" +
+              "<td>" + team.roster[c].number + "</td>" +
+              "<td>" + team.roster[c].name + "</td>" +
+              "<td>" + team.roster[c].points + "</td>" +
+              "<td>" + team.roster[c].rebounds + "</td>" +
+              "<td>" + team.roster[c].assists + "</td>" +
+              "</tr>"
+            );
+        });
+      });
+
+          //filtering table
+    function filterTable() {
+      // Declare variables
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("team-filter");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("players-table");
+      tr = table.getElementsByTagName("tr");
+
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+   
+    </script>
+</head>
+
+
+<body>
+    <div class="container">
+        <h1>
+            <img src="assets/img/cbt-logo1.jpg" alt="" width="200px">
+        </h1>
+    </div>
+
+    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+
+        <div class="navbar-brand">
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+    
+        <div id="navbarBasicExample" class="navbar-menu">
+    
+          <a href="index.html" class="navbar-item">
+            Home
+          </a>
+    
+          <a href="schedule.html" class="navbar-item">
+            Schedule
+          </a>
+          <a href="standings.html" class="navbar-item">
+            Standings
+          </a>
+    
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a href="stats.html" class="navbar-link">
+              Stats
+            </a>
+    
+            <div class="navbar-dropdown">
+              <a href="stats.html" class="navbar-item">
+                Team Stats
+              </a>
+              <a href="playerstats.html" class="navbar-item">
+                Player Stats
+              </a>
+              <a href="leagueleaders.html" class="navbar-item">
+                League Leaders
+              </a>
+            </div>
+          </div>
+          <a href="playoffs.html" class="navbar-item">
+            Playoffs
+          </a>
+        </div>
+      </nav>
+
+
+    <h1>Player Stats</h1>
+    
+
+    <div class="container is-max-fullwidth">
+        <h1>Spring 2023 Season: <input type="text" id="team-filter" onkeyup="filterTable()"
+            placeholder="Filter by Player name..."></h1>
+        <br>
+        <div class="table-container">
+        <table class="table is-striped is-hoverable is-bordered" id="players-table">
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>PTS</th>
+            <th>REB</th>
+            <th>AST</th>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+</body>
+
+</html>
