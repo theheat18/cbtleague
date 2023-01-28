@@ -7,7 +7,9 @@
 html {
   background-color: black !important;
 }
-
+hr{
+  margin: 0 !important;
+}
 h1 {
   text-align: center;
   color: white;
@@ -48,5 +50,8 @@ th {
   text-align: center;
 }
 
+.logoContainer{
+  margin-top: 20px;
+}
 
 

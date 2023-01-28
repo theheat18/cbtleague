@@ -105,15 +105,13 @@
 
 
 <body>
-  <div class="container">
-    <h1>
-      <img src="assets/img/cbt-logo1.jpg" alt="" width="200px">
-    </h1>
-  </div>
 
   <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
 
     <div class="navbar-brand">
+      <a class="navbar-item is-hidden-desktop">
+        Stats
+      </a>
       <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
@@ -156,7 +154,12 @@
       </a>
     </div>
   </nav>
-
+  <hr>
+  <div class="container">
+    <h1>
+      <img class="logoContainer" src="assets/img/cbt-logo1.jpg" alt="" width="200px">
+    </h1>
+  </div>
   <div class="container is-max-fullwidth">
     <h1>Spring 2023 Season: <input type="text" id="team-filter" onkeyup="filterTable()"
         placeholder="Filter by Team name..."></h1>
