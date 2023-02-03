@@ -10,19 +10,45 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <script>
-    function filterSchedule(team) {
-        // Get all rows in the schedule table
-        var rows = document.querySelectorAll("tbody tr");
+    function filterTableRows() {
+        // Get the selected name from the dropdown
+        var select = document.getElementById("filterSelect");
+        var name = select.options[select.selectedIndex].value;
 
-        // Loop through each row and hide rows that do not match the selected team
-        for (var i = 0; i < rows.length; i++) {
-            if (rows[i].querySelector("td:first-child").textContent !== team) {
+        // Get the table
+        var table = document.getElementById("scheduleTable");
+
+        // Get all the rows in the table
+        var rows = table.getElementsByTagName("tr");
+
+        // Loop through each row
+        for (var i = 1; i < rows.length; i++) {
+            // Get all the cells in the row
+            var cells = rows[i].getElementsByTagName("td");
+
+            // Initialize a flag to indicate whether the name was found in the row
+            var nameFound = false;
+
+            // Loop through each cell
+            for (var j = 0; j < cells.length; j++) {
+                // Check if the cell's text content contains the name
+                if (cells[j].textContent.toLowerCase().indexOf(name.toLowerCase()) !== -1) {
+                    // If the name was found, set the flag to true and break the loop
+                    nameFound = true;
+                    break;
+                }
+            }
+
+            // If the name was not found in the row, hide the row
+            if (!nameFound) {
                 rows[i].style.display = "none";
             } else {
-                rows[i].style.display = "table-row";
+                // If the name was found, show the row
+                rows[i].style.display = "";
             }
         }
     }
+
     document.addEventListener('DOMContentLoaded', () => {
 
         // Get all "navbar-burger" elements
@@ -44,17 +70,64 @@
         });
 
     });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Functions to open and close a modal
+        function openModal($el) {
+            $el.classList.add('is-active');
+        }
+
+        function closeModal($el) {
+            $el.classList.remove('is-active');
+        }
+
+        function closeAllModals() {
+            (document.querySelectorAll('.modal') || []).forEach(($modal) => {
+                closeModal($modal);
+            });
+        }
+
+        // Add a click event on buttons to open a specific modal
+        (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
+            const modal = $trigger.dataset.target;
+            const $target = document.getElementById(modal);
+
+            $trigger.addEventListener('click', () => {
+                openModal($target);
+            });
+        });
+
+        // Add a click event on various child elements to close the parent modal
+        (document.querySelectorAll(
+            '.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || [])
+        .forEach(($close) => {
+            const $target = $close.closest('.modal');
+
+            $close.addEventListener('click', () => {
+                closeModal($target);
+            });
+        });
+
+        // Add a keyboard event to close all modals
+        document.addEventListener('keydown', (event) => {
+            const e = event || window.event;
+
+            if (e.keyCode === 27) { // Escape key
+                closeAllModals();
+            }
+        });
+    });
 </script>
 
 <body>
-  
+
 
     <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
 
         <div class="navbar-brand">
             <a class="navbar-item is-hidden-desktop">
                 Schedule
-              </a>
+            </a>
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
                 data-target="navbarBasicExample">
                 <span aria-hidden="true"></span>
@@ -104,283 +177,415 @@
     <hr>
     <div class="container">
         <h1>
-          <img class="logoContainer" src="assets/img/cbt-logo1.jpg" alt="" width="200px">
+            <img class="logoContainer" src="assets/img/cbt-logo1.jpg" alt="" width="200px">
         </h1>
-      </div>
+    </div>
     <h1>Schedule</h1>
 
 
     <div class="container is-max-desktop">
         <div class="select is-small is-centered">
-            <select onchange="filterSchedule(this.value)">
-                <option>All Teams</option>
-                <option value="Hidden Mist">Hidden Mist</option>
-                <option value="Team 2">Team 2</option>
-                <option value="Team 3">Team 3</option>
-
+            <select id="filterSelect" onchange="filterTableRows()">
+                <option value="">Show all</option>
+                <option value="Could've Been">Could've Been</option>
+                <option value="Hidden Rain">Hidden Rain</option>
+                <option value="Integral Construction">Integral Construction</option>
+                <option value="Tune Squad">Tune Squad</option>
+                <option value="Free Agents">Free Agents</option>
+                <option value="YAGGA">YAGGA</option>
+                <option value="Hall of Fame">Hall of Fame</option>
             </select>
         </div>
         <br>
         <br>
-        <table class="table is-striped is-bordered is-fullwidth">
+        <table id="scheduleTable" class="table is-striped is-bordered is-fullwidth">
             <thead>
                 <tr>
                     <th>Home Team</th>
                     <th>Score</th>
                     <th>Away Team</th>
                     <th>Score</th>
-                    <th>Date & Time</th>
+                    <th>Date </th>
+                    <th>Time</th>
                     <th>Box Score</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td colspan="6" style="text-align: center;"><strong>Week 1</strong></td>
+                    <td colspan="7" style="text-align: center;"><strong>Week 1</strong></td>
                 </tr>
                 <tr>
-                    <td>Hidden Mist</td>
+                    <td>Hidden Rain</td>
                     <td>n/a</td>
-                    <td>Team 2</td>
+                    <td>Free Agents</td>
                     <td>n/a</td>
-                    <td>March 1st @ 6 PM</td>
-                    <td>View</td>
+                    <td>March 7, 2023</td>
+                    <td>6:15 PM</td>
+                    <td>
+                        <button class="js-modal-trigger" data-target="modal-js-example">
+                            View
+                        </button>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Team 2</td>
+                    <td>Could've Been</td>
                     <td>n/a</td>
-                    <td>Hidden Mist</td>
+                    <td>Integral Construction</td>
                     <td>n/a</td>
-                    <td>March 20st @ 7 PM</td>
-                    <td>View</td>
+                    <td>March 7, 2023</td>
+                    <td>7:15 PM</td>
+                    <td>
+                        <button class="js-modal-trigger" data-target="modal-js-example">
+                            View
+                        </button>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Team 3</td>
+                    <td>YAGGA</td>
                     <td>n/a</td>
-                    <td>Team 2</td>
+                    <td>Tune Squad</td>
                     <td>n/a</td>
-                    <td>March 20st @ 8 PM</td>
-                    <td>View</td>
+                    <td>March 7, 2023</td>
+                    <td>8:15 PM</td>
+                    <td>
+                        <button class="js-modal-trigger" data-target="modal-js-example">
+                            View
+                        </button>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Team 4</td>
-                    <td>n/a</td>
-                    <td>Team 5</td>
-                    <td>n/a</td>
-                    <td>March 20st @ 8 PM</td>
-                    <td>View</td>
+                    <td colspan="4" style="text-align: center;">Hall of Fame - Bye</td>
+                    <td>March 7, 2023</td>
+                    <td>-</td>
+                    <td>-</td>
                 </tr>
                 <tr>
-                    <td colspan="6" style="text-align: center;"><strong>Week 2</strong></td>
+                    <td colspan="7" style="text-align: center;"><strong>Week 2</strong></td>
                 </tr>
                 <tr>
-                    <td>Hidden Mist</td>
+                    <td>Free Agents</td>
                     <td>n/a</td>
-                    <td>Team 2</td>
+                    <td>Hall of Fame</td>
                     <td>n/a</td>
-                    <td>March 1st @ 6 PM</td>
-                    <td>View</td>
+                    <td>March 14, 2023</td>
+                    <td>6:15 PM</td>
+                    <td>
+                        <button class="js-modal-trigger" data-target="modal-js-example">
+                            View
+                        </button>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Team 2</td>
+                    <td>Hidden Rain</td>
                     <td>n/a</td>
-                    <td>Hidden Mist</td>
+                    <td>Integral Construction</td>
                     <td>n/a</td>
-                    <td>March 20st @ 7 PM</td>
-                    <td>View</td>
+                    <td>March 14, 2023</td>
+                    <td>7:15 PM</td>
+                    <td>
+                        <button class="js-modal-trigger" data-target="modal-js-example">
+                            View
+                        </button>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Team 3</td>
+                    <td>YAGGA</td>
                     <td>n/a</td>
-                    <td>Team 2</td>
+                    <td>Could've Been</td>
                     <td>n/a</td>
-                    <td>March 20st @ 8 PM</td>
-                    <td>View</td>
+                    <td>March 14, 2023</td>
+                    <td>8:15 PM</td>
+                    <td>
+                        <button class="js-modal-trigger" data-target="modal-js-example">
+                            View
+                        </button>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Team 4</td>
-                    <td>n/a</td>
-                    <td>Team 5</td>
-                    <td>n/a</td>
-                    <td>March 20st @ 8 PM</td>
-                    <td>View</td>
+                    <td colspan="4" style="text-align: center;">Tune Squad - Bye</td>
+                    <td>March 14, 2023</td>
+                    <td>-</td>
+                    <td>-</td>
                 </tr>
                 <tr>
                     <td colspan="6" style="text-align: center;"><strong>Week 3</strong></td>
                 </tr>
                 <tr>
-                    <td>Hidden Mist</td>
+                    <td>Free Agents</td>
                     <td>n/a</td>
-                    <td>Team 2</td>
+                    <td>Integral Construction</td>
                     <td>n/a</td>
-                    <td>March 1st @ 6 PM</td>
-                    <td>View</td>
+                    <td>March 21, 2023</td>
+                    <td>6:15 PM</td>
+                    <td>
+                        <button class="js-modal-trigger" data-target="modal-js-example">
+                            View
+                        </button>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Team 2</td>
+                    <td>Hidden Rain</td>
                     <td>n/a</td>
-                    <td>Hidden Mist</td>
+                    <td>Hall of Fame</td>
                     <td>n/a</td>
-                    <td>March 20st @ 7 PM</td>
-                    <td>View</td>
+                    <td>March 21, 2023</td>
+                    <td>7:15 PM</td>
+                    <td>
+                        <button class="js-modal-trigger" data-target="modal-js-example">
+                            View
+                        </button>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Team 3</td>
+                    <td>Could've Been</td>
                     <td>n/a</td>
-                    <td>Team 2</td>
+                    <td>Tune Squad</td>
                     <td>n/a</td>
-                    <td>March 20st @ 8 PM</td>
-                    <td>View</td>
+                    <td>March 21, 2023</td>
+                    <td>8:15 PM</td>
+                    <td>
+                        <button class="js-modal-trigger" data-target="modal-js-example">
+                            View
+                        </button>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Team 4</td>
-                    <td>n/a</td>
-                    <td>Team 5</td>
-                    <td>n/a</td>
-                    <td>March 20st @ 8 PM</td>
-                    <td>View</td>
+                    <td colspan="4" style="text-align: center;">YAGGA - Bye</td>
+                    <td>March 21, 2023</td>
+                    <td>-</td>
+                    <td>-</td>
                 </tr>
                 <tr>
                     <td colspan="6" style="text-align: center;"><strong>Week 4</strong></td>
                 </tr>
                 <tr>
-                    <td>Hidden Mist</td>
+                    <td>Integral Construction</td>
                     <td>n/a</td>
-                    <td>Team 2</td>
+                    <td>Tune Squad</td>
                     <td>n/a</td>
-                    <td>March 1st @ 6 PM</td>
-                    <td>View</td>
+                    <td>March 28, 2023</td>
+                    <td>6:15 PM</td>
+                    <td>
+                        <button class="js-modal-trigger" data-target="modal-js-example">
+                            View
+                        </button>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Team 2</td>
+                    <td>Could've Been</td>
                     <td>n/a</td>
-                    <td>Hidden Mist</td>
+                    <td>Hall of Fame</td>
                     <td>n/a</td>
-                    <td>March 20st @ 7 PM</td>
-                    <td>View</td>
+                    <td>March 28, 2023</td>
+                    <td>7:15 PM</td>
+                    <td>
+                        <button class="js-modal-trigger" data-target="modal-js-example">
+                            View
+                        </button>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Team 3</td>
+                    <td>YAGGA</td>
                     <td>n/a</td>
-                    <td>Team 2</td>
+                    <td>Free Agent</td>
                     <td>n/a</td>
-                    <td>March 20st @ 8 PM</td>
-                    <td>View</td>
+                    <td>March 28, 2023</td>
+                    <td>8:15 PM</td>
+                    <td>
+                        <button class="js-modal-trigger" data-target="modal-js-example">
+                            View
+                        </button>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Team 4</td>
-                    <td>n/a</td>
-                    <td>Team 5</td>
-                    <td>n/a</td>
-                    <td>March 20st @ 8 PM</td>
-                    <td>View</td>
+                    <td colspan="4" style="text-align: center;">Hidden Rain - Bye</td>
+                    <td>March 28, 2023</td>
+                    <td>-</td>
+                    <td>-</td>
                 </tr>
                 <tr>
                     <td colspan="6" style="text-align: center;"><strong>Week 5</strong></td>
                 </tr>
                 <tr>
-                    <td>Hidden Mist</td>
+                    <td>Free Agents</td>
                     <td>n/a</td>
-                    <td>Team 2</td>
+                    <td>Could've Been</td>
                     <td>n/a</td>
-                    <td>March 1st @ 6 PM</td>
-                    <td>View</td>
+                    <td>April 4, 2023</td>
+                    <td>6:15 PM</td>
+                    <td>
+                        <button class="js-modal-trigger" data-target="modal-js-example">
+                            View
+                        </button>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Team 2</td>
+                    <td>Hidden Rain</td>
                     <td>n/a</td>
-                    <td>Hidden Mist</td>
+                    <td>Tune Squad</td>
                     <td>n/a</td>
-                    <td>March 20st @ 7 PM</td>
-                    <td>View</td>
+                    <td>April 4, 2023</td>
+                    <td>7:15 PM</td>
+                    <td>
+                        <button class="js-modal-trigger" data-target="modal-js-example">
+                            View
+                        </button>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Team 3</td>
+                    <td>YAGGA</td>
                     <td>n/a</td>
-                    <td>Team 2</td>
+                    <td>Hall of Fame</td>
                     <td>n/a</td>
-                    <td>March 20st @ 8 PM</td>
-                    <td>View</td>
+                    <td>April 4, 2023</td>
+                    <td>8:15 PM</td>
+                    <td>
+                        <button class="js-modal-trigger" data-target="modal-js-example">
+                            View
+                        </button>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Team 4</td>
-                    <td>n/a</td>
-                    <td>Team 5</td>
-                    <td>n/a</td>
-                    <td>March 20st @ 8 PM</td>
-                    <td>View</td>
+                    <td colspan="4" style="text-align: center;">Integral Construction - Bye</td>
+                    <td>April 4, 2023</td>
+                    <td>-</td>
+                    <td>-</td>
                 </tr>
                 <tr>
                     <td colspan="6" style="text-align: center;"><strong>Week 6</strong></td>
                 </tr>
                 <tr>
-                    <td>Hidden Mist</td>
+                    <td>Integral Construction</td>
                     <td>n/a</td>
-                    <td>Team 2</td>
+                    <td>Hall of Fame</td>
                     <td>n/a</td>
-                    <td>March 1st @ 6 PM</td>
-                    <td>View</td>
+                    <td>April 11, 2023</td>
+                    <td>6:15 PM</td>
+                    <td>
+                        <button class="js-modal-trigger" data-target="modal-js-example">
+                            View
+                        </button>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Team 2</td>
+                    <td>Tune Squad</td>
                     <td>n/a</td>
-                    <td>Hidden Mist</td>
+                    <td>Free Agents</td>
                     <td>n/a</td>
-                    <td>March 20st @ 7 PM</td>
-                    <td>View</td>
+                    <td>April 11, 2023</td>
+                    <td>7:15 PM</td>
+                    <td>
+                        <button class="js-modal-trigger" data-target="modal-js-example">
+                            View
+                        </button>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Team 3</td>
+                    <td>Hidden Rain</td>
                     <td>n/a</td>
-                    <td>Team 2</td>
+                    <td>YAGGA</td>
                     <td>n/a</td>
-                    <td>March 20st @ 8 PM</td>
-                    <td>View</td>
+                    <td>April 11, 2023</td>
+                    <td>8:15 PM</td>
+                    <td>
+                        <button class="js-modal-trigger" data-target="modal-js-example">
+                            View
+                        </button>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Team 4</td>
-                    <td>n/a</td>
-                    <td>Team 5</td>
-                    <td>n/a</td>
-                    <td>March 20st @ 8 PM</td>
-                    <td>View</td>
+                    <td colspan="4" style="text-align: center;">Could've Been - Bye</td>
+                    <td>April 11, 2023</td>
+                    <td>-</td>
+                    <td>-</td>
                 </tr>
                 <tr>
                     <td colspan="6" style="text-align: center;"><strong>Week 7</strong></td>
                 </tr>
                 <tr>
-                    <td>Hidden Mist</td>
+                    <td>Tune Squad</td>
                     <td>n/a</td>
-                    <td>Team 2</td>
+                    <td>Hall of Fame</td>
                     <td>n/a</td>
-                    <td>March 1st @ 6 PM</td>
-                    <td>View</td>
+                    <td>April 18, 2023</td>
+                    <td>6:15 PM</td>
+                    <td>
+                        <button class="js-modal-trigger" data-target="modal-js-example">
+                            View
+                        </button>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Team 2</td>
+                    <td>Could've Been</td>
                     <td>n/a</td>
-                    <td>Hidden Mist</td>
+                    <td>Hidden Rain</td>
                     <td>n/a</td>
-                    <td>March 20st @ 7 PM</td>
-                    <td>View</td>
+                    <td>April 18, 2023</td>
+                    <td>7:15 PM</td>
+                    <td>
+                        <button class="js-modal-trigger" data-target="modal-js-example">
+                            View
+                        </button>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Team 3</td>
+                    <td>YAGGA</td>
                     <td>n/a</td>
-                    <td>Team 2</td>
+                    <td>Integral Construction</td>
                     <td>n/a</td>
-                    <td>March 20st @ 8 PM</td>
-                    <td>View</td>
+                    <td>April 18, 2023</td>
+                    <td>8:15 PM</td>
+                    <td>
+                        <button class="js-modal-trigger" data-target="modal-js-example">
+                            View
+                        </button>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Team 4</td>
-                    <td>n/a</td>
-                    <td>Team 5</td>
-                    <td>n/a</td>
-                    <td>March 20st @ 8 PM</td>
-                    <td>View</td>
+                    <td colspan="4" style="text-align: center;">Free Agents - Bye</td>
+                    <td>April 18, 2023</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td colspan="7" style="text-align: center;"><strong>Week 8</strong></td>
+                </tr>
+                <tr>
+                    <td colspan="7" style="text-align: center;"><strong>*TBD 1st seed gets automatic win. Other 6 teams
+                            play randomly for seeding for playoffs.
+                        </strong></td>
                 </tr>
             </tbody>
         </table>
+    </div>
+
+
+    <div id="modal-js-example" class="modal">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+            <div class="box">
+                <p>Modal JS example</p>
+                <table class="table is-striped is-hoverable is-bordered" id="hiddenMist-table">
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>PTS</th>
+                        <th>REB</th>
+                        <th>AST</th>
+                    </tr>
+                    <tr>
+                        <td>42</td>
+                        <td>Victor</td>
+                        <td>30</td>
+                        <td>12</td>
+                        <td>9</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <button class="modal-close is-large" aria-label="close"></button>
     </div>
 
 </body>

@@ -34,13 +34,19 @@ table {
   margin: 0 auto;
   border-collapse: collapse;
   text-align: center !important;
-  font-size: small !important;
+  font-size: x-small !important;
 }
 
 th {
   background-color: black;
   color: white !important;
   text-align: center !important;
+  vertical-align: middle !important;
+}
+
+td{
+  vertical-align: middle !important;
+  text-align: left !important;
 }
 
 #team-filter {
