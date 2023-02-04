@@ -6,6 +6,7 @@
 
 html {
   background-color: black !important;
+  font-family: 'Roboto', sans-serif !important;
 }
 hr{
   margin: 0 !important;
@@ -46,7 +47,6 @@ th {
 
 td{
   vertical-align: middle !important;
-  text-align: left !important;
 }
 
 #team-filter {
@@ -60,4 +60,9 @@ td{
   margin-top: 20px;
 }
 
-
+p{
+  font-size: 1.3rem;
+  font-weight: 700;
+  padding: 0%;
+  margin-bottom: 0 !important;
+}

@@ -5,6 +5,7 @@
         "roster": [{
                 "name": "Kevin Rivera",
                 "number": 3,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -162,6 +163,7 @@
             {
                 "name": "Ryne Griesenauer",
                 "number": 34,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -319,6 +321,7 @@
             {
                 "name": "Kyle Davis",
                 "number": 4,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -476,6 +479,7 @@
             {
                 "name": "Shaquan Jackson",
                 "number": 2,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -633,6 +637,7 @@
             {
                 "name": "DaJuan Jones",
                 "number": 8,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -790,6 +795,7 @@
             {
                 "name": "Jonathon Robles",
                 "number": 21,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -947,6 +953,7 @@
             {
                 "name": "Jake Gnapi",
                 "number": 13,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -1104,6 +1111,7 @@
             {
                 "name": "Tarell Vargas",
                 "number": 6,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -1267,6 +1275,7 @@
         "roster": [{
                 "name": "Quadir Eason",
                 "number": 1,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -1424,6 +1433,7 @@
             {
                 "name": "Lashawn Smith",
                 "number": 10,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -1581,6 +1591,7 @@
             {
                 "name": "Ty Sands",
                 "number": 2,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -1738,6 +1749,7 @@
             {
                 "name": "David Crenshaw",
                 "number": 13,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -1895,6 +1907,7 @@
             {
                 "name": "Kuran Iverson",
                 "number": 23,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -2052,6 +2065,7 @@
             {
                 "name": "Tyler Spears",
                 "number": 3,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -2209,6 +2223,7 @@
             {
                 "name": "Jay Trueheart",
                 "number": 8,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -2366,6 +2381,7 @@
             {
                 "name": "Tyshon Rogers",
                 "number": 5,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -2529,6 +2545,7 @@
         "roster": [{
                 "name": "John Fernandes",
                 "number": 1,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -2686,6 +2703,7 @@
             {
                 "name": "Rudy Kurowski",
                 "number": 2,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -2843,6 +2861,7 @@
             {
                 "name": "Rashard Rodriguez",
                 "number": 13,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -3000,6 +3019,7 @@
             {
                 "name": "Aaron Samuel",
                 "number": 7,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -3157,6 +3177,7 @@
             {
                 "name": "Dayvon Russel",
                 "number": 4,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -3314,6 +3335,7 @@
             {
                 "name": "Tyrone McBurnie",
                 "number": 10,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -3471,6 +3493,7 @@
             {
                 "name": "TyShawn Williamson",
                 "number": 11,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -3628,6 +3651,7 @@
             {
                 "name": "Christopher Garcon",
                 "number": 0,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -3784,6 +3808,7 @@
             },{
                 "name": "Matt Wilson",
                 "number": 11,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -3948,6 +3973,7 @@
         "roster": [{
                 "name": "Stu Vargas",
                 "number": 1,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -4105,6 +4131,7 @@
             {
                 "name": "Nate Phetis",
                 "number": 2,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -4262,6 +4289,7 @@
             {
                 "name": "Ozzy Priar",
                 "number": 3,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -4419,6 +4447,7 @@
             {
                 "name": "Craig Behun",
                 "number": 4,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -4576,6 +4605,7 @@
             {
                 "name": "Raimir Rivera",
                 "number": 5,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -4733,6 +4763,7 @@
             {
                 "name": "Aaron Garcia",
                 "number": 6,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -4890,6 +4921,7 @@
             {
                 "name": "Jeff Norko",
                 "number": 7,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -5047,6 +5079,7 @@
             {
                 "name": "John Danielski",
                 "number": 8,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -5209,6 +5242,7 @@
         "roster": [{
                 "name": "Davon Pratt",
                 "number": 24,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -5366,6 +5400,7 @@
             {
                 "name": "TJ Killings",
                 "number": 1,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -5523,6 +5558,7 @@
             {
                 "name": "Mikey Pettway",
                 "number": 3,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -5680,6 +5716,7 @@
             {
                 "name": "Dave Armstrong",
                 "number": 25,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -5837,6 +5874,7 @@
             {
                 "name": "Melly Jones",
                 "number": 11,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -5994,6 +6032,7 @@
             {
                 "name": "Mike Davis",
                 "number": 33,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -6151,6 +6190,7 @@
             {
                 "name": "Tyler Ancrum",
                 "number": 5,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -6308,6 +6348,7 @@
             {
                 "name": "Jayron Vines",
                 "number": 2,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -6470,10 +6511,11 @@
         "roster": [{
                 "name": "Jalen Graham",
                 "number": 4,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
-                        "Points": 4,
+                        "Points": 0,
                         "FieldGoalsMade": 0,
                         "FieldGoalAttempts": 0,
                         "ThreesMade": 0,
@@ -6627,6 +6669,7 @@
             {
                 "name": "Alex Hopkins",
                 "number": 13,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -6784,6 +6827,7 @@
             {
                 "name": "Chris Leak",
                 "number": 0,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -6941,6 +6985,7 @@
             {
                 "name": "Christian Pierre",
                 "number": 14,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -7098,6 +7143,7 @@
             {
                 "name": "Jahwan Cody",
                 "number": 21,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -7255,6 +7301,7 @@
             {
                 "name": "Mike Davis",
                 "number": 15,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -7412,6 +7459,7 @@
             {
                 "name": "Sherrod Prezzie Blue",
                 "number": 7,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -7569,6 +7617,7 @@
             {
                 "name": "Craig Dwelle",
                 "number": 33,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -7731,6 +7780,7 @@
         "roster": [{
                 "name": "Chris Estwan",
                 "number": 2,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -7888,6 +7938,7 @@
             {
                 "name": "Tim Adanti",
                 "number": 1,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -8045,6 +8096,7 @@
             {
                 "name": "Cole Chudoba",
                 "number": 12,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -8202,6 +8254,7 @@
             {
                 "name": "Alexander Lyons",
                 "number": 0,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -8359,6 +8412,7 @@
             {
                 "name": "John Rullan",
                 "number": 22,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -8516,6 +8570,7 @@
             {
                 "name": "Mike Urbina",
                 "number": 24,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -8673,6 +8728,7 @@
             {
                 "name": "Josh Salgado",
                 "number": 14,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -8830,6 +8886,7 @@
             {
                 "name": "UNKNOWN",
                 "number": 0,
+                "GamesPlayed":0,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",

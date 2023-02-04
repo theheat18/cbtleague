@@ -9,29 +9,69 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
+
+  
+
     //This Script gets all team stats onto one table
     $.getJSON("assets/json/teams.json", function (data) {
+
       $.each(data, function (i, team) {
+        
+      let teamPoints = 0;
+      let teamFGM = 0;
+      let teamFGA = 0;
+      let team3PM = 0;
+      let team3PA = 0;
+      let teamFTM = 0;
+      let teamFTA = 0;
+      let teamRebounds = 0;
+      let teamOREB = 0;
+      let teamDREB = 0;
+      let teamAssists = 0;
+      let teamBlocks = 0;
+      let teamSteals = 0;
+      let teamTOV = 0;
+      let teamPF = 0;
+
+      for (let i = 0; i < team.roster.length; i++) {
+        for (let j = 0; j < team.roster[i].stats.length; j++) {
+          teamPoints += team.roster[i].stats[j].Points;
+          teamFGM += team.roster[i].stats[j].FieldGoalsMade;
+          teamFGA += team.roster[i].stats[j].FieldGoalAttempts;
+          team3PM += team.roster[i].stats[j].ThreesMade;
+          team3PA += team.roster[i].stats[j].ThreesAttempts;
+          teamFTM += team.roster[i].stats[j].FreeThrowsMade;
+          teamFTA += team.roster[i].stats[j].FreeThrowsAttempts;
+          teamRebounds += team.roster[i].stats[j].Rebounds;
+          teamOREB += team.roster[i].stats[j].Offrebounds;
+          teamDREB += team.roster[i].stats[j].Defrebounds;
+          teamAssists += team.roster[i].stats[j].Assists;
+          teamBlocks += team.roster[i].stats[j].Blocks;
+          teamSteals += team.roster[i].stats[j].Steals;
+          teamTOV += team.roster[i].stats[j].Turnovers;
+          teamPF += team.roster[i].stats[j].PersonalFouls;
+        }
+      }
         $("#team-table").append(
           "<tr>" +
-          "<td>" + team.Team + "</a></td>" +
+          "<td Style='font-weight:700; font-size:.7rem;'>" + team.Team + "</a></td>" +
           "<td>" + team.wins + "</td>" +
           "<td>" + team.loss + "</td>" +
-          "<td>" + team.Points + "</td>" +
-          "<td>" + team.FieldGoalsMade + "</td>" +
-          "<td>" + team.FieldGoalAttempts + "</td>" +
-          "<td>" + team.ThreesMade + "</td>" +
-          "<td>" + team.ThreesAttempts + "</td>" +
-          "<td>" + team.FreeThrowsMade + "</td>" +
-          "<td>" + team.FreeThrowsAttempts + "</td>" +
-          "<td>" + team.Rebounds + "</td>" +
-          "<td>" + team.Offrebounds + "</td>" +
-          "<td>" + team.Defrebounds + "</td>" +
-          "<td>" + team.Assists + "</td>" +
-          "<td>" + team.Blocks + "</td>" +
-          "<td>" + team.Steals + "</td>" +
-          "<td>" + team.Turnovers + "</td>" +
-          "<td>" + team.PersonalFouls + "</td>" +
+          "<td>" + teamPoints + "</td>" +
+          "<td>" + teamFGM + "</td>" +
+          "<td>" + teamFGA + "</td>" +
+          "<td>" + team3PM + "</td>" +
+          "<td>" + team3PA + "</td>" +
+          "<td>" + teamFTM + "</td>" +
+          "<td>" + teamFTA + "</td>" +
+          "<td>" + teamRebounds + "</td>" +
+          "<td>" + teamOREB + "</td>" +
+          "<td>" + teamDREB + "</td>" +
+          "<td>" + teamAssists + "</td>" +
+          "<td>" + teamBlocks + "</td>" +
+          "<td>" + teamSteals + "</td>" +
+          "<td>" + teamTOV + "</td>" +
+          "<td>" + teamPF + "</td>" +
           "</tr>"
         );
       });
@@ -61,23 +101,6 @@
     }
 
 
-    //This script gets individual team stats onto a table
-    $.getJSON("assets/json/teams.json", function (data) {
-      $.each(data, function (i, team) {
-        if (team.Team == "Hidden Mist") {
-          for (var c = 0; c < team.roster.length; c++)
-            $("#hiddenMist-table").append(
-              "<tr>" +
-              "<td>" + team.roster[c].number + "</td>" +
-              "<td>" + team.roster[c].name + "</td>" +
-              "<td>" + team.roster[c].points + "</td>" +
-              "<td>" + team.roster[c].rebounds + "</td>" +
-              "<td>" + team.roster[c].assists + "</td>" +
-              "</tr>"
-            );
-        }
-      });
-    });
 
     document.addEventListener('DOMContentLoaded', () => {
 

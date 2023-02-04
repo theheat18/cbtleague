@@ -37,40 +37,78 @@
         $.getJSON("assets/json/teams.json", function (data) {
 
             $.each(data, function (i, team) {
-                for (var c = 0; c < team.roster.length; c++)
+
+                for (let i = 0; i < team.roster.length; i++) {
+                    let playerPoints = 0;
+                    let playerFGM = 0;
+                    let playerFGA = 0;
+                    let player3PM = 0;
+                    let player3PA = 0;
+                    let playerFTM = 0;
+                    let playerFTA = 0;
+                    let playerRebounds = 0;
+                    let playerOREB = 0;
+                    let playerDREB = 0;
+                    let playerAssists = 0;
+                    let playerBlocks = 0;
+                    let playerSteals = 0;
+                    let playerTOV = 0;
+                    let playerPF = 0;
+
+
+                    for (let j = 0; j < team.roster[i].stats.length; j++) {
+                        playerPoints += team.roster[i].stats[j].Points;
+                        playerFGM += team.roster[i].stats[j].FieldGoalsMade;
+                        playerFGA += team.roster[i].stats[j].FieldGoalAttempts;
+                        player3PM += team.roster[i].stats[j].ThreesMade;
+                        player3PA += team.roster[i].stats[j].ThreesAttempts;
+                        playerFTM += team.roster[i].stats[j].FreeThrowsMade;
+                        playerFTA += team.roster[i].stats[j].FreeThrowsAttempts;
+                        playerRebounds += team.roster[i].stats[j].Rebounds;
+                        playerOREB += team.roster[i].stats[j].Offrebounds;
+                        playerDREB += team.roster[i].stats[j].Defrebounds;
+                        playerAssists += team.roster[i].stats[j].Assists;
+                        playerBlocks += team.roster[i].stats[j].Blocks;
+                        playerSteals += team.roster[i].stats[j].Steals;
+                        playerTOV += team.roster[i].stats[j].Turnovers;
+                        playerPF += team.roster[i].stats[j].PersonalFouls;
+                    }
+
                     $("#players-table").append(
                         "<tr>" +
-                        "<td>" + team.roster[c].number + "</td>" +
-                        "<td>" + team.roster[c].name + "</td>" +
+                        "<td>" + team.roster[i].number + "</td>" +
+                        "<td>" + team.roster[i].name + "</td>" +
                         "<td>" + team.Team + "</td>" +
-                        "<td>" + team.roster[c].stats[0].Points + "</td>" +
-                        "<td>" + team.roster[c].stats[0].Rebounds + "</td>" +
-                        "<td>" + team.roster[c].stats[0].Assists + "</td>" +
-                        "<td>" + team.roster[c].stats[0].Assists + "</td>" +
-                        "<td>" + team.roster[c].stats[0].Assists + "</td>" +
-                        "<td>" + team.roster[c].stats[0].Assists + "</td>" +
-                        "<td>" + team.roster[c].stats[0].Assists + "</td>" +
-                        "<td>" + team.roster[c].stats[0].Assists + "</td>" +
-                        "<td>" + team.roster[c].stats[0].Assists + "</td>" +
-                        "<td>" + team.roster[c].stats[0].Assists + "</td>" +
-                        "<td>" + team.roster[c].stats[0].Assists + "</td>" +
-                        "<td>" + team.roster[c].stats[0].Assists + "</td>" +
-                        "<td>" + team.roster[c].stats[0].Assists + "</td>" +
-                        "<td>" + team.roster[c].stats[0].Assists + "</td>" +
-                        "<td>" + team.roster[c].stats[0].Assists + "</td>" +
-                        "<td>" + team.roster[c].stats[0].Assists + "</td>" +
-                        "<td>" + team.roster[c].stats[0].Assists + "</td>" +
-                        "<td>" + team.roster[c].stats[0].Assists + "</td>" +
-                        "<td>" + team.roster[c].stats[0].Assists + "</td>" +
-                        "<td>" + team.roster[c].stats[0].Assists + "</td>" +
-                        "<td>" + team.roster[c].stats[0].Assists + "</td>" +
-                        "<td>" + team.roster[c].stats[0].Assists + "</td>" +
-                        "<td>" + team.roster[c].stats[0].Assists + "</td>" +
-                        "<td>" + team.roster[c].stats[0].Assists + "</td>" +
-                        "<td>" + team.roster[c].stats[0].Assists + "</td>" +
-                        "<td>" + team.roster[c].stats[0].Assists + "</td>" +
+                        "<td>" + team.roster[i].GamesPlayed + "</td>" +
+                        "<td>" + playerPoints + "</td>" +
+                        "<td>" + playerPoints/team.roster[i].GamesPlayed + "</td>" +
+                        "<td>" + playerFGM + "</td>" +
+                        "<td>" + playerFGA + "</td>" +
+                        "<td>" + playerFGM/playerFGA + "</td>" +
+                        "<td>" + player3PM + "</td>" +
+                        "<td>" + player3PA + "</td>" +
+                        "<td>" + player3PM/player3PA + "</td>" +
+                        "<td>" + playerFTM + "</td>" +
+                        "<td>" + playerFTA + "</td>" +
+                        "<td>" + playerFTM/playerFTA + "</td>" +
+                        "<td>" + playerRebounds + "</td>" +
+                        "<td>" + playerRebounds/team.roster[i].GamesPlayed + "</td>" +
+                        "<td>" + playerOREB + "</td>" +
+                        "<td>" + playerDREB + "</td>" +
+                        "<td>" + playerAssists + "</td>" +
+                        "<td>" + playerAssists/team.roster[i].GamesPlayed + "</td>" +
+                        "<td>" + playerBlocks + "</td>" +
+                        "<td>" + playerBlocks/team.roster[i].GamesPlayed + "</td>" +
+                        "<td>" + playerSteals + "</td>" +
+                        "<td>" + playerSteals/team.roster[i].GamesPlayed + "</td>" +
+                        "<td>" + playerTOV + "</td>" +
+                        "<td>" + playerTOV/team.roster[i].GamesPlayed + "</td>" +
+                        "<td>" + playerPF + "</td>" +
+                        "<td>" + (playerPoints+playerRebounds+playerAssists+playerBlocks-(playerFGA-playerFGM)-(playerFTA-playerFTM)-playerTOV)/team.roster[i].GamesPlayed + "</td>" +
+                        //(PTS + REB + AST + STL + BLK − Missed FG − Missed FT - TO) / GP.
                         "</tr>"
                     );
+                }
             });
             //After table is loaded running the sortTable function
             sortTable();
@@ -227,13 +265,13 @@
                     <th>OREB</th>
                     <th>DREB</th>
                     <th>REB</th>
-                    <th>REBPG</th>
+                    <th>RPG</th>
                     <th>AST</th>
                     <th>APG</th>
                     <th>STL</th>
-                    <th>STLPG</th>
+                    <th>SPG</th>
                     <th>BLK</th>
-                    <th>BLKPG</th>
+                    <th>BPG</th>
                     <th>TOV</th>
                     <th>TOVPG</th>
                     <th>PF</th>
