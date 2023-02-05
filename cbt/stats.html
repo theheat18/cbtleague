@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="has-navbar-fixed-top">
+<html>
 
 <head>
   <title>Stats</title>
@@ -7,6 +7,9 @@
   <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
 
@@ -129,12 +132,16 @@
 
 <body>
 
-  <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <nav class="navbar " role="navigation" aria-label="main navigation">
 
     <div class="navbar-brand">
-      <a class="navbar-item is-hidden-desktop">
-        Stats
-      </a>
+      <div class="container ">
+        
+          <a href="index.html"><img class="logoContainer" src="assets/img/cbt-logo1.jpg" alt="" width="150px"></a>
+        
+      </div>
+      
+    
       <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
@@ -154,7 +161,9 @@
       <a href="standings.html" class="navbar-item">
         Standings
       </a>
-
+      <a href="teams.html" class="navbar-item">
+        Teams
+      </a>
       <div class="navbar-item has-dropdown is-hoverable">
         <a href="stats.html" class="navbar-link">
           Stats
@@ -178,11 +187,7 @@
     </div>
   </nav>
   <hr>
-  <div class="container">
-    <h1>
-      <img class="logoContainer" src="assets/img/cbt-logo1.jpg" alt="" width="200px">
-    </h1>
-  </div>
+  
   <div class="container is-max-fullwidth">
     <h1>Spring 2023 Season: <input type="text" id="team-filter" onkeyup="filterTable()"
         placeholder="Filter by Team name..."></h1>

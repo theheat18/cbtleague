@@ -6,18 +6,35 @@
 
 html {
   background-color: black !important;
-  font-family: 'Roboto', sans-serif !important;
 }
-hr{
+
+hr {
   margin: 0 !important;
 }
+
 h1 {
   text-align: center;
-  color: white;
+  color: white !important;
+  font-family: 'Anton', sans-serif;
 }
-.navbar,.navbar-item, .has-dropdown.is-hoverable,.navbar-link,.navbar-dropdown{
+
+.navbar,
+.navbar-item,
+.has-dropdown.is-hoverable,
+.navbar-link,
+.navbar-dropdown {
   background-color: black !important;
+  font-family: 'Anton', sans-serif;
+  font-size: 15px !important;
 }
+.navbar{
+    box-shadow: 0px 5px #141414;
+}
+.navbar-menu {
+  justify-content: space-evenly !important;
+}
+
+
 caption {
   text-align: center;
   font-size: x-large;
@@ -27,6 +44,7 @@ caption {
 a {
   color: white !important;
 }
+
 .teamName {
   color: black !important;
 }
@@ -45,7 +63,7 @@ th {
   vertical-align: middle !important;
 }
 
-td{
+td {
   vertical-align: middle !important;
 }
 
@@ -56,13 +74,14 @@ td{
   text-align: center;
 }
 
-.logoContainer{
-  margin-top: 20px;
+.logoContainer {
+  margin: 20px;
 }
 
-p{
+p {
   font-size: 1.3rem;
   font-weight: 700;
   padding: 0%;
   margin-bottom: 0 !important;
 }
+

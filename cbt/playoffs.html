@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="has-navbar-fixed-top">
+<html >
 
 <head>
     <title>Playoffs</title>
@@ -7,6 +7,9 @@
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">  
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -37,64 +40,62 @@
 <body>
     
 
-    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+    <nav class="navbar " role="navigation" aria-label="main navigation">
 
         <div class="navbar-brand">
-            <a class="navbar-item is-hidden-desktop">
-                Playoffs
-              </a>
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
-                data-target="navbarBasicExample">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </a>
+          <div class="container ">
+            
+              <a href="index.html"><img class="logoContainer" src="assets/img/cbt-logo1.jpg" alt="" width="150px"></a>
+            
+          </div>
+          
+        
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
         </div>
-
+    
         <div id="navbarBasicExample" class="navbar-menu">
-
-            <a href="index.html" class="navbar-item">
-                Home
+    
+          <a href="index.html" class="navbar-item">
+            Home
+          </a>
+    
+          <a href="schedule.html" class="navbar-item">
+            Schedule
+          </a>
+          <a href="standings.html" class="navbar-item">
+            Standings
+          </a>
+          <a href="teams.html" class="navbar-item">
+            Teams
+          </a>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a href="stats.html" class="navbar-link">
+              Stats
             </a>
-
-            <a href="schedule.html" class="navbar-item">
-                Schedule
-            </a>
-            <a href="standings.html" class="navbar-item">
-                Standings
-            </a>
-
-            <div class="navbar-item has-dropdown is-hoverable">
-                <a href="stats.html" class="navbar-link">
-                    Stats
-                </a>
-
-                <div class="navbar-dropdown">
-                    <a href="stats.html" class="navbar-item">
-                        Team Stats
-                    </a>
-                    <a href="playerstats.html" class="navbar-item">
-                        Player Stats
-                    </a>
-                    <a href="leagueleaders.html" class="navbar-item">
-                        League Leaders
-                    </a>
-                </div>
+    
+            <div class="navbar-dropdown">
+              <a href="stats.html" class="navbar-item">
+                Team Stats
+              </a>
+              <a href="playerstats.html" class="navbar-item">
+                Player Stats
+              </a>
+              <a href="leagueleaders.html" class="navbar-item">
+                League Leaders
+              </a>
             </div>
-            <a href="playoffs.html" class="navbar-item">
-                Playoffs
-            </a>
-
-
+          </div>
+          <a href="playoffs.html" class="navbar-item">
+            Playoffs
+          </a>
         </div>
-
-    </nav>
-    <hr>
-    <div class="container">
-        <h1>
-          <img class="logoContainer" src="assets/img/cbt-logo1.jpg" alt="" width="200px">
-        </h1>
-      </div>
+      </nav>
+        <hr>
+   
 
     <h1>PLAYOFFS BRACKET PAGE</h1>
     <h1>Currently under construction</h1>

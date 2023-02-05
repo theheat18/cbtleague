@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="has-navbar-fixed-top">
+<html>
 
 <head>
   <title>Welcome to CBT League!</title>
@@ -8,8 +8,8 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -39,14 +39,16 @@
 
 <body>
 
-  <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
-
+  <nav class="navbar" role="navigation" aria-label="main navigation">
 
     <div class="navbar-brand">
-      
-      <a class="navbar-item is-hidden-desktop">
-        Home
-      </a>
+      <div class="container ">
+
+        <a href="index.html"><img class="logoContainer" src="assets/img/cbt-logo1.jpg" alt="" width="150px"></a>
+
+      </div>
+
+
       <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
@@ -66,7 +68,9 @@
       <a href="standings.html" class="navbar-item">
         Standings
       </a>
-
+      <a href="teams.html" class="navbar-item">
+        Teams
+      </a>
       <div class="navbar-item has-dropdown is-hoverable">
         <a href="stats.html" class="navbar-link">
           Stats
@@ -89,20 +93,13 @@
       </a>
     </div>
   </nav>
-  
-  <hr>
 
-  <div class="container ">
-    <h1>
-      <img class="logoContainer" src="assets/img/cbt-logo1.jpg" alt="" width="200px">
-    </h1>
-  </div>
 
-  <h1>This is going to be home page where the live stream can be watch and any updates to the league can be mentioned
-    here as well.</h1>
-  <h1>Currently under construction</h1>
 
-  
+  <section class="section">
+    <h1 class="title is-3">Welcome to CBT Adult Men's League!</h1>
+
+  </section>
 
 </body>
 

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+
+<body>
+<div id="team_name"></div>
+
+</body>
+<script>
+    function showTeamDetails() {
+     // Get the team name from session storage
+     const teamName = sessionStorage.getItem("team_name");
+
+     // Check if the team name is available
+     if (!teamName) {
+       console.error("Team name not found in session storage");
+       return;
+     }
+
+     // Get the element where you want to display the team name
+     const teamNameDisplay = document.getElementById("team_name");
+
+     // Display the team name
+     teamNameDisplay.textContent = teamName;
+   }
+
+   showTeamDetails();
+ </script>
+</html>
