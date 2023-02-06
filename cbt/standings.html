@@ -9,9 +9,39 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">  
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
+        $.getJSON("assets/json/teams.json", function (data) {
+            let rank = 1;
+            data.sort(function (a, b) {
+                return (b.wins / (b.wins + b.loss)) - (a.wins / (a.wins + a.loss));
+            });
+            $.each(data, function (i, team) {
+
+                winPercent = 0;
+                if ((team.wins / (team.wins + team.loss)).toFixed(3) == "NaN") {
+                    winPercent = 0;
+                }else{
+                    winPercent = (team.wins / (team.wins + team.loss)).toFixed(3)
+                }
+
+                $("#team-table").append(
+                    "<tr>" +
+                    "<td>" + rank++ + "</td>" +
+                    "<td Style='font-weight:700; font-size:.7rem;'>" + team.Team + "</a></td>" +
+                    "<td>" + team.wins + "</td>" +
+                    "<td>" + team.loss + "</td>" +
+                    "<td>" + winPercent + "</td>" +
+                    "</tr>"
+                );
+            });
+        });
+
+
+
+
+
         document.addEventListener('DOMContentLoaded', () => {
 
             // Get all "navbar-burger" elements
@@ -38,67 +68,80 @@
 
 
 <body>
-    
 
     <nav class="navbar " role="navigation" aria-label="main navigation">
 
         <div class="navbar-brand">
-          <div class="container ">
-            
-              <a href="index.html"><img class="logoContainer" src="assets/img/cbt-logo1.jpg" alt="" width="150px"></a>
-            
-          </div>
-          
-        
-          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
-        </div>
-    
-        <div id="navbarBasicExample" class="navbar-menu">
-    
-          <a href="index.html" class="navbar-item">
-            Home
-          </a>
-    
-          <a href="schedule.html" class="navbar-item">
-            Schedule
-          </a>
-          <a href="standings.html" class="navbar-item">
-            Standings
-          </a>
-          <a href="teams.html" class="navbar-item">
-            Teams
-          </a>
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a href="stats.html" class="navbar-link">
-              Stats
-            </a>
-    
-            <div class="navbar-dropdown">
-              <a href="stats.html" class="navbar-item">
-                Team Stats
-              </a>
-              <a href="playerstats.html" class="navbar-item">
-                Player Stats
-              </a>
-              <a href="leagueleaders.html" class="navbar-item">
-                League Leaders
-              </a>
-            </div>
-          </div>
-          <a href="playoffs.html" class="navbar-item">
-            Playoffs
-          </a>
-        </div>
-      </nav>
-        <hr>
-    
-    <h1>Standings PAGE</h1>
-    <h1>Currently under construction</h1>
+            <div class="container ">
 
+                <a href="index.html"><img class="logoContainer" src="assets/img/cbt-logo1.jpg" alt="" width="150px"></a>
+
+            </div>
+
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+                data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+
+            <a href="index.html" class="navbar-item">
+                Home
+            </a>
+
+            <a href="schedule.html" class="navbar-item">
+                Schedule
+            </a>
+            <a href="standings.html" class="navbar-item">
+                Standings
+            </a>
+            <a href="teams.html" class="navbar-item">
+                Teams
+            </a>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a href="stats.html" class="navbar-link">
+                    Stats
+                </a>
+
+                <div class="navbar-dropdown">
+                    <a href="stats.html" class="navbar-item">
+                        Team Stats
+                    </a>
+                    <a href="playerstats.html" class="navbar-item">
+                        Player Stats
+                    </a>
+                    <a href="leagueleaders.html" class="navbar-item">
+                        League Leaders
+                    </a>
+                </div>
+            </div>
+            <a href="playoffs.html" class="navbar-item">
+                Playoffs
+            </a>
+        </div>
+    </nav>
+    <hr>
+
+    <h1>Standings</h1>
+
+    <div class="container is-max-fullwidth">
+        <br>
+        <div class="table-container">
+            <table class="table is-fullwidth is-hoverable is-bordered" id="team-table">
+                <tr>
+                    <th>Rank</th>
+                    <th>Team</th>
+                    <th>W</th>
+                    <th>L</th>
+                    <th>Win %</th>
+                </tr>
+            </table>
+        </div>
+    </div>
 </body>
 
 </html>

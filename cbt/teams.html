@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Welcome to CBT League!</title>
+    <title>Teams</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
     <link rel="stylesheet" href="assets/css/style.css">
@@ -98,17 +98,17 @@
         </div>
     </nav>
 
-   
+   <h1>Teams</h1>
 
     <div class="container" style="top: 15px;">
 
-        <div class="columns is-multiline">
+        <div class="columns is-multiline is-centered">
             <div class="column is-one-quarter">
                 <div class="card">
                     <div class="card-content">
                         <div class="content">
                             <figure class="image is-3by2">
-                                <a href="teamDetails.html" id="team_link"><img src="assets/img/team-logos/hiddenRain.jpg"></a>
+                                <img src="assets/img/team-logos/hiddenRain.jpg" alt="Hidden Rain" class="team-logo" data-team-name="Hidden Rain">
                             </figure>
                         </div>
                     </div>
@@ -120,7 +120,7 @@
                     <div class="card-content">
                         <div class="content">
                             <figure class="image is-3by2">
-                                <img src="assets/img/team-logos/halloffame.jpg">
+                                <img src="assets/img/team-logos/halloffame.jpg" alt="Hall of Fame" class="team-logo" data-team-name="Hall of Fame">
                             </figure>
                         </div>
                     </div>
@@ -131,7 +131,7 @@
                     <div class="card-content">
                         <div class="content">
                             <figure class="image is-3by2">
-                                <img src="assets/img/team-logos/couldabeen.jpg">
+                                <img src="assets/img/team-logos/couldabeen.jpg" alt="Could've Been" class="team-logo" data-team-name="Could've Been">
                             </figure>
                         </div>
                     </div>
@@ -142,7 +142,7 @@
                     <div class="card-content">
                         <div class="content">
                             <figure class="image is-3by2">
-                                <img src="assets/img/team-logos/integral.jpg">
+                                <img src="assets/img/team-logos/integral.jpg" alt="Integral Construction" class="team-logo" data-team-name="Integral Construction">
                             </figure>
                         </div>
                     </div>
@@ -153,7 +153,7 @@
                     <div class="card-content">
                         <div class="content">
                             <figure class="image is-3by2">
-                                <img src="assets/img/team-logos/tuneSquad.jpg">
+                                <img src="assets/img/team-logos/tuneSquad.jpg" alt="Tune Squad" class="team-logo" data-team-name="Tune Squad">
                             </figure>
                         </div>
                     </div>
@@ -164,7 +164,7 @@
                     <div class="card-content">
                         <div class="content">
                             <figure class="image is-3by2">
-                                <img src="assets/img/team-logos/yagga.jpg">
+                                <img src="assets/img/team-logos/yagga.jpg" alt="YAGGA" class="team-logo" data-team-name="YAGGA">
                             </figure>
                         </div>
                     </div>
@@ -175,7 +175,7 @@
                     <div class="card-content">
                         <div class="content">
                             <figure class="image is-3by2">
-                                <img src="assets/img/team-logos/freeAgents.jpg">
+                                <img src="assets/img/team-logos/freeAgents.jpg" alt="Free Agents" class="team-logo" data-team-name="Free Agents">
                             </figure>
                         </div>
                     </div>
@@ -191,14 +191,22 @@
 
 
 <script>
-    // Get the link element
-    const link = document.getElementById("team_link");
+  // Get all the team logos
+  const teamLogos = document.querySelectorAll(".team-logo");
 
-    // Attach click event to the link
-    link.addEventListener("click", function (event) {
-        // Set the team name in session storage
-        sessionStorage.setItem("team_name", event.target.textContent);
-    });
+// Add a click event listener to each team logo
+teamLogos.forEach(logo => {
+  logo.addEventListener("click", function() {
+    // Get the team name from the data attribute
+    const teamName = this.dataset.teamName;
+
+    // Set the team name in session storage
+    sessionStorage.setItem("team_name", teamName);
+
+    // Navigate to the team details page
+    window.location.href = "teamDetails.html";
+  });
+});
 </script>
 
 </html>
