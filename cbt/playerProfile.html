@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title id="team_name"></title>
+    <title id="player_Name"></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
     <link rel="stylesheet" href="assets/css/style.css">
@@ -94,12 +94,22 @@
         </div>
     </nav>
 
-
-
-    <section class="section">
-        <h1 class="title is-3" id="team_name_title"></h1>
-
+    <section class="hero is-medium is-link">
+        <div class="hero-body">
+            <h2 class="title is-3" id="player_Name_title"></h2>
+            <h2 class="subtitle">
+                Medium subtitle
+            </h2>
+        </div>
     </section>
+    <section class="hero is-danger">
+        <div class="hero-body">
+            <h2 class="subtitle">
+                Game Stats and Career Stats will go here (Obviously this will be different colors!)
+            </h2>
+        </div>
+    </section>
+
 
     <!-- <div class="table-container">
         <table class="table is-striped is-hoverable is-bordered" id="players-table">
@@ -144,25 +154,25 @@
         </div>
     </div>
 
-
+</body>
 <script>
     function showTeamDetails() {
         // Get the team name from session storage
-        const teamName = sessionStorage.getItem("team_name");
+        const playerName = sessionStorage.getItem("player_Name");
 
         // Check if the team name is available
-        if (!teamName) {
-            console.error("Team name not found in session storage");
+        if (!playerName) {
+            console.error("Player name not found in session storage");
             return;
         }
 
         // Get the element where you want to display the team name
-        const teamNameDisplay = document.getElementById("team_name");
-        const teamNameDisplay1 = document.getElementById("team_name_title");
+        const playerNameDisplay = document.getElementById("player_Name");
+        const playerNameDisplay1 = document.getElementById("player_Name_title");
 
         // Display the team name
-        teamNameDisplay.textContent = teamName;
-        teamNameDisplay1.textContent = teamName;
+        playerNameDisplay.textContent = playerName;
+        playerNameDisplay1.textContent = playerName;
 
     }
 
@@ -173,10 +183,10 @@
     $.getJSON("assets/json/teams.json", function (data) {
 
         $.each(data, function (i, team) {
-            const teamName = sessionStorage.getItem("team_name");
+            const playerName = sessionStorage.getItem("player_Name");
 
-            if (team.Team == teamName)
-                for (let i = 0; i < team.roster.length; i++) {
+            for (let i = 0; i < team.roster.length; i++) {
+                if (team.roster[i].name === playerName) {
                     let playerPoints = 0;
                     let playerFGM = 0;
                     let playerFGA = 0;
@@ -224,14 +234,14 @@
                         //     playerFGA - playerFGM) - (playerFTA - playerFTM) - playerTOV) / team
                         // .roster[i].GamesPlayed + "</td>" +
                         // //(PTS + REB + AST + STL + BLK − Missed FG − Missed FT - TO) / GP.
-                        // "</tr>"
+                        // "</tr>"+
+
 
 
 
 
 
                         "<div class='column is-half'>" +
-                        "<a class='playerCard' data-player-name='"+team.roster[i].name+"'>"+
                         "<div class='card'>" +
                         "<div class='card-content'>" +
                         "<div class='content'>" +
@@ -268,34 +278,13 @@
                         "</div>" +
                         "</div>" +
                         "</div>" +
-                        "</a>"+
                         "</div>"
                     );
                 }
+            }
         });
 
     });
-
-
-    window.addEventListener("load", function() {
-    // Get all the team logos
-    const playerCard = document.querySelectorAll(".playerCard");
-    console.log(playerCard.length);
-
-    // Add a click event listener to each team logo
-    playerCard.forEach(player => {
-        player.addEventListener("click", function () {
-            // Get the team name from the data attribute
-            const playerName = this.dataset.playerName;
-
-            // Set the team name in session storage
-            sessionStorage.setItem("player_Name", playerName);
-
-            // Navigate to the team details page
-            window.location.href = "playerProfile.html";
-        });
-    });
-});
 </script>
 
 </html>

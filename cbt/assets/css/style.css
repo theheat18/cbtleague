@@ -81,7 +81,10 @@ td {
 p {
   font-size: 1.3rem;
   font-weight: 700;
+  font-family: 'Anton', sans-serif;
   padding: 0%;
   margin-bottom: 0 !important;
 }
-
+h2{
+  font-family: 'Anton', sans-serif;
+}
