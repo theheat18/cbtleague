@@ -29,8 +29,8 @@
                 $("#team-table").append(
                     "<tr>" +
                     "<td>" + rank++ + "</td>" +
-                    "<td Style='font-weight:700; font-size:.7rem;'>" + team.Team + "</a></td>" +
-                    "<td>" + team.wins + "</td>" +
+                    "<td onclick='getTeamName(event)' data-team-name='" +
+          team.Team + "'><strong>" + team.Team + "</strong></td>" +                    "<td>" + team.wins + "</td>" +
                     "<td>" + team.loss + "</td>" +
                     "<td>" + winPercent + "</td>" +
                     "</tr>"
@@ -143,5 +143,16 @@
         </div>
     </div>
 </body>
-
+<script>
+    function getTeamName(event) {
+      let target = event.target;
+      while (!target.hasAttribute('data-team-name')) {
+        target = target.parentNode;
+      }
+      const teamName = target.dataset.teamName;
+      console.log(teamName);
+      sessionStorage.setItem("team_name", teamName);
+      window.location.href = "teamProfile.html";
+    }
+  </script>
 </html>

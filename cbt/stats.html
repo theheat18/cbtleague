@@ -12,52 +12,50 @@
   <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
-
-  
-
     //This Script gets all team stats onto one table
     $.getJSON("assets/json/teams.json", function (data) {
 
       $.each(data, function (i, team) {
-        
-      let teamPoints = 0;
-      let teamFGM = 0;
-      let teamFGA = 0;
-      let team3PM = 0;
-      let team3PA = 0;
-      let teamFTM = 0;
-      let teamFTA = 0;
-      let teamRebounds = 0;
-      let teamOREB = 0;
-      let teamDREB = 0;
-      let teamAssists = 0;
-      let teamBlocks = 0;
-      let teamSteals = 0;
-      let teamTOV = 0;
-      let teamPF = 0;
 
-      for (let i = 0; i < team.roster.length; i++) {
-        for (let j = 0; j < team.roster[i].stats.length; j++) {
-          teamPoints += team.roster[i].stats[j].Points;
-          teamFGM += team.roster[i].stats[j].FieldGoalsMade;
-          teamFGA += team.roster[i].stats[j].FieldGoalAttempts;
-          team3PM += team.roster[i].stats[j].ThreesMade;
-          team3PA += team.roster[i].stats[j].ThreesAttempts;
-          teamFTM += team.roster[i].stats[j].FreeThrowsMade;
-          teamFTA += team.roster[i].stats[j].FreeThrowsAttempts;
-          teamRebounds += team.roster[i].stats[j].Rebounds;
-          teamOREB += team.roster[i].stats[j].Offrebounds;
-          teamDREB += team.roster[i].stats[j].Defrebounds;
-          teamAssists += team.roster[i].stats[j].Assists;
-          teamBlocks += team.roster[i].stats[j].Blocks;
-          teamSteals += team.roster[i].stats[j].Steals;
-          teamTOV += team.roster[i].stats[j].Turnovers;
-          teamPF += team.roster[i].stats[j].PersonalFouls;
+        let teamPoints = 0;
+        let teamFGM = 0;
+        let teamFGA = 0;
+        let team3PM = 0;
+        let team3PA = 0;
+        let teamFTM = 0;
+        let teamFTA = 0;
+        let teamRebounds = 0;
+        let teamOREB = 0;
+        let teamDREB = 0;
+        let teamAssists = 0;
+        let teamBlocks = 0;
+        let teamSteals = 0;
+        let teamTOV = 0;
+        let teamPF = 0;
+
+        for (let i = 0; i < team.roster.length; i++) {
+          for (let j = 0; j < team.roster[i].stats.length; j++) {
+            teamPoints += team.roster[i].stats[j].Points;
+            teamFGM += team.roster[i].stats[j].FieldGoalsMade;
+            teamFGA += team.roster[i].stats[j].FieldGoalAttempts;
+            team3PM += team.roster[i].stats[j].ThreesMade;
+            team3PA += team.roster[i].stats[j].ThreesAttempts;
+            teamFTM += team.roster[i].stats[j].FreeThrowsMade;
+            teamFTA += team.roster[i].stats[j].FreeThrowsAttempts;
+            teamRebounds += team.roster[i].stats[j].Rebounds;
+            teamOREB += team.roster[i].stats[j].Offrebounds;
+            teamDREB += team.roster[i].stats[j].Defrebounds;
+            teamAssists += team.roster[i].stats[j].Assists;
+            teamBlocks += team.roster[i].stats[j].Blocks;
+            teamSteals += team.roster[i].stats[j].Steals;
+            teamTOV += team.roster[i].stats[j].Turnovers;
+            teamPF += team.roster[i].stats[j].PersonalFouls;
+          }
         }
-      }
         $("#team-table").append(
           "<tr>" +
-          "<td Style='font-weight:700; font-size:.7rem;'>" + team.Team + "</a></td>" +
+          "<td onclick='getTeamName(event)' data-team-name='" +
+          team.Team + "'><strong>" + team.Team + "</strong></td>" +
           "<td>" + team.wins + "</td>" +
           "<td>" + team.loss + "</td>" +
           "<td>" + teamPoints + "</td>" +
@@ -136,12 +134,12 @@
 
     <div class="navbar-brand">
       <div class="container ">
-        
-          <a href="index.html"><img class="logoContainer" src="assets/img/cbt-logo1.jpg" alt="" width="150px"></a>
-        
+
+        <a href="index.html"><img class="logoContainer" src="assets/img/cbt-logo1.jpg" alt="" width="150px"></a>
+
       </div>
-      
-    
+
+
       <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
@@ -187,7 +185,7 @@
     </div>
   </nav>
   <hr>
-  
+
   <div class="container is-max-fullwidth">
     <h1>Team Stats</h1>
     <!-- <h1>Spring 2023 Season: <input type="text" id="team-filter" onkeyup="filterTable()"
@@ -219,5 +217,18 @@
     </div>
   </div>
 </body>
+
+<script>
+  function getTeamName(event) {
+    let target = event.target;
+    while (!target.hasAttribute('data-team-name')) {
+      target = target.parentNode;
+    }
+    const teamName = target.dataset.teamName;
+    console.log(teamName);
+    sessionStorage.setItem("team_name", teamName);
+    window.location.href = "teamProfile.html";
+  }
+</script>
 
 </html>

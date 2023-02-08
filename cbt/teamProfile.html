@@ -97,45 +97,19 @@
 
 
     <section class="section">
-        <h1 class="title is-3" id="team_name_title"></h1>
-
+        <h1 class="title is-1" id="team_name_title"></h1>
     </section>
-
-    <!-- <div class="table-container">
-        <table class="table is-striped is-hoverable is-bordered" id="players-table">
-            <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>Team</th>
-                <th>GP</th>
-                <th>PTS</th>
-                <th>PPG</th>
-                <th>FGM</th>
-                <th>FGA</th>
-                <th>FG%</th>
-                <th>3PM</th>
-                <th>3PA</th>
-                <th>3P%</th>
-                <th>FTM</th>
-                <th>FTA</th>
-                <th>FT%</th>
-                <th>OREB</th>
-                <th>DREB</th>
-                <th>REB</th>
-                <th>RPG</th>
-                <th>AST</th>
-                <th>APG</th>
-                <th>STL</th>
-                <th>SPG</th>
-                <th>BLK</th>
-                <th>BPG</th>
-                <th>TOV</th>
-                <th>TOVPG</th>
-                <th>PF</th>
-                <th>EFF</th>
-            </tr>
-        </table>
-    </div> -->
+    <section class="hero is-medium is-link">
+        <div class="hero-body">
+            <h2 class="title is-3" id="player_Name_title"></h2>
+            <h2 class="subtitle">
+                (Team Stats will go here as well, maybe game by game stats)
+            </h2>
+        </div>
+    </section>
+    <section class="section">
+        <h1 class="title is-3">Roster</h1>
+    </section>
 
     <div class="container">
 
@@ -145,157 +119,136 @@
     </div>
 
 
-<script>
-    function showTeamDetails() {
-        // Get the team name from session storage
-        const teamName = sessionStorage.getItem("team_name");
-
-        // Check if the team name is available
-        if (!teamName) {
-            console.error("Team name not found in session storage");
-            return;
-        }
-
-        // Get the element where you want to display the team name
-        const teamNameDisplay = document.getElementById("team_name");
-        const teamNameDisplay1 = document.getElementById("team_name_title");
-
-        // Display the team name
-        teamNameDisplay.textContent = teamName;
-        teamNameDisplay1.textContent = teamName;
-
-    }
-
-    showTeamDetails();
-
-
-    //This script gets individual team stats onto a table
-    $.getJSON("assets/json/teams.json", function (data) {
-
-        $.each(data, function (i, team) {
+    <script>
+        function showTeamDetails() {
+            // Get the team name from session storage
             const teamName = sessionStorage.getItem("team_name");
 
-            if (team.Team == teamName)
-                for (let i = 0; i < team.roster.length; i++) {
-                    let playerPoints = 0;
-                    let playerFGM = 0;
-                    let playerFGA = 0;
-                    let player3PM = 0;
-                    let player3PA = 0;
-                    let playerFTM = 0;
-                    let playerFTA = 0;
-                    let playerRebounds = 0;
-                    let playerOREB = 0;
-                    let playerDREB = 0;
-                    let playerAssists = 0;
-                    let playerBlocks = 0;
-                    let playerSteals = 0;
-                    let playerTOV = 0;
-                    let playerPF = 0;
+            // Check if the team name is available
+            if (!teamName) {
+                console.error("Team name not found in session storage");
+                return;
+            }
+
+            // Get the element where you want to display the team name
+            const teamNameDisplay = document.getElementById("team_name");
+            const teamNameDisplay1 = document.getElementById("team_name_title");
+
+            // Display the team name
+            teamNameDisplay.textContent = teamName;
+            teamNameDisplay1.textContent = teamName;
+
+        }
+
+        showTeamDetails();
 
 
-                    for (let j = 0; j < team.roster[i].stats.length; j++) {
-                        playerPoints += team.roster[i].stats[j].Points;
-                        playerFGM += team.roster[i].stats[j].FieldGoalsMade;
-                        playerFGA += team.roster[i].stats[j].FieldGoalAttempts;
-                        player3PM += team.roster[i].stats[j].ThreesMade;
-                        player3PA += team.roster[i].stats[j].ThreesAttempts;
-                        playerFTM += team.roster[i].stats[j].FreeThrowsMade;
-                        playerFTA += team.roster[i].stats[j].FreeThrowsAttempts;
-                        playerRebounds += team.roster[i].stats[j].Rebounds;
-                        playerOREB += team.roster[i].stats[j].Offrebounds;
-                        playerDREB += team.roster[i].stats[j].Defrebounds;
-                        playerAssists += team.roster[i].stats[j].Assists;
-                        playerBlocks += team.roster[i].stats[j].Blocks;
-                        playerSteals += team.roster[i].stats[j].Steals;
-                        playerTOV += team.roster[i].stats[j].Turnovers;
-                        playerPF += team.roster[i].stats[j].PersonalFouls;
+        //This script gets individual team stats onto a table
+        $.getJSON("assets/json/teams.json", function (data) {
+
+            $.each(data, function (i, team) {
+                const teamName = sessionStorage.getItem("team_name");
+
+                if (team.Team == teamName)
+                    for (let i = 0; i < team.roster.length; i++) {
+                        let playerPoints = 0;
+                        let playerFGM = 0;
+                        let playerFGA = 0;
+                        let player3PM = 0;
+                        let player3PA = 0;
+                        let playerFTM = 0;
+                        let playerFTA = 0;
+                        let playerRebounds = 0;
+                        let playerOREB = 0;
+                        let playerDREB = 0;
+                        let playerAssists = 0;
+                        let playerBlocks = 0;
+                        let playerSteals = 0;
+                        let playerTOV = 0;
+                        let playerPF = 0;
+
+
+                        for (let j = 0; j < team.roster[i].stats.length; j++) {
+                            playerPoints += team.roster[i].stats[j].Points;
+                            playerFGM += team.roster[i].stats[j].FieldGoalsMade;
+                            playerFGA += team.roster[i].stats[j].FieldGoalAttempts;
+                            player3PM += team.roster[i].stats[j].ThreesMade;
+                            player3PA += team.roster[i].stats[j].ThreesAttempts;
+                            playerFTM += team.roster[i].stats[j].FreeThrowsMade;
+                            playerFTA += team.roster[i].stats[j].FreeThrowsAttempts;
+                            playerRebounds += team.roster[i].stats[j].Rebounds;
+                            playerOREB += team.roster[i].stats[j].Offrebounds;
+                            playerDREB += team.roster[i].stats[j].Defrebounds;
+                            playerAssists += team.roster[i].stats[j].Assists;
+                            playerBlocks += team.roster[i].stats[j].Blocks;
+                            playerSteals += team.roster[i].stats[j].Steals;
+                            playerTOV += team.roster[i].stats[j].Turnovers;
+                            playerPF += team.roster[i].stats[j].PersonalFouls;
+                        }
+
+                        $("#roster").append(
+
+                            "<div class='column is-half'>" +
+                            "<a class='playerCard' onclick='getPlayerName(event)' data-player-name='" +
+                            team.roster[i].name + "'>" +
+                            "<div class='card'>" +
+                            "<div class='card-content'>" +
+                            "<div class='content'>" +
+                            "<div class='columns is-mobile'>" +
+                            "<div class='column is-half'>" +
+                            "<h2 id='player-number'>" + team.roster[i].number + "</h2>" +
+                            "<figure class='image is-128x128' id='player-image' style='margin: auto; margin-top: -40px;'>" +
+                            "<img src='assets/img/player-heads/' alt='Player Image' class='team-logo' data-team-name='Hidden Rain'>" +
+                            "</figure>" +
+
+                            "</div>" +
+                            "<div class='column is-half' style='text-align: center;'>" +
+                            "<h2 id='player-name'>" + team.roster[i].name + "</h2>" +
+                            "<table class='table is-bordered is-striped'>" +
+                            "<tr>" +
+                            "<th>GP</th>" +
+                            "<th>PPG</th>" +
+                            "<th>RPG</th>" +
+                            "<th>AST</th>" +
+                            "<th>EFF</th>" +
+                            "</tr>" +
+                            "<tr>" +
+                            "<td>" + team.roster[i].GamesPlayed + "</td>" +
+                            "<td>" + playerPoints / team.roster[i].GamesPlayed + "</td>" +
+                            "<td>" + playerRebounds / team.roster[i].GamesPlayed + "</td>" +
+                            "<td>" + playerAssists / team.roster[i].GamesPlayed + "</td>" +
+                            "<td>" + (playerPoints + playerRebounds + playerAssists + playerBlocks -
+                                (
+                                    playerFGA - playerFGM) - (playerFTA - playerFTM) - playerTOV) /
+                            team
+                            .roster[i].GamesPlayed + "</td>" +
+                            "</tr>" +
+                            "</table>" +
+                            "</div>" +
+                            "</div>" +
+                            "</div>" +
+                            "</div>" +
+                            "</div>" +
+                            "</a>" +
+                            "</div>"
+                        );
                     }
+            });
 
-                    $("#roster").append(
-                        // "<tr>" +
-                        // "<td>" + team.roster[i].number + "</td>" +
-                        // "<td>" + team.roster[i].name + "</td>" +
-                        // "<td>" + team.roster[i].GamesPlayed + "</td>" +
-                        // "<td>" + playerPoints / team.roster[i].GamesPlayed + "</td>" +
-                        // "<td>" + playerRebounds / team.roster[i].GamesPlayed + "</td>" +
-                        // "<td>" + playerAssists / team.roster[i].GamesPlayed + "</td>" +
-                        // "<td>" + (playerPoints + playerRebounds + playerAssists + playerBlocks - (
-                        //     playerFGA - playerFGM) - (playerFTA - playerFTM) - playerTOV) / team
-                        // .roster[i].GamesPlayed + "</td>" +
-                        // //(PTS + REB + AST + STL + BLK − Missed FG − Missed FT - TO) / GP.
-                        // "</tr>"
-
-
-
-
-
-                        "<div class='column is-half'>" +
-                        "<a class='playerCard' data-player-name='"+team.roster[i].name+"'>"+
-                        "<div class='card'>" +
-                        "<div class='card-content'>" +
-                        "<div class='content'>" +
-                        "<div class='columns is-mobile'>" +
-                        "<div class='column is-half'>" +
-                        "<h2 id='player-number'>" + team.roster[i].number + "</h2>" +
-                        "<figure class='image is-128x128' id='player-image' style='margin: auto; margin-top: -40px;'>" +
-                        "<img src='assets/img/player-heads/' alt='Player Image' class='team-logo' data-team-name='Hidden Rain'>" +
-                        "</figure>" +
-
-                        "</div>" +
-                        "<div class='column is-half' style='text-align: center;'>" +
-                        "<h2 id='player-name'>" + team.roster[i].name + "</h2>" +
-                        "<table class='table is-bordered is-striped'>" +
-                        "<tr>" +
-                        "<th>GP</th>" +
-                        "<th>PPG</th>" +
-                        "<th>RPG</th>" +
-                        "<th>AST</th>" +
-                        "<th>EFF</th>" +
-                        "</tr>" +
-                        "<tr>" +
-                        "<td>" + team.roster[i].GamesPlayed + "</td>" +
-                        "<td>" + playerPoints / team.roster[i].GamesPlayed + "</td>" +
-                        "<td>" + playerRebounds / team.roster[i].GamesPlayed + "</td>" +
-                        "<td>" + playerAssists / team.roster[i].GamesPlayed + "</td>" +
-                        "<td>" + (playerPoints + playerRebounds + playerAssists + playerBlocks - (
-                            playerFGA - playerFGM) - (playerFTA - playerFTM) - playerTOV) / team
-                        .roster[i].GamesPlayed + "</td>" +
-                        "</tr>" +
-                        "</table>" +
-                        "</div>" +
-                        "</div>" +
-                        "</div>" +
-                        "</div>" +
-                        "</div>" +
-                        "</a>"+
-                        "</div>"
-                    );
-                }
         });
 
-    });
 
 
-    window.addEventListener("load", function() {
-    // Get all the team logos
-    const playerCard = document.querySelectorAll(".playerCard");
-    console.log(playerCard.length);
-
-    // Add a click event listener to each team logo
-    playerCard.forEach(player => {
-        player.addEventListener("click", function () {
-            // Get the team name from the data attribute
-            const playerName = this.dataset.playerName;
-
-            // Set the team name in session storage
+        function getPlayerName(event) {
+            let target = event.target;
+            while (!target.hasAttribute('data-player-name')) {
+                target = target.parentNode;
+            }
+            const playerName = target.dataset.playerName;
+            console.log(playerName);
             sessionStorage.setItem("player_Name", playerName);
-
-            // Navigate to the team details page
             window.location.href = "playerProfile.html";
-        });
-    });
-});
-</script>
+        }
+    </script>
 
 </html>

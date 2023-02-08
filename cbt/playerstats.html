@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">  
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -80,34 +80,41 @@
                     $("#players-table").append(
                         "<tr>" +
                         "<td>" + team.roster[i].number + "</td>" +
-                        "<td>" + team.roster[i].name + "</td>" +
-                        "<td>" + team.Team + "</td>" +
+
+                        "<td onclick='getPlayerName(event)' data-player-name='" +
+                        team.roster[i].name + "'><strong>" + team.roster[i].name + "</strong></td>" +
+
+                        "<td onclick='getTeamName(event)' data-team-name='" +
+                        team.Team + "'>" + team.Team + "</td>" +
+
                         "<td>" + team.roster[i].GamesPlayed + "</td>" +
                         "<td>" + playerPoints + "</td>" +
-                        "<td>" + playerPoints/team.roster[i].GamesPlayed + "</td>" +
+                        "<td>" + playerPoints / team.roster[i].GamesPlayed + "</td>" +
                         "<td>" + playerFGM + "</td>" +
                         "<td>" + playerFGA + "</td>" +
-                        "<td>" + playerFGM/playerFGA + "</td>" +
+                        "<td>" + playerFGM / playerFGA + "</td>" +
                         "<td>" + player3PM + "</td>" +
                         "<td>" + player3PA + "</td>" +
-                        "<td>" + player3PM/player3PA + "</td>" +
+                        "<td>" + player3PM / player3PA + "</td>" +
                         "<td>" + playerFTM + "</td>" +
                         "<td>" + playerFTA + "</td>" +
-                        "<td>" + playerFTM/playerFTA + "</td>" +
+                        "<td>" + playerFTM / playerFTA + "</td>" +
                         "<td>" + playerRebounds + "</td>" +
-                        "<td>" + playerRebounds/team.roster[i].GamesPlayed + "</td>" +
+                        "<td>" + playerRebounds / team.roster[i].GamesPlayed + "</td>" +
                         "<td>" + playerOREB + "</td>" +
                         "<td>" + playerDREB + "</td>" +
                         "<td>" + playerAssists + "</td>" +
-                        "<td>" + playerAssists/team.roster[i].GamesPlayed + "</td>" +
+                        "<td>" + playerAssists / team.roster[i].GamesPlayed + "</td>" +
                         "<td>" + playerBlocks + "</td>" +
-                        "<td>" + playerBlocks/team.roster[i].GamesPlayed + "</td>" +
+                        "<td>" + playerBlocks / team.roster[i].GamesPlayed + "</td>" +
                         "<td>" + playerSteals + "</td>" +
-                        "<td>" + playerSteals/team.roster[i].GamesPlayed + "</td>" +
+                        "<td>" + playerSteals / team.roster[i].GamesPlayed + "</td>" +
                         "<td>" + playerTOV + "</td>" +
-                        "<td>" + playerTOV/team.roster[i].GamesPlayed + "</td>" +
+                        "<td>" + playerTOV / team.roster[i].GamesPlayed + "</td>" +
                         "<td>" + playerPF + "</td>" +
-                        "<td>" + (playerPoints+playerRebounds+playerAssists+playerBlocks-(playerFGA-playerFGM)-(playerFTA-playerFTM)-playerTOV)/team.roster[i].GamesPlayed + "</td>" +
+                        "<td>" + (playerPoints + playerRebounds + playerAssists + playerBlocks - (
+                            playerFGA - playerFGM) - (playerFTA - playerFTM) - playerTOV) / team
+                        .roster[i].GamesPlayed + "</td>" +
                         //(PTS + REB + AST + STL + BLK − Missed FG − Missed FT - TO) / GP.
                         "</tr>"
                     );
@@ -188,58 +195,59 @@
     <nav class="navbar " role="navigation" aria-label="main navigation">
 
         <div class="navbar-brand">
-          <div class="container ">
-            
-              <a href="index.html"><img class="logoContainer" src="assets/img/cbt-logo1.jpg" alt="" width="150px"></a>
-            
-          </div>
-          
-        
-          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
-        </div>
-    
-        <div id="navbarBasicExample" class="navbar-menu">
-    
-          <a href="index.html" class="navbar-item">
-            Home
-          </a>
-    
-          <a href="schedule.html" class="navbar-item">
-            Schedule
-          </a>
-          <a href="standings.html" class="navbar-item">
-            Standings
-          </a>
-          <a href="teams.html" class="navbar-item">
-            Teams
-          </a>
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a href="stats.html" class="navbar-link">
-              Stats
-            </a>
-    
-            <div class="navbar-dropdown">
-              <a href="stats.html" class="navbar-item">
-                Team Stats
-              </a>
-              <a href="playerstats.html" class="navbar-item">
-                Player Stats
-              </a>
-              <a href="leagueleaders.html" class="navbar-item">
-                League Leaders
-              </a>
+            <div class="container ">
+
+                <a href="index.html"><img class="logoContainer" src="assets/img/cbt-logo1.jpg" alt="" width="150px"></a>
+
             </div>
-          </div>
-          <a href="playoffs.html" class="navbar-item">
-            Playoffs
-          </a>
+
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+                data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
         </div>
-      </nav>
-        <hr>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+
+            <a href="index.html" class="navbar-item">
+                Home
+            </a>
+
+            <a href="schedule.html" class="navbar-item">
+                Schedule
+            </a>
+            <a href="standings.html" class="navbar-item">
+                Standings
+            </a>
+            <a href="teams.html" class="navbar-item">
+                Teams
+            </a>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a href="stats.html" class="navbar-link">
+                    Stats
+                </a>
+
+                <div class="navbar-dropdown">
+                    <a href="stats.html" class="navbar-item">
+                        Team Stats
+                    </a>
+                    <a href="playerstats.html" class="navbar-item">
+                        Player Stats
+                    </a>
+                    <a href="leagueleaders.html" class="navbar-item">
+                        League Leaders
+                    </a>
+                </div>
+            </div>
+            <a href="playoffs.html" class="navbar-item">
+                Playoffs
+            </a>
+        </div>
+    </nav>
+    <hr>
 
     <h1>Player Stats</h1>
 
@@ -286,5 +294,28 @@
     </div>
 
 </body>
+<script>
+    function getPlayerName(event) {
+        let target = event.target;
+        while (!target.hasAttribute('data-player-name')) {
+            target = target.parentNode;
+        }
+        const playerName = target.dataset.playerName;
+        console.log(playerName);
+        sessionStorage.setItem("player_Name", playerName);
+        window.location.href = "playerProfile.html";
+    }
+
+    function getTeamName(event) {
+        let target = event.target;
+        while (!target.hasAttribute('data-team-name')) {
+            target = target.parentNode;
+        }
+        const teamName = target.dataset.teamName;
+        console.log(teamName);
+        sessionStorage.setItem("team_name", teamName);
+        window.location.href = "teamProfile.html";
+    }
+</script>
 
 </html>
