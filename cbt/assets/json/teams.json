@@ -6981,11 +6981,11 @@
             }
         ]
     }, {
-        "Team": "Hall of Fame",
+        "Team": "OTF",
         "wins": 0,
         "loss": 0,
         "roster": [{
-                "name": "Jalen Graham",
+                "name": "Bryant Washington",
                 "number": 4,
                 "GamesPlayed":0,
                 "stats": [{
@@ -7143,7 +7143,7 @@
                 ]
             },
             {
-                "name": "Alex Hopkins",
+                "name": "Jonathan Gonzalez",
                 "number": 13,
                 "GamesPlayed":0,
                 "stats": [{
@@ -7301,7 +7301,7 @@
                 ]
             },
             {
-                "name": "Chris Leak",
+                "name": "Nazier Medina",
                 "number": 0,
                 "GamesPlayed":0,
                 "stats": [{
@@ -7459,7 +7459,7 @@
                 ]
             },
             {
-                "name": "Christian Pierre",
+                "name": "Terrell Sherman Jr.",
                 "number": 14,
                 "GamesPlayed":0,
                 "stats": [{
@@ -7617,7 +7617,7 @@
                 ]
             },
             {
-                "name": "Jahwan Cody",
+                "name": "Jaylen Ricks",
                 "number": 21,
                 "GamesPlayed":0,
                 "stats": [{
@@ -7775,7 +7775,7 @@
                 ]
             },
             {
-                "name": "Mike Davis",
+                "name": "Tamar Sherman",
                 "number": 15,
                 "GamesPlayed":0,
                 "stats": [{
@@ -7933,7 +7933,7 @@
                 ]
             },
             {
-                "name": "Sherrod Prezzie Blue",
+                "name": "Tamir Sherman ",
                 "number": 7,
                 "GamesPlayed":0,
                 "stats": [{
@@ -8091,7 +8091,7 @@
                 ]
             },
             {
-                "name": "Craig Dwelle",
+                "name": "Nass Edwards",
                 "number": 33,
                 "GamesPlayed":0,
                 "stats": [{
