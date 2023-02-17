@@ -102,20 +102,20 @@
                         "<td>" + playerFTM + "</td>" +
                         "<td>" + playerFTA + "</td>" +
                         "<td>" + playerFTM / playerFTA + "</td>" +
-                        "<td>" + playerRebounds + "</td>" +
-                        "<td>" + playerRebounds / team.roster[i].GamesPlayed + "</td>" +
                         "<td>" + playerOREB + "</td>" +
                         "<td>" + playerDREB + "</td>" +
+                        "<td>" + playerRebounds + "</td>" +
+                        "<td>" + playerRebounds / team.roster[i].GamesPlayed + "</td>" +
                         "<td>" + playerAssists + "</td>" +
                         "<td>" + playerAssists / team.roster[i].GamesPlayed + "</td>" +
-                        "<td>" + playerBlocks + "</td>" +
-                        "<td>" + playerBlocks / team.roster[i].GamesPlayed + "</td>" +
                         "<td>" + playerSteals + "</td>" +
                         "<td>" + playerSteals / team.roster[i].GamesPlayed + "</td>" +
+                        "<td>" + playerBlocks + "</td>" +
+                        "<td>" + playerBlocks / team.roster[i].GamesPlayed + "</td>" +
                         "<td>" + playerTOV + "</td>" +
                         "<td>" + playerTOV / team.roster[i].GamesPlayed + "</td>" +
                         "<td>" + playerPF + "</td>" +
-                        "<td>" + (playerPoints + playerRebounds + playerAssists + playerBlocks - (
+                        "<td>" + (playerPoints + playerRebounds + playerAssists + playerSteals + playerBlocks - (
                             playerFGA - playerFGM) - (playerFTA - playerFTM) - playerTOV) / team
                         .roster[i].GamesPlayed + "</td>" +
                         //(PTS + REB + AST + STL + BLK − Missed FG − Missed FT - TO) / GP.
@@ -252,8 +252,9 @@
     </nav>
     <hr>
 
+    <section class="section">
     <h1 class="title is-3">Player Stats</h1>
-
+</section>
 
     <div class="container is-max-fullwidth">
         <h1>Spring 2023 Season: <input type="text" id="team-filter" onkeyup="filterTable()"
