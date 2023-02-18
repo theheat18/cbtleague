@@ -2,6 +2,7 @@
         "Team": "Hidden Rain",
         "wins": 0,
         "loss": 0,
+        "gamesPlayed":0,
         "roster": [{
                 "name": "Kevin Rivera",
                 "number": 3,
@@ -1272,6 +1273,7 @@
         "Team": "Tune Squad",
         "wins": 0,
         "loss": 0,
+        "gamesPlayed":0,
         "roster": [{
                 "name": "Quadir Eason",
                 "number": 1,
@@ -2701,6 +2703,7 @@
         "Team": "Coulda Been",
         "wins": 0,
         "loss": 0,
+        "gamesPlayed":0,
         "roster": [{
                 "name": "John Fernandes",
                 "number": 1,
@@ -4287,6 +4290,7 @@
         "Team": "Integral Construction",
         "wins": 0,
         "loss": 0,
+        "gamesPlayed":0,
         "roster": [{
                 "name": "Stu Vargas",
                 "number": 1,
@@ -5715,6 +5719,7 @@
         "Team": "YAGGA",
         "wins": 0,
         "loss": 0,
+        "gamesPlayed":0,
         "roster": [{
                 "name": "Davon Pratt",
                 "number": 24,
@@ -6984,6 +6989,7 @@
         "Team": "OTF",
         "wins": 0,
         "loss": 0,
+        "gamesPlayed":0,
         "roster": [{
                 "name": "Bryant Washington",
                 "number": 4,
@@ -8253,6 +8259,7 @@
         "Team": "Free Agents",
         "wins": 0,
         "loss": 0,
+        "gamesPlayed":0,
         "roster": [{
                 "name": "Chris Estwan",
                 "number": 2,

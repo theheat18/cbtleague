@@ -11,8 +11,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -102,12 +102,36 @@
     <section class="section">
         <h1 class="title is-3" id="team_name_title"></h1>
     </section>
-    <section class="hero is-medium is-link">
+    <section class="hero ">
         <div class="hero-body">
-            <h2 class="title is-3" id="player_Name_title"></h2>
-            <h2 class="subtitle">
-                (Team Stats will go here as well, maybe game by game stats)
+            <h2 class="subtitle" style="color: white;">
+                Season Totals:
             </h2>
+            <div class="table-container">
+                <table class="table is-fullwidth is-hoverable is-bordered" id="team-table">
+                    <tr>
+                        <th>Team</th>
+                        <th>GP</th>
+                        <th>W</th>
+                        <th>L</th>
+                        <th>PTS</th>
+                        <th>FGM</th>
+                        <th>FGA</th>
+                        <th>3PM</th>
+                        <th>3PA</th>
+                        <th>FTM</th>
+                        <th>FTA</th>
+                        <th>REB</th>
+                        <th>OREB</th>
+                        <th>DREB</th>
+                        <th>AST</th>
+                        <th>BLK</th>
+                        <th>STL</th>
+                        <th>TOV</th>
+                        <th>PF</th>
+                    </tr>
+                </table>
+            </div>
         </div>
     </section>
     <section class="section">
@@ -146,7 +170,6 @@
         showTeamDetails();
 
 
-        //This script gets individual team stats onto a table
         $.getJSON("assets/json/teams.json", function (data) {
 
             $.each(data, function (i, team) {
@@ -242,16 +265,87 @@
 
 
 
-        function getPlayerName(event) {
-            let target = event.target;
-            while (!target.hasAttribute('data-player-name')) {
-                target = target.parentNode;
-            }
-            const playerName = target.dataset.playerName;
-            console.log(playerName);
-            sessionStorage.setItem("player_Name", playerName);
-            window.location.href = "playerProfile.html";
-        }
+        $.getJSON("assets/json/teams.json", function (data) {
+                    let teamName = sessionStorage.getItem("team_name");
+
+                    $.each(data, function (i, team) {
+                            if (team.Team === teamName) {
+                                let teamPoints = 0;
+                                let teamFGM = 0;
+                                let teamFGA = 0;
+                                let team3PM = 0;
+                                let team3PA = 0;
+                                let teamFTM = 0;
+                                let teamFTA = 0;
+                                let teamRebounds = 0;
+                                let teamOREB = 0;
+                                let teamDREB = 0;
+                                let teamAssists = 0;
+                                let teamBlocks = 0;
+                                let teamSteals = 0;
+                                let teamTOV = 0;
+                                let teamPF = 0;
+
+                                for (let i = 0; i < team.roster.length; i++) {
+                                    for (let j = 0; j < team.roster[i].stats.length; j++) {
+                                        teamPoints += team.roster[i].stats[j].Points;
+                                        teamFGM += team.roster[i].stats[j].FieldGoalsMade;
+                                        teamFGA += team.roster[i].stats[j].FieldGoalAttempts;
+                                        team3PM += team.roster[i].stats[j].ThreesMade;
+                                        team3PA += team.roster[i].stats[j].ThreesAttempts;
+                                        teamFTM += team.roster[i].stats[j].FreeThrowsMade;
+                                        teamFTA += team.roster[i].stats[j].FreeThrowsAttempts;
+                                        teamRebounds += team.roster[i].stats[j].Rebounds;
+                                        teamOREB += team.roster[i].stats[j].Offrebounds;
+                                        teamDREB += team.roster[i].stats[j].Defrebounds;
+                                        teamAssists += team.roster[i].stats[j].Assists;
+                                        teamBlocks += team.roster[i].stats[j].Blocks;
+                                        teamSteals += team.roster[i].stats[j].Steals;
+                                        teamTOV += team.roster[i].stats[j].Turnovers;
+                                        teamPF += team.roster[i].stats[j].PersonalFouls;
+                                    }
+                                }
+
+                                $("#team-table").append(
+                                    "<tr>" +
+                                    "<td><strong>" + team.Team + "</strong></td>" +
+                                    "<td>" + team.gamesPlayed + "</td>" +
+                                    "<td>" + team.wins + "</td>" +
+                                    "<td>" + team.loss + "</td>" +
+                                    "<td>" + teamPoints + "</td>" +
+                                    "<td>" + teamFGM + "</td>" +
+                                    "<td>" + teamFGA + "</td>" +
+                                    "<td>" + team3PM + "</td>" +
+                                    "<td>" + team3PA + "</td>" +
+                                    "<td>" + teamFTM + "</td>" +
+                                    "<td>" + teamFTA + "</td>" +
+                                    "<td>" + teamRebounds + "</td>" +
+                                    "<td>" + teamOREB + "</td>" +
+                                    "<td>" + teamDREB + "</td>" +
+                                    "<td>" + teamAssists + "</td>" +
+                                    "<td>" + teamBlocks + "</td>" +
+                                    "<td>" + teamSteals + "</td>" +
+                                    "<td>" + teamTOV + "</td>" +
+                                    "<td>" + teamPF + "</td>" +
+                                    "</tr>"
+                                );
+                    }});
+                    });
+
+
+
+
+                function getPlayerName(event) {
+                    let target = event.target;
+                    while (!target.hasAttribute('data-player-name')) {
+                        target = target.parentNode;
+                    }
+                    const playerName = target.dataset.playerName;
+                    console.log(playerName);
+                    sessionStorage.setItem("player_Name", playerName);
+                    window.location.href = "playerProfile.html";
+                }
+         
     </script>
 
 </html>

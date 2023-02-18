@@ -59,6 +59,7 @@
           "<tr>" +
           "<td onclick='getTeamName(event)' data-team-name='" +
           team.Team + "'><strong>" + team.Team + "</strong></td>" +
+          "<td>" + team.gamesPlayed + "</td>" +
           "<td>" + team.wins + "</td>" +
           "<td>" + team.loss + "</td>" +
           "<td>" + teamPoints + "</td>" +
@@ -200,6 +201,7 @@
       <table class="table is-fullwidth is-hoverable is-bordered" id="team-table">
         <tr>
           <th>Team</th>
+          <th>GP</th>
           <th>W</th>
           <th>L</th>
           <th>PTS</th>

@@ -97,65 +97,43 @@
         </div>
     </nav>
 
-    <section class="hero is-medium is-link">
+    <section class="hero ">
         <div class="hero-body">
-            <h2 class="title is-3" id="player_Name_title"></h2>
-            <h2 class="subtitle">
-                Medium subtitle
-            </h2>
+            <div class="columns is-vcentered is-mobile">
+                <div class="column is-half has-text-centered">
+                    <h2 class="title is-3" style="color: white;" id="player_Name_title"></h2>
+                    <h2 class="subtitle" id="team_name" style="color: white;">
+                        <!-- team name -->
+                    </h2>
+                </div>
+
+                <div class="column has-text-centered">
+                    <img src="" alt="playerimage" width="250px">
+                </div>
+            </div>
         </div>
     </section>
-    <section class="hero is-danger">
+    <section class="hero is-dark">
         <div class="hero-body">
-            <h2 class="subtitle">
-                Game Stats and Career Stats will go here (Obviously this will be different colors!)
-            </h2>
+            <div class="columns is-mobile is-vcentered" id="roster">
+
+            </div>
+        </div>
+    </section>
+    
+    <section class="hero is-warning">
+        <div class="hero-body">
+            Career Stats go here
+        </div>
+    </section>
+    <section class="hero is-link">
+        <div class="hero-body">
+            Game to game stats go here
         </div>
     </section>
 
 
-    <!-- <div class="table-container">
-        <table class="table is-striped is-hoverable is-bordered" id="players-table">
-            <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>Team</th>
-                <th>GP</th>
-                <th>PTS</th>
-                <th>PPG</th>
-                <th>FGM</th>
-                <th>FGA</th>
-                <th>FG%</th>
-                <th>3PM</th>
-                <th>3PA</th>
-                <th>3P%</th>
-                <th>FTM</th>
-                <th>FTA</th>
-                <th>FT%</th>
-                <th>OREB</th>
-                <th>DREB</th>
-                <th>REB</th>
-                <th>RPG</th>
-                <th>AST</th>
-                <th>APG</th>
-                <th>STL</th>
-                <th>SPG</th>
-                <th>BLK</th>
-                <th>BPG</th>
-                <th>TOV</th>
-                <th>TOVPG</th>
-                <th>PF</th>
-                <th>EFF</th>
-            </tr>
-        </table>
-    </div> -->
 
-    <div class="container">
-
-        <div class="columns is-multiline is-centered" id="roster">
-            <!-- This is auto filled by the function below to fill it with the boxes to show the roster and some of their stats -->
-        </div>
-    </div>
 
 </body>
 <script>
@@ -176,7 +154,6 @@
         // Display the team name
         playerNameDisplay.textContent = playerName;
         playerNameDisplay1.textContent = playerName;
-
     }
 
     showTeamDetails();
@@ -226,63 +203,33 @@
                     }
 
                     $("#roster").append(
-                        // "<tr>" +
-                        // "<td>" + team.roster[i].number + "</td>" +
-                        // "<td>" + team.roster[i].name + "</td>" +
-                        // "<td>" + team.roster[i].GamesPlayed + "</td>" +
-                        // "<td>" + playerPoints / team.roster[i].GamesPlayed + "</td>" +
-                        // "<td>" + playerRebounds / team.roster[i].GamesPlayed + "</td>" +
-                        // "<td>" + playerAssists / team.roster[i].GamesPlayed + "</td>" +
-                        // "<td>" + (playerPoints + playerRebounds + playerAssists + playerBlocks - (
-                        //     playerFGA - playerFGM) - (playerFTA - playerFTM) - playerTOV) / team
-                        // .roster[i].GamesPlayed + "</td>" +
-                        // //(PTS + REB + AST + STL + BLK − Missed FG − Missed FT - TO) / GP.
-                        // "</tr>"+
-
-
-
-
-
-
-                        "<div class='column is-half'>" +
-                        "<div class='card'>" +
-                        "<div class='card-content'>" +
-                        "<div class='content'>" +
-                        "<div class='columns is-mobile'>" +
-                        "<div class='column is-half'>" +
-                        "<h2 id='player-number'>" + team.roster[i].number + "</h2>" +
-                        "<figure class='image is-128x128' id='player-image' style='margin: auto; margin-top: -40px;'>" +
-                        "<img src='assets/img/player-heads/' alt='Player Image' class='team-logo' data-team-name='Hidden Rain'>" +
-                        "</figure>" +
-
+                        "<div class='column is-one-fifth has-text-centered'>" +
+                        "<h1><u>GP</u></h1>" +
+                        team.roster[i].GamesPlayed +
                         "</div>" +
-                        "<div class='column is-half' style='text-align: center;'>" +
-                        "<h2 id='player-name'>" + team.roster[i].name + "</h2>" +
-                        "<table class='table is-bordered is-striped'>" +
-                        "<tr>" +
-                        "<th>GP</th>" +
-                        "<th>PPG</th>" +
-                        "<th>RPG</th>" +
-                        "<th>APG</th>" +
-                        "<th>EFF</th>" +
-                        "</tr>" +
-                        "<tr>" +
-                        "<td>" + team.roster[i].GamesPlayed + "</td>" +
-                        "<td>" + playerPoints / team.roster[i].GamesPlayed + "</td>" +
-                        "<td>" + playerRebounds / team.roster[i].GamesPlayed + "</td>" +
-                        "<td>" + playerAssists / team.roster[i].GamesPlayed + "</td>" +
-                        "<td>" + (playerPoints + playerRebounds + playerAssists + playerSteals +playerBlocks - (
-                            playerFGA - playerFGM) - (playerFTA - playerFTM) - playerTOV) / team
-                        .roster[i].GamesPlayed + "</td>" +
-                        "</tr>" +
-                        "</table>" +
+                        "<div class='column is-one-fifth has-text-centered'>" +
+                        "<h1><u>PPG</u></h1>" +
+                        playerPoints / team.roster[i].GamesPlayed +
                         "</div>" +
+                        "<div class='column is-one-fifth has-text-centered'>" +
+                        "<h1><u>RPG</u></h1>" +
+                        playerRebounds / team.roster[i].GamesPlayed +
                         "</div>" +
+                        "<div class='column is-one-fifth has-text-centered'>" +
+                        "<h1><u>APG</u></h1>" +
+                        playerAssists / team.roster[i].GamesPlayed +
                         "</div>" +
-                        "</div>" +
-                        "</div>" +
+                        "<div class='column is-one-fifth has-text-centered'>" +
+                        "<h1><u>EFF</u></h1>" +
+                        (playerPoints + playerRebounds + playerAssists + playerSteals +
+                            playerBlocks - (
+                                playerFGA - playerFGM) - (playerFTA - playerFTM) - playerTOV) / team
+                        .roster[i].GamesPlayed +
                         "</div>"
+
+
                     );
+                    $("#team_name").append(team.Team +" | #" + team.roster[i].number);
                 }
             }
         });
