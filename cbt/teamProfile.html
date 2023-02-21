@@ -102,15 +102,13 @@
     <section class="section">
         <h1 class="title is-3" id="team_name_title"></h1>
     </section>
-    <section class="hero ">
-        <div class="hero-body">
+    <div class="container">
             <h2 class="subtitle" style="color: white;">
                 Season Totals:
             </h2>
             <div class="table-container">
                 <table class="table is-fullwidth is-hoverable is-bordered" id="team-table">
                     <tr>
-                        <th>Team</th>
                         <th>GP</th>
                         <th>W</th>
                         <th>L</th>
@@ -133,13 +131,12 @@
                 </table>
             </div>
         </div>
-    </section>
+   
     <section class="section">
         <h1 class="title is-4">Roster</h1>
     </section>
 
     <div class="container">
-
         <div class="columns is-multiline is-centered" id="roster">
             <!-- This is auto filled by the function below to fill it with the boxes to show the roster and some of their stats -->
         </div>
@@ -308,7 +305,6 @@
 
                                 $("#team-table").append(
                                     "<tr>" +
-                                    "<td><strong>" + team.Team + "</strong></td>" +
                                     "<td>" + team.gamesPlayed + "</td>" +
                                     "<td>" + team.wins + "</td>" +
                                     "<td>" + team.loss + "</td>" +

@@ -99,3 +99,24 @@ h2 {
 img{
   border-radius: .5rem;
 }
+.sticky-column-head {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+}
+.sticky-column {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background-color: white;
+}
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.table thead th {
+  position: sticky;
+  top: 0;
+}

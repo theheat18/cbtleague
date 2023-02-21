@@ -192,20 +192,20 @@
     <div class="container is-max-desktop">
         <div class="container">
             <h3 style="color: white;">Team Selection:</h3>
-        <div class="select is-small is-centered">
-            <select id="filterSelect" onchange="filterTableRows()">
-                <option value="">Show all</option>
-                <option value="Could've Been">Could've Been</option>
-                <option value="Hidden Rain">Hidden Rain</option>
-                <option value="Integral Construction">Integral Construction</option>
-                <option value="Tune Squad">Tune Squad</option>
-                <option value="Free Agents">Free Agents</option>
-                <option value="YAGGA">YAGGA</option>
-                <option value="OTF">OTF</option>
-            </select>
+            <div class="select is-small is-centered">
+                <select id="filterSelect" onchange="filterTableRows()">
+                    <option value="">Show all</option>
+                    <option value="Could've Been">Could've Been</option>
+                    <option value="Hidden Rain">Hidden Rain</option>
+                    <option value="Integral Construction">Integral Construction</option>
+                    <option value="Tune Squad">Tune Squad</option>
+                    <option value="Free Agents">Free Agents</option>
+                    <option value="YAGGA">YAGGA</option>
+                    <option value="OTF">OTF</option>
+                </select>
+            </div>
         </div>
-    </div>
-    <br>
+        <br>
         <table id="scheduleTable" class="table is-striped is-bordered is-fullwidth">
             <thead>
                 <tr>
@@ -593,24 +593,177 @@
         <div class="modal-background"></div>
 
         <div class="modal-content">
-            <div class="box">
-                <p>Modal JS example</p>
-                <table class="table is-striped is-hoverable is-bordered" id="hiddenMist-table">
-                    <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>PTS</th>
-                        <th>REB</th>
-                        <th>AST</th>
-                    </tr>
-                    <tr>
-                        <td>42</td>
-                        <td>Victor</td>
-                        <td>30</td>
-                        <td>12</td>
-                        <td>9</td>
-                    </tr>
-                </table>
+            <div class="box has-text-centered">
+                <div class="columns is-mobile">
+                    <div class="column is-one-third has-text-centered">
+                        <figure class="image is-128x128">
+                            <img src="assets/img/team-logos/hiddenRain.jpg">
+                        </figure>
+                    </div>
+                    <div class="column is-one-third has-text-centered">
+                        <p>### - ###</p>
+                    </div>
+                    <div class="column is-one-third has-text-centered">
+                        <div class="container has-text-centered">
+                            <figure class="image is-128x128">
+                                <img src="assets/img/team-logos/freeAgents.jpg">
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+                <section>
+                    <div class="columns">
+                        <div class="column is-centered">
+                            <table class="table is-striped is-hoverable is-bordered" id="hiddenMist-table">
+                                <tr>
+                                    <th colspan="5">Team</th>
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>T</th>
+                                </tr>
+                                <tr>
+                                    <td colspan="5">hiddenRain</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5">team 1</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                </tr>
+
+                            </table>
+                        </div>
+                    </div>
+                </section>
+                <section>
+
+                    <div class="columns ">
+                        <div class="column is-one-half">
+                            <h3>Team 1 - Player stats</h3>
+                            <table class="table is-striped is-hoverable is-bordered" id="hiddenMist-table">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Player</th>
+                                    <th>Pts</th>
+                                    <th>Ast</th>
+                                    <th>Reb</th>
+                                </tr>
+                                <tr>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                </tr>
+                                <tr>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                </tr>
+                                <tr>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                </tr>
+                                <tr>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                </tr>
+                                <tr>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                </tr>
+                                <tr>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                </tr>
+                                <tr>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="column is-one-half">
+                            <h3>Team 2 - Player stats</h3>
+                            <table class="table is-striped is-hoverable is-bordered" id="hiddenMist-table">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Player</th>
+                                    <th>Pts</th>
+                                    <th>Ast</th>
+                                    <th>Reb</th>
+                                </tr>
+                                <tr>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                </tr>
+                                <tr>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                </tr>
+                                <tr>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                </tr>
+                                <tr>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                </tr>
+                                <tr>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                </tr>
+                                <tr>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                    <td>##</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
 

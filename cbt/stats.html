@@ -14,6 +14,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
   <script>
     //This Script gets all team stats onto one table
     $.getJSON("assets/json/teams.json", function (data) {
@@ -57,7 +58,7 @@
         }
         $("#team-table").append(
           "<tr>" +
-          "<td onclick='getTeamName(event)' data-team-name='" +
+          "<td class='sticky-column' onclick='getTeamName(event)' data-team-name='" +
           team.Team + "'><strong>" + team.Team + "</strong></td>" +
           "<td>" + team.gamesPlayed + "</td>" +
           "<td>" + team.wins + "</td>" +
@@ -198,9 +199,9 @@
         placeholder="Filter by Team name..."></h1> -->
     <br>
     <div class="table-container">
-      <table class="table is-fullwidth is-hoverable is-bordered" id="team-table">
+      <table class="table is-fullwidth is-hoverable is-bordered has-sticky-column" id="team-table">
         <tr>
-          <th>Team</th>
+          <th class="sticky-column-head">Team</th>
           <th>GP</th>
           <th>W</th>
           <th>L</th>

@@ -82,9 +82,9 @@
 
                     $("#players-table").append(
                         "<tr>" +
-                        "<td>" + team.roster[i].number + "</td>" +
+                        "<td >" + team.roster[i].number + "</td>" +
 
-                        "<td onclick='getPlayerName(event)' data-player-name='" +
+                        "<td class='sticky-column' onclick='getPlayerName(event)' data-player-name='" +
                         team.roster[i].name + "'><strong>" + team.roster[i].name + "</strong></td>" +
 
                         "<td onclick='getTeamName(event)' data-team-name='" +
@@ -264,7 +264,7 @@
             <table class="table is-striped is-hoverable is-bordered" id="players-table">
                 <tr>
                     <th>#</th>
-                    <th>Name</th>
+                    <th class="sticky-column-head">Name</th>
                     <th>Team</th>
                     <th>GP</th>
                     <th>PTS</th>
@@ -293,6 +293,42 @@
                     <th>PF</th>
                     <th>EFF</th>
                 </tr>
+                <tbody>
+                    
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>#</th>
+                        <th class="sticky-column-head">Name</th>
+                        <th>Team</th>
+                        <th>GP</th>
+                        <th>PTS</th>
+                        <th>PPG</th>
+                        <th>FGM</th>
+                        <th>FGA</th>
+                        <th>FG%</th>
+                        <th>3PM</th>
+                        <th>3PA</th>
+                        <th>3P%</th>
+                        <th>FTM</th>
+                        <th>FTA</th>
+                        <th>FT%</th>
+                        <th>OREB</th>
+                        <th>DREB</th>
+                        <th>REB</th>
+                        <th>RPG</th>
+                        <th>AST</th>
+                        <th>APG</th>
+                        <th>STL</th>
+                        <th>SPG</th>
+                        <th>BLK</th>
+                        <th>BPG</th>
+                        <th>TOV</th>
+                        <th>TOVPG</th>
+                        <th>PF</th>
+                        <th>EFF</th>
+                    </tr>
+                </tfoot>
             </table>
         </div>
     </div>
@@ -321,5 +357,17 @@
         window.location.href = "teamProfile.html";
     }
 </script>
-
+<style>
+    .table-container {
+      overflow-x: auto;
+      max-width: 100%;
+    }
+  
+    .table tfoot tr td {
+      position: sticky;
+      bottom: 0;
+      z-index: 1;
+      background-color: white;
+    }
+  </style>
 </html>
