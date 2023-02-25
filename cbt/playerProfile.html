@@ -97,12 +97,12 @@
         </div>
     </nav>
 
-    <section class="hero ">
+    <section class="hero " id="playerHeader">
         <div class="hero-body">
             <div class="columns is-vcentered is-mobile">
                 <div class="column is-half has-text-centered">
-                    <h2 class="title is-4" style="color: white;" id="player_Name_title"></h2>
-                    <h2 class="subtitle" id="team_name" style="color: white;">
+                    <h2 class="title is-4" style="color: white; text-shadow: 2px 2px 3px black;" id="player_Name_title" ></h2>
+                    <h2 class="subtitle" id="team_name" style="color: white; text-shadow: 2px 2px 3px black;">
                         <!-- team name -->
                     </h2>
                 </div>
@@ -174,6 +174,7 @@
     function showTeamDetails() {
         // Get the team name from session storage
         const playerName = sessionStorage.getItem("player_Name");
+        const teamColor = sessionStorage.getItem("team_color");
 
         // Check if the team name is available
         if (!playerName) {
@@ -184,10 +185,12 @@
         // Get the element where you want to display the team name
         const playerNameDisplay = document.getElementById("player_Name");
         const playerNameDisplay1 = document.getElementById("player_Name_title");
+        const playerHeader = document.getElementById("playerHeader");
 
         // Display the team name
         playerNameDisplay.textContent = playerName;
         playerNameDisplay1.textContent = playerName;
+        playerHeader.style.background = teamColor;
     }
 
     showTeamDetails();
@@ -353,6 +356,8 @@
             })
         })
     });
+
+
 </script>
 
 </html>

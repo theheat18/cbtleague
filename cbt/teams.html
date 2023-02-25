@@ -204,14 +204,43 @@ teamLogos.forEach(logo => {
   logo.addEventListener("click", function() {
     // Get the team name from the data attribute
     const teamName = this.dataset.teamName;
+    let teamColor; // Declare the variable outside of the if statements
 
-    // Set the team name in session storage
+    if(teamName === "Hidden Rain"){
+        console.log("hidden raine");
+        teamColor = "grey"; // Assign a value inside the if statement
+    }
+    if(teamName === "OTF"){
+        console.log("OTF")
+        teamColor = "midnightblue";
+    }
+    if(teamName === "Tune Squad"){
+        console.log("TUNE")
+        teamColor = "red";
+    }
+    if(teamName === "Free Agents"){
+        console.log("F A")
+        teamColor = "darkorange";
+    }
+    if(teamName === "YAGGA"){
+        console.log("YAGGA")
+        teamColor = "rebeccapurple";
+    }
+    if(teamName === "Integral Construction"){
+        console.log("IC")
+        teamColor = "darkgreen";
+    };
+   
+
+    // Set the team name and color in session storage
     sessionStorage.setItem("team_name", teamName);
+    sessionStorage.setItem("team_color", teamColor);
 
     // Navigate to the team details page
     window.location.href = "teamProfile.html";
   });
 });
+
 </script>
 
 </html>

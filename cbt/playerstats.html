@@ -11,8 +11,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -84,8 +84,10 @@
                         "<tr>" +
                         "<td >" + team.roster[i].number + "</td>" +
 
-                        "<td class='sticky-column' onclick='getPlayerName(event)' data-player-name='" +
-                        team.roster[i].name + "'><strong>" + team.roster[i].name + "</strong></td>" +
+                        "<td class='sticky-column' onclick='getPlayerName(event, \"" + team.Team +
+                        "\")' data-player-name='" +
+                        team.roster[i].name + "'><strong>" + team.roster[i].name +
+                        "</strong></td>" +
 
                         "<td onclick='getTeamName(event)' data-team-name='" +
                         team.Team + "'>" + team.Team + "</td>" +
@@ -115,8 +117,9 @@
                         "<td>" + playerTOV + "</td>" +
                         "<td>" + playerTOV / team.roster[i].GamesPlayed + "</td>" +
                         "<td>" + playerPF + "</td>" +
-                        "<td>" + (playerPoints + playerRebounds + playerAssists + playerSteals + playerBlocks - (
-                            playerFGA - playerFGM) - (playerFTA - playerFTM) - playerTOV) / team
+                        "<td>" + (playerPoints + playerRebounds + playerAssists + playerSteals +
+                            playerBlocks - (
+                                playerFGA - playerFGM) - (playerFTA - playerFTM) - playerTOV) / team
                         .roster[i].GamesPlayed + "</td>" +
                         //(PTS + REB + AST + STL + BLK − Missed FG − Missed FT - TO) / GP.
                         "</tr>"
@@ -253,8 +256,8 @@
     <hr>
 
     <section class="section">
-    <h1 class="title is-3">Player Stats</h1>
-</section>
+        <h1 class="title is-3">Player Stats</h1>
+    </section>
 
     <div class="container is-max-fullwidth">
         <h1>Spring 2023 Season: <input type="text" id="team-filter" onkeyup="filterTable()"
@@ -294,7 +297,7 @@
                     <th>EFF</th>
                 </tr>
                 <tbody>
-                    
+
                 </tbody>
                 <tfoot>
                     <tr>
@@ -335,17 +338,6 @@
 
 </body>
 <script>
-    function getPlayerName(event) {
-        let target = event.target;
-        while (!target.hasAttribute('data-player-name')) {
-            target = target.parentNode;
-        }
-        const playerName = target.dataset.playerName;
-        console.log(playerName);
-        sessionStorage.setItem("player_Name", playerName);
-        window.location.href = "playerProfile.html";
-    }
-
     function getTeamName(event) {
         let target = event.target;
         while (!target.hasAttribute('data-team-name')) {
@@ -353,21 +345,102 @@
         }
         const teamName = target.dataset.teamName;
         console.log(teamName);
+        let teamColor; // Declare the variable outside of the if statements
+
+        if (teamName === "Hidden Rain") {
+            console.log("hidden raine");
+            teamColor = "grey"; // Assign a value inside the if statement
+        }
+        if (teamName === "OTF") {
+            console.log("OTF")
+            teamColor = "midnightblue";
+        }
+        if (teamName === "Tune Squad") {
+            console.log("TUNE")
+            teamColor = "red";
+        }
+        if (teamName === "Free Agents") {
+            console.log("F A")
+            teamColor = "darkorange";
+        }
+        if (teamName === "YAGGA") {
+            console.log("YAGGA")
+            teamColor = "rebeccapurple";
+        }
+        if (teamName === "Integral Construction") {
+            console.log("IC")
+            teamColor = "darkgreen";
+        };
+
         sessionStorage.setItem("team_name", teamName);
+        sessionStorage.setItem("team_color", teamColor);
+
         window.location.href = "teamProfile.html";
+    }
+
+    function getPlayerName(event, teamName) {
+        let target = event.target;
+        while (!target.hasAttribute('data-player-name')) {
+            target = target.parentNode;
+        }
+        const playerName = target.dataset.playerName;
+
+        console.log(teamName);
+        let teamColor;
+
+        if (teamName === "Hidden Rain") {
+            console.log("HR")
+            teamColor = "grey";
+        }
+        if (teamName === "OTF") {
+            console.log("OTF")
+            teamColor = "midnightblue";
+        }
+        if (teamName === "Tune Squad") {
+            console.log("TUNE")
+
+            teamColor = "red";
+        }
+        if (teamName === "Free Agents") {
+            console.log("F A")
+
+            teamColor = "darkorange";
+        }
+        if (teamName === "YAGGA") {
+            console.log("YAGGA")
+
+            teamColor = "rebeccapurple";
+        }
+        if (teamName === "Integral Construction") {
+            console.log("IC")
+
+            teamColor = "darkgreen";
+        }
+
+        console.log("Player name:", playerName);
+        console.log("Team name:", teamName);
+        console.log("Team color:", teamColor);
+
+        sessionStorage.setItem("player_Name", playerName);
+        sessionStorage.setItem("team_color", teamColor);
+
+        console.log("Session storage:", sessionStorage);
+
+        window.location.href = "playerProfile.html";
     }
 </script>
 <style>
     .table-container {
-      overflow-x: auto;
-      max-width: 100%;
+        overflow-x: auto;
+        max-width: 100%;
     }
-  
+
     .table tfoot tr td {
-      position: sticky;
-      bottom: 0;
-      z-index: 1;
-      background-color: white;
+        position: sticky;
+        bottom: 0;
+        z-index: 1;
+        background-color: white;
     }
-  </style>
+</style>
+
 </html>

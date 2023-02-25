@@ -11,10 +11,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  
+
   <script>
     //This Script gets all team stats onto one table
     $.getJSON("assets/json/teams.json", function (data) {
@@ -193,8 +193,8 @@
 
   <div class="container is-max-fullwidth">
     <section class="section">
-    <h1 class="title is-3">Team Stats</h1>
-  </section>
+      <h1 class="title is-3">Team Stats</h1>
+    </section>
     <!-- <h1>Spring 2023 Season: <input type="text" id="team-filter" onkeyup="filterTable()"
         placeholder="Filter by Team name..."></h1> -->
     <br>
@@ -234,7 +234,39 @@
     }
     const teamName = target.dataset.teamName;
     console.log(teamName);
+
+    let teamColor; // Declare the variable outside of the if statements
+
+    if (teamName === "Hidden Rain") {
+      console.log("hidden raine");
+      teamColor = "grey"; // Assign a value inside the if statement
+    }
+    if (teamName === "OTF") {
+      console.log("OTF")
+      teamColor = "midnightblue";
+    }
+    if (teamName === "Tune Squad") {
+      console.log("TUNE")
+      teamColor = "red";
+    }
+    if (teamName === "Free Agents") {
+      console.log("F A")
+      teamColor = "darkorange";
+    }
+    if (teamName === "YAGGA") {
+      console.log("YAGGA")
+      teamColor = "rebeccapurple";
+    }
+    if (teamName === "Integral Construction") {
+      console.log("IC")
+      teamColor = "darkgreen";
+    };
+
+
+
     sessionStorage.setItem("team_name", teamName);
+    sessionStorage.setItem("team_color", teamColor);
+
     window.location.href = "teamProfile.html";
   }
 </script>
