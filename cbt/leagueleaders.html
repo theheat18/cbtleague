@@ -84,50 +84,50 @@
     ///////////////////////////////
 
     $.getJSON("assets/json/teams.json", function (data) {
-  // Flatten the data into an array of players
-  let players = [];
-  $.each(data, function (i, team) {
-    for (let j = 0; j < team.roster.length; j++) {
-      let gamesPlayed = team.roster[j].GamesPlayed || 1; // set gamesPlayed to 1 if it's falsy
-      players.push({
-        team: team.Team,
-        name: team.roster[j].name,
-        gamesPlayed: gamesPlayed,
-        points: 0,
-        ppg: 0
+      // Flatten the data into an array of players
+      let players = [];
+      $.each(data, function (i, team) {
+        for (let j = 0; j < team.roster.length; j++) {
+          let gamesPlayed = team.roster[j].GamesPlayed || 1; // set gamesPlayed to 1 if it's falsy
+          players.push({
+            team: team.Team,
+            name: team.roster[j].name,
+            gamesPlayed: gamesPlayed,
+            points: 0,
+            ppg: 0
+          });
+          for (let k = 0; k < team.roster[j].stats.length; k++) {
+            players[players.length - 1].points += team.roster[j].stats[k].Points;
+          }
+          // Calculate ppg only if gamesPlayed is not zero
+          if (gamesPlayed > 0) {
+            players[players.length - 1].ppg = (players[players.length - 1].points / gamesPlayed).toFixed(1);
+          }
+        }
       });
-      for (let k = 0; k < team.roster[j].stats.length; k++) {
-        players[players.length - 1].points += team.roster[j].stats[k].Points;
-      }
-      // Calculate ppg only if gamesPlayed is not zero
-      if (gamesPlayed > 0) {
-        players[players.length - 1].ppg = (players[players.length - 1].points / gamesPlayed).toFixed(1);
-      }
-    }
-  });
 
 
-  // Sort the players by points
-  players.sort(function (a, b) {
-    return b.ppg - a.ppg;
-  });
+      // Sort the players by points
+      players.sort(function (a, b) {
+        return b.ppg - a.ppg;
+      });
 
 
-  // Filter the top 5 players
-  players = players.slice(0, 5);
+      // Filter the top 5 players
+      players = players.slice(0, 5);
 
-  // Build the table rows
-  $.each(players, function (i, player) {
-    $("#ppg-table").append(
-      "<tr>" +
-      "<td>" + (i + 1) + "</td>" +
-      "<td>" + player.name + "</td>" +
-      "<td>" + player.team + "</td>" +
-      "<td>" + player.ppg + "</td>" +
-      "</tr>"
-    );
-  });
-});
+      // Build the table rows
+      $.each(players, function (i, player) {
+        $("#ppg-table").append(
+          "<tr>" +
+          "<td>" + (i + 1) + "</td>" +
+          "<td>" + player.name + "</td>" +
+          "<td>" + player.team + "</td>" +
+          "<td>" + player.ppg + "</td>" +
+          "</tr>"
+        );
+      });
+    });
 
 
     //////////////////////////
@@ -158,14 +158,14 @@
         }
       });
 
-     
+
 
       // Sort the players by points
       players.sort(function (a, b) {
         return b.FGP - a.FGP;
       });
 
-  
+
 
       // Filter the top 5 players
       players = players.slice(0, 5);
@@ -325,50 +325,50 @@
     /////////////////////////////////
 
     $.getJSON("assets/json/teams.json", function (data) {
-  // Flatten the data into an array of players
-  let players = [];
-  $.each(data, function (i, team) {
-    for (let j = 0; j < team.roster.length; j++) {
-      let gamesPlayed = team.roster[j].GamesPlayed || 1; // set gamesPlayed to 1 if it's falsy
-      players.push({
-        team: team.Team,
-        name: team.roster[j].name,
-        gamesPlayed: gamesPlayed,
-        rebounds: 0,
-        rpg: 0
+      // Flatten the data into an array of players
+      let players = [];
+      $.each(data, function (i, team) {
+        for (let j = 0; j < team.roster.length; j++) {
+          let gamesPlayed = team.roster[j].GamesPlayed || 1; // set gamesPlayed to 1 if it's falsy
+          players.push({
+            team: team.Team,
+            name: team.roster[j].name,
+            gamesPlayed: gamesPlayed,
+            rebounds: 0,
+            rpg: 0
+          });
+          for (let k = 0; k < team.roster[j].stats.length; k++) {
+            players[players.length - 1].rebounds += team.roster[j].stats[k].Rebounds;
+          }
+          // Calculate ppg only if gamesPlayed is not zero
+          if (gamesPlayed > 0) {
+            players[players.length - 1].rpg = (players[players.length - 1].rebounds / gamesPlayed).toFixed(1);
+          }
+        }
       });
-      for (let k = 0; k < team.roster[j].stats.length; k++) {
-        players[players.length - 1].rebounds += team.roster[j].stats[k].Rebounds;
-      }
-      // Calculate ppg only if gamesPlayed is not zero
-      if (gamesPlayed > 0) {
-        players[players.length - 1].rpg = (players[players.length - 1].rebounds / gamesPlayed).toFixed(1);
-      }
-    }
-  });
 
 
-  // Sort the players by points
-  players.sort(function (a, b) {
-    return b.rpg - a.rpg;
-  });
+      // Sort the players by points
+      players.sort(function (a, b) {
+        return b.rpg - a.rpg;
+      });
 
 
-  // Filter the top 5 players
-  players = players.slice(0, 5);
+      // Filter the top 5 players
+      players = players.slice(0, 5);
 
-  // Build the table rows
-  $.each(players, function (i, player) {
-    $("#rpg-table").append(
-      "<tr>" +
-      "<td>" + (i + 1) + "</td>" +
-      "<td>" + player.name + "</td>" +
-      "<td>" + player.team + "</td>" +
-      "<td>" + player.rpg + "</td>" +
-      "</tr>"
-    );
-  });
-});
+      // Build the table rows
+      $.each(players, function (i, player) {
+        $("#rpg-table").append(
+          "<tr>" +
+          "<td>" + (i + 1) + "</td>" +
+          "<td>" + player.name + "</td>" +
+          "<td>" + player.team + "</td>" +
+          "<td>" + player.rpg + "</td>" +
+          "</tr>"
+        );
+      });
+    });
 
 
 
@@ -419,50 +419,50 @@
     ///////////////////////////////
 
     $.getJSON("assets/json/teams.json", function (data) {
-  // Flatten the data into an array of players
-  let players = [];
-  $.each(data, function (i, team) {
-    for (let j = 0; j < team.roster.length; j++) {
-      let gamesPlayed = team.roster[j].GamesPlayed || 1; // set gamesPlayed to 1 if it's falsy
-      players.push({
-        team: team.Team,
-        name: team.roster[j].name,
-        gamesPlayed: gamesPlayed,
-        assists: 0,
-        apg: 0
+      // Flatten the data into an array of players
+      let players = [];
+      $.each(data, function (i, team) {
+        for (let j = 0; j < team.roster.length; j++) {
+          let gamesPlayed = team.roster[j].GamesPlayed || 1; // set gamesPlayed to 1 if it's falsy
+          players.push({
+            team: team.Team,
+            name: team.roster[j].name,
+            gamesPlayed: gamesPlayed,
+            assists: 0,
+            apg: 0
+          });
+          for (let k = 0; k < team.roster[j].stats.length; k++) {
+            players[players.length - 1].assists += team.roster[j].stats[k].Assists;
+          }
+          // Calculate ppg only if gamesPlayed is not zero
+          if (gamesPlayed > 0) {
+            players[players.length - 1].apg = (players[players.length - 1].assists / gamesPlayed).toFixed(1);
+          }
+        }
       });
-      for (let k = 0; k < team.roster[j].stats.length; k++) {
-        players[players.length - 1].assists += team.roster[j].stats[k].Assists;
-      }
-      // Calculate ppg only if gamesPlayed is not zero
-      if (gamesPlayed > 0) {
-        players[players.length - 1].apg = (players[players.length - 1].assists / gamesPlayed).toFixed(1);
-      }
-    }
-  });
 
 
-  // Sort the players by points
-  players.sort(function (a, b) {
-    return b.apg - a.apg;
-  });
+      // Sort the players by points
+      players.sort(function (a, b) {
+        return b.apg - a.apg;
+      });
 
 
-  // Filter the top 5 players
-  players = players.slice(0, 5);
+      // Filter the top 5 players
+      players = players.slice(0, 5);
 
-  // Build the table rows
-  $.each(players, function (i, player) {
-    $("#apg-table").append(
-      "<tr>" +
-      "<td>" + (i + 1) + "</td>" +
-      "<td>" + player.name + "</td>" +
-      "<td>" + player.team + "</td>" +
-      "<td>" + player.apg + "</td>" +
-      "</tr>"
-    );
-  });
-});
+      // Build the table rows
+      $.each(players, function (i, player) {
+        $("#apg-table").append(
+          "<tr>" +
+          "<td>" + (i + 1) + "</td>" +
+          "<td>" + player.name + "</td>" +
+          "<td>" + player.team + "</td>" +
+          "<td>" + player.apg + "</td>" +
+          "</tr>"
+        );
+      });
+    });
 
     ////////////////////////
     //This is for Blocks  //
@@ -511,50 +511,50 @@
     ///////////////////////////////
 
     $.getJSON("assets/json/teams.json", function (data) {
-  // Flatten the data into an array of players
-  let players = [];
-  $.each(data, function (i, team) {
-    for (let j = 0; j < team.roster.length; j++) {
-      let gamesPlayed = team.roster[j].GamesPlayed || 1; // set gamesPlayed to 1 if it's falsy
-      players.push({
-        team: team.Team,
-        name: team.roster[j].name,
-        gamesPlayed: gamesPlayed,
-        blocks: 0,
-        bpg: 0
+      // Flatten the data into an array of players
+      let players = [];
+      $.each(data, function (i, team) {
+        for (let j = 0; j < team.roster.length; j++) {
+          let gamesPlayed = team.roster[j].GamesPlayed || 1; // set gamesPlayed to 1 if it's falsy
+          players.push({
+            team: team.Team,
+            name: team.roster[j].name,
+            gamesPlayed: gamesPlayed,
+            blocks: 0,
+            bpg: 0
+          });
+          for (let k = 0; k < team.roster[j].stats.length; k++) {
+            players[players.length - 1].blocks += team.roster[j].stats[k].Blocks;
+          }
+          // Calculate ppg only if gamesPlayed is not zero
+          if (gamesPlayed > 0) {
+            players[players.length - 1].bpg = (players[players.length - 1].blocks / gamesPlayed).toFixed(1);
+          }
+        }
       });
-      for (let k = 0; k < team.roster[j].stats.length; k++) {
-        players[players.length - 1].blocks += team.roster[j].stats[k].Blocks;
-      }
-      // Calculate ppg only if gamesPlayed is not zero
-      if (gamesPlayed > 0) {
-        players[players.length - 1].bpg = (players[players.length - 1].blocks / gamesPlayed).toFixed(1);
-      }
-    }
-  });
 
 
-  // Sort the players by points
-  players.sort(function (a, b) {
-    return b.bpg - a.bpg;
-  });
+      // Sort the players by points
+      players.sort(function (a, b) {
+        return b.bpg - a.bpg;
+      });
 
 
-  // Filter the top 5 players
-  players = players.slice(0, 5);
+      // Filter the top 5 players
+      players = players.slice(0, 5);
 
-  // Build the table rows
-  $.each(players, function (i, player) {
-    $("#bpg-table").append(
-      "<tr>" +
-      "<td>" + (i + 1) + "</td>" +
-      "<td>" + player.name + "</td>" +
-      "<td>" + player.team + "</td>" +
-      "<td>" + player.bpg + "</td>" +
-      "</tr>"
-    );
-  });
-});
+      // Build the table rows
+      $.each(players, function (i, player) {
+        $("#bpg-table").append(
+          "<tr>" +
+          "<td>" + (i + 1) + "</td>" +
+          "<td>" + player.name + "</td>" +
+          "<td>" + player.team + "</td>" +
+          "<td>" + player.bpg + "</td>" +
+          "</tr>"
+        );
+      });
+    });
 
     ////////////////////////
     //This is for steals  //
@@ -603,50 +603,50 @@
     ///////////////////////////////
 
     $.getJSON("assets/json/teams.json", function (data) {
-  // Flatten the data into an array of players
-  let players = [];
-  $.each(data, function (i, team) {
-    for (let j = 0; j < team.roster.length; j++) {
-      let gamesPlayed = team.roster[j].GamesPlayed || 1; // set gamesPlayed to 1 if it's falsy
-      players.push({
-        team: team.Team,
-        name: team.roster[j].name,
-        gamesPlayed: gamesPlayed,
-        steals: 0,
-        spg: 0
+      // Flatten the data into an array of players
+      let players = [];
+      $.each(data, function (i, team) {
+        for (let j = 0; j < team.roster.length; j++) {
+          let gamesPlayed = team.roster[j].GamesPlayed || 1; // set gamesPlayed to 1 if it's falsy
+          players.push({
+            team: team.Team,
+            name: team.roster[j].name,
+            gamesPlayed: gamesPlayed,
+            steals: 0,
+            spg: 0
+          });
+          for (let k = 0; k < team.roster[j].stats.length; k++) {
+            players[players.length - 1].steals += team.roster[j].stats[k].Steals;
+          }
+          // Calculate ppg only if gamesPlayed is not zero
+          if (gamesPlayed > 0) {
+            players[players.length - 1].spg = (players[players.length - 1].steals / gamesPlayed).toFixed(1);
+          }
+        }
       });
-      for (let k = 0; k < team.roster[j].stats.length; k++) {
-        players[players.length - 1].steals += team.roster[j].stats[k].Steals;
-      }
-      // Calculate ppg only if gamesPlayed is not zero
-      if (gamesPlayed > 0) {
-        players[players.length - 1].spg = (players[players.length - 1].steals / gamesPlayed).toFixed(1);
-      }
-    }
-  });
 
 
-  // Sort the players by points
-  players.sort(function (a, b) {
-    return b.spg - a.spg;
-  });
+      // Sort the players by points
+      players.sort(function (a, b) {
+        return b.spg - a.spg;
+      });
 
 
-  // Filter the top 5 players
-  players = players.slice(0, 5);
+      // Filter the top 5 players
+      players = players.slice(0, 5);
 
-  // Build the table rows
-  $.each(players, function (i, player) {
-    $("#spg-table").append(
-      "<tr>" +
-      "<td>" + (i + 1) + "</td>" +
-      "<td>" + player.name + "</td>" +
-      "<td>" + player.team + "</td>" +
-      "<td>" + player.spg + "</td>" +
-      "</tr>"
-    );
-  });
-});
+      // Build the table rows
+      $.each(players, function (i, player) {
+        $("#spg-table").append(
+          "<tr>" +
+          "<td>" + (i + 1) + "</td>" +
+          "<td>" + player.name + "</td>" +
+          "<td>" + player.team + "</td>" +
+          "<td>" + player.spg + "</td>" +
+          "</tr>"
+        );
+      });
+    });
 
     /////////////////////////////////
     //This is for EFF              //
@@ -656,70 +656,74 @@
 
 
     $.getJSON("assets/json/teams.json", function (data) {
-  // Flatten the data into an array of players
-  let players = [];
-  $.each(data, function (i, team) {
-    for (let j = 0; j < team.roster.length; j++) {
-      let gamesPlayed = team.roster[j].GamesPlayed || 1; // set gamesPlayed to 1 if it's falsy
-      players.push({
-        team: team.Team,
-        name: team.roster[j].name,
-        gamesPlayed: gamesPlayed,
-        points: 0,
-        rebounds: 0,
-        assists: 0,
-        steals: 0,
-        blocks: 0,
-        fga: 0,
-        fgm: 0,
-        missedFG:0,
-        fta: 0,
-        ftm: 0,
-        missedFT: 0,
-        tov: 0,
-        eff:0
+      // Flatten the data into an array of players
+      let players = [];
+      $.each(data, function (i, team) {
+        for (let j = 0; j < team.roster.length; j++) {
+          let gamesPlayed = team.roster[j].GamesPlayed || 1; // set gamesPlayed to 1 if it's falsy
+          players.push({
+            team: team.Team,
+            name: team.roster[j].name,
+            gamesPlayed: gamesPlayed,
+            points: 0,
+            rebounds: 0,
+            assists: 0,
+            steals: 0,
+            blocks: 0,
+            fga: 0,
+            fgm: 0,
+            missedFG: 0,
+            fta: 0,
+            ftm: 0,
+            missedFT: 0,
+            tov: 0,
+            eff: 0
+          });
+          for (let k = 0; k < team.roster[j].stats.length; k++) {
+            players[players.length - 1].points += team.roster[j].stats[k].Points;
+            players[players.length - 1].rebounds += team.roster[j].stats[k].Rebounds;
+            players[players.length - 1].assists += team.roster[j].stats[k].Assists;
+            players[players.length - 1].steals += team.roster[j].stats[k].Steals;
+            players[players.length - 1].blocks += team.roster[j].stats[k].Blocks;
+            players[players.length - 1].fga += team.roster[j].stats[k].FieldGoalAttempts;
+            players[players.length - 1].fgm += team.roster[j].stats[k].FieldGoalsMade;
+            players[players.length - 1].fta += team.roster[j].stats[k].FreeThrowsAttempts;
+            players[players.length - 1].ftm += team.roster[j].stats[k].FreeThrowsMade;
+            players[players.length - 1].tov += team.roster[j].stats[k].Turnovers;
+          }
+          // Calculate ppg only if gamesPlayed is not zero
+          if (gamesPlayed > 0) {
+            players[players.length - 1].eff = (players[players.length - 1].points + players[players.length - 1]
+              .rebounds + players[players.length - 1].assists + players[players.length - 1].steals + players[
+                players.length - 1].blocks - (players[players.length - 1].fga - players[players.length - 1]
+                .fgm) - (players[players.length - 1].fta - players[players.length - 1].ftm) - players[players
+                .length - 1].tov) / gamesPlayed.toFixed(1)
+          }
+        }
       });
-      for (let k = 0; k < team.roster[j].stats.length; k++) {
-        players[players.length - 1].points += team.roster[j].stats[k].Points;
-        players[players.length - 1].rebounds += team.roster[j].stats[k].Rebounds;
-        players[players.length - 1].assists += team.roster[j].stats[k].Assists;
-        players[players.length - 1].steals += team.roster[j].stats[k].Steals;
-        players[players.length - 1].blocks += team.roster[j].stats[k].Blocks;
-        players[players.length - 1].fga += team.roster[j].stats[k].FieldGoalAttempts;
-        players[players.length - 1].fgm += team.roster[j].stats[k].FieldGoalsMade;
-        players[players.length - 1].fta += team.roster[j].stats[k].FreeThrowsAttempts;
-        players[players.length - 1].ftm += team.roster[j].stats[k].FreeThrowsMade;
-        players[players.length - 1].tov += team.roster[j].stats[k].Turnovers;
-      }
-      // Calculate ppg only if gamesPlayed is not zero
-      if (gamesPlayed > 0) {
-        players[players.length - 1].eff = (players[players.length - 1].points + players[players.length - 1].rebounds + players[players.length - 1].assists + players[players.length - 1].steals + players[players.length - 1].blocks - (players[players.length - 1].fga - players[players.length - 1].fgm) - (players[players.length - 1].fta - players[players.length - 1].ftm)- players[players.length - 1].tov)/gamesPlayed.toFixed(1)
-      }
-    }
-  });
 
 
-  // Sort the players by points
-  players.sort(function (a, b) {
-    return b.eff - a.eff;
-  });
+      // Sort the players by points
+      players.sort(function (a, b) {
+        return b.eff - a.eff;
+      });
 
 
-  // Filter the top 5 players
-  players = players.slice(0, 5);
+      // Filter the top 5 players
+      players = players.slice(0, 5);
 
-  // Build the table rows
-  $.each(players, function (i, player) {
-    $("#eff-table").append(
-      "<tr>" +
-      "<td>" + (i + 1) + "</td>" +
-      "<td>" + player.name + "</td>" +
-      "<td>" + player.team + "</td>" +
-      "<td>" + player.eff + "</td>" +
-      "</tr>"
-    );
-  });
-});
+      // Build the table rows
+      $.each(players, function (i, player) {
+        $("#eff-table").append(
+          "<tr>" +
+          "<td>" + (i + 1) + "</td>" +
+          "<td>" + player.name + "</td>" +
+          "<td>" + player.team + "</td>" +
+          "<td>" + player.eff + "</td>" +
+          "</tr>"
+        );
+      });
+    });
 
     //////////////////////////
     //This is for Turnovers //
@@ -768,50 +772,51 @@
     ////////////////////////////
 
     $.getJSON("assets/json/teams.json", function (data) {
-  // Flatten the data into an array of players
-  let players = [];
-  $.each(data, function (i, team) {
-    for (let j = 0; j < team.roster.length; j++) {
-      let gamesPlayed = team.roster[j].GamesPlayed || 1; // set gamesPlayed to 1 if it's falsy
-      players.push({
-        team: team.Team,
-        name: team.roster[j].name,
-        gamesPlayed: gamesPlayed,
-        turnovers: 0,
-        tovpg: 0
+      // Flatten the data into an array of players
+      let players = [];
+      $.each(data, function (i, team) {
+        for (let j = 0; j < team.roster.length; j++) {
+          let gamesPlayed = team.roster[j].GamesPlayed || 1; // set gamesPlayed to 1 if it's falsy
+          players.push({
+            team: team.Team,
+            name: team.roster[j].name,
+            gamesPlayed: gamesPlayed,
+            turnovers: 0,
+            tovpg: 0
+          });
+          for (let k = 0; k < team.roster[j].stats.length; k++) {
+            players[players.length - 1].turnovers += team.roster[j].stats[k].Turnovers;
+          }
+          // Calculate ppg only if gamesPlayed is not zero
+          if (gamesPlayed > 0) {
+            players[players.length - 1].tovpg = (players[players.length - 1].turnovers / gamesPlayed).toFixed(
+              1);
+          }
+        }
       });
-      for (let k = 0; k < team.roster[j].stats.length; k++) {
-        players[players.length - 1].turnovers += team.roster[j].stats[k].Turnovers;
-      }
-      // Calculate ppg only if gamesPlayed is not zero
-      if (gamesPlayed > 0) {
-        players[players.length - 1].tovpg = (players[players.length - 1].turnovers / gamesPlayed).toFixed(1);
-      }
-    }
-  });
 
 
-  // Sort the players by points
-  players.sort(function (a, b) {
-    return b.tovpg - a.tovpg;
-  });
+      // Sort the players by points
+      players.sort(function (a, b) {
+        return b.tovpg - a.tovpg;
+      });
 
 
-  // Filter the top 5 players
-  players = players.slice(0, 5);
+      // Filter the top 5 players
+      players = players.slice(0, 5);
 
-  // Build the table rows
-  $.each(players, function (i, player) {
-    $("#tovpg-table").append(
-      "<tr>" +
-      "<td>" + (i + 1) + "</td>" +
-      "<td>" + player.name + "</td>" +
-      "<td>" + player.team + "</td>" +
-      "<td>" + player.tovpg + "</td>" +
-      "</tr>"
-    );
-  });
-});
+      // Build the table rows
+      $.each(players, function (i, player) {
+        $("#tovpg-table").append(
+          "<tr>" +
+          "<td>" + (i + 1) + "</td>" +
+          "<td>" + player.name + "</td>" +
+          "<td>" + player.team + "</td>" +
+          "<td>" + player.tovpg + "</td>" +
+          "</tr>"
+        );
+      });
+    });
   </script>
 </head>
 
@@ -879,15 +884,14 @@
   </section>
 
   <div class="container">
-
     <div class="columns is-multiline">
-      <div class="column is-one-quarter">
+      <div class="column is-one-quarter total">
         <div class="card">
           <div class="card-content">
             <div class="content">
               <p>Points</p>
               <div class="table-container">
-                <table class="table is-striped is-hoverable is-bordered" id="points-table">
+                <table class="table  is-hoverable " id="points-table">
                   <tr>
                     <th></th>
                     <th>Name</th>
@@ -900,257 +904,287 @@
           </div>
         </div>
       </div>
-      <div class="column is-one-quarter">
+      <div class="column is-one-quarter perGame">
         <div class="card">
           <div class="card-content">
             <div class="content">
               <p>PPG</p>
-              <table class="table is-striped is-hoverable is-bordered" id="ppg-table">
-                <tr>
-                  <th></th>
-                  <th>Name</th>
-                  <th>Team</th>
-                  <th>PPG</th>
-                </tr>
-              </table>
+              <div class="table-container">
+                <table class="table  is-hoverable " id="ppg-table">
+                  <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Team</th>
+                    <th>PPG</th>
+                  </tr>
+                </table>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="column is-one-quarter">
+      <div class="column is-one-quarter total">
         <div class="card">
           <div class="card-content">
             <div class="content">
               <p>Field Goal %</p>
-              <table class="table is-striped is-hoverable is-bordered" id="fieldGoal-table">
-                <tr>
-                  <th></th>
-                  <th>Name</th>
-                  <th>Team</th>
-                  <th>FG%</th>
-                </tr>
-              </table>
+              <div class="table-container">
+                <table class="table  is-hoverable " id="fieldGoal-table">
+                  <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Team</th>
+                    <th>FG%</th>
+                  </tr>
+                </table>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="column is-one-quarter">
+      <div class="column is-one-quarter total">
         <div class="card">
           <div class="card-content">
             <div class="content">
               <p>3PM</p>
-              <table class="table is-striped is-hoverable is-bordered" id="threesMade-table">
-                <tr>
-                  <th></th>
-                  <th>Name</th>
-                  <th>Team</th>
-                  <th>3PM</th>
-                </tr>
-              </table>
+              <div class="table-container">
+                <table class="table  is-hoverable " id="threesMade-table">
+                  <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Team</th>
+                    <th>3PM</th>
+                  </tr>
+                </table>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="column is-one-quarter">
+      <div class="column is-one-quarter total">
         <div class="card">
           <div class="card-content">
             <div class="content">
               <p>3PT%</p>
-              <table class="table is-striped is-hoverable is-bordered" id="threesPercent-table">
-                <tr>
-                  <th></th>
-                  <th>Name</th>
-                  <th>Team</th>
-                  <th>3P%</th>
-                </tr>
-              </table>
+              <div class="table-container">
+                <table class="table  is-hoverable " id="threesPercent-table">
+                  <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Team</th>
+                    <th>3P%</th>
+                  </tr>
+                </table>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="column is-one-quarter">
+      <div class="column is-one-quarter total">
         <div class="card">
           <div class="card-content">
             <div class="content">
               <p>Rebounds</p>
-              <table class="table is-striped is-hoverable is-bordered" id="rebounds-table">
-                <tr>
-                  <th></th>
-                  <th>Name</th>
-                  <th>Team</th>
-                  <th>REB</th>
-                </tr>
-              </table>
+              <div class="table-container">
+                <table class="table  is-hoverable " id="rebounds-table">
+                  <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Team</th>
+                    <th>REB</th>
+                  </tr>
+                </table>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="column is-one-quarter">
+      <div class="column is-one-quarter perGame">
         <div class="card">
           <div class="card-content">
             <div class="content">
               <p>RPG</p>
-              <table class="table is-striped is-hoverable is-bordered" id="rpg-table">
-                <tr>
-                  <th></th>
-                  <th>Name</th>
-                  <th>Team</th>
-                  <th>RPG</th>
-                </tr>
-              </table>
+              <div class="table-container">
+                <table class="table  is-hoverable " id="rpg-table">
+                  <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Team</th>
+                    <th>RPG</th>
+                  </tr>
+                </table>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="column is-one-quarter">
+      <div class="column is-one-quarter total">
         <div class="card">
           <div class="card-content">
             <div class="content">
               <p>Assists</p>
-              <table class="table is-striped is-hoverable is-bordered" id="assists-table">
-                <tr>
-                  <th></th>
-                  <th>Name</th>
-                  <th>Team</th>
-                  <th>AST</th>
-                </tr>
-              </table>
+              <div class="table-container">
+                <table class="table  is-hoverable " id="assists-table">
+                  <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Team</th>
+                    <th>AST</th>
+                  </tr>
+                </table>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="column is-one-quarter">
+      <div class="column is-one-quarter perGame">
         <div class="card">
           <div class="card-content">
             <div class="content">
               <p>APG</p>
-              <table class="table is-striped is-hoverable is-bordered" id="apg-table">
-                <tr>
-                  <th></th>
-                  <th>Name</th>
-                  <th>Team</th>
-                  <th>APG</th>
-                </tr>
-              </table>
+              <div class="table-container">
+                <table class="table  is-hoverable " id="apg-table">
+                  <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Team</th>
+                    <th>APG</th>
+                  </tr>
+                </table>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="column is-one-quarter">
+      <div class="column is-one-quarter total">
         <div class="card">
           <div class="card-content">
             <div class="content">
               <p>Blocks</p>
-              <table class="table is-striped is-hoverable is-bordered" id="Blocks-table">
-                <tr>
-                  <th></th>
-                  <th>Name</th>
-                  <th>Team</th>
-                  <th>BLK</th>
-                </tr>
-              </table>
+              <div class="table-container">
+                <table class="table  is-hoverable " id="Blocks-table">
+                  <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Team</th>
+                    <th>BLK</th>
+                  </tr>
+                </table>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="column is-one-quarter">
+      <div class="column is-one-quarter perGame">
         <div class="card">
           <div class="card-content">
             <div class="content">
               <p>BPG</p>
-              <table class="table is-striped is-hoverable is-bordered" id="bpg-table">
-                <tr>
-                  <th></th>
-                  <th>Name</th>
-                  <th>Team</th>
-                  <th>BPG</th>
-                </tr>
-              </table>
+              <div class="table-container">
+                <table class="table  is-hoverable " id="bpg-table">
+                  <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Team</th>
+                    <th>BPG</th>
+                  </tr>
+                </table>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="column is-one-quarter">
+      <div class="column is-one-quarter total">
         <div class="card">
           <div class="card-content">
             <div class="content">
               <p>Steals</p>
-              <table class="table is-striped is-hoverable is-bordered" id="steals-table">
-                <tr>
-                  <th></th>
-                  <th>Name</th>
-                  <th>Team</th>
-                  <th>STL</th>
-                </tr>
-              </table>
+              <div class="table-container">
+                <table class="table  is-hoverable " id="steals-table">
+                  <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Team</th>
+                    <th>STL</th>
+                  </tr>
+                </table>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="column is-one-quarter">
+      <div class="column is-one-quarter perGame">
         <div class="card">
           <div class="card-content">
             <div class="content">
               <p>SPG</p>
-              <table class="table is-striped is-hoverable is-bordered" id="spg-table">
-                <tr>
-                  <th></th>
-                  <th>Name</th>
-                  <th>Team</th>
-                  <th>SPG</th>
-                </tr>
-              </table>
+              <div class="table-container">
+                <table class="table  is-hoverable " id="spg-table">
+                  <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Team</th>
+                    <th>SPG</th>
+                  </tr>
+                </table>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="column is-one-quarter">
+      <div class="column is-one-quarter total">
         <div class="card">
           <div class="card-content">
             <div class="content">
               <p>Efficiency</p>
-              <table class="table is-striped is-hoverable is-bordered" id="eff-table">
-                <tr>
-                  <th></th>
-                  <th>Name</th>
-                  <th>Team</th>
-                  <th>EFF</th>
-                </tr>
-              </table>
+              <div class="table-container">
+                <table class="table  is-hoverable " id="eff-table">
+                  <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Team</th>
+                    <th>EFF</th>
+                  </tr>
+                </table>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="column is-one-quarter">
+      <div class="column is-one-quarter total">
         <div class="card">
           <div class="card-content">
             <div class="content">
               <p>Turnovers</p>
-              <table class="table is-striped is-hoverable is-bordered" id="turnovers-table">
-                <tr>
-                  <th></th>
-                  <th>Name</th>
-                  <th>Team</th>
-                  <th>TOV</th>
-                </tr>
-              </table>
+              <div class="table-container">
+                <table class="table  is-hoverable " id="turnovers-table">
+                  <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Team</th>
+                    <th>TOV</th>
+                  </tr>
+                </table>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="column is-one-quarter">
+      <div class="column is-one-quarter perGame">
         <div class="card">
           <div class="card-content">
             <div class="content">
               <p>TOVPG</p>
-              <table class="table is-striped is-hoverable is-bordered" id="tovpg-table">
-                <tr>
-                  <th></th>
-                  <th>Name</th>
-                  <th>Team</th>
-                  <th>TOVPG</th>
-                </tr>
-              </table>
+              <div class="table-container">
+                <table class="table  is-hoverable " id="tovpg-table">
+                  <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Team</th>
+                    <th>TOVPG</th>
+                  </tr>
+                </table>
+              </div>
             </div>
           </div>
         </div>

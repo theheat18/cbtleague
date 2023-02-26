@@ -113,7 +113,7 @@
             </div>
         </div>
     </section>
-    <section class="hero is-dark">
+    <section class="hero" style="border-bottom: 2px solid #121111;">
         <div class="hero-body">
             <div class="columns is-mobile is-vcentered" id="roster">
 
@@ -126,8 +126,8 @@
             <h1 class="title is-5"><u>Career Stats</u></h1>
 
             <div class="table-container">
-                <table class="table is-striped is-hoverable is-bordered" id="players-table">
-                    <tr>
+                <table class="table   is-hoverable " id="players-table">
+                    <tr style="border: 1px solid white;">
                         <th>GP</th>
                         <th>PTS</th>
                         <th>PPG</th>
@@ -241,27 +241,27 @@
 
                     $("#roster").append(
                         "<div class='column is-one-fifth has-text-centered'>" +
-                        "<h1><u>GP</u></h1>" +
-                        team.roster[i].GamesPlayed +
+                        "<h1>GP</h1> <p style='color:white;'>"+
+                        team.roster[i].GamesPlayed +"</p>"+
                         "</div>" +
                         "<div class='column is-one-fifth has-text-centered'>" +
-                        "<h1><u>PPG</u></h1>" +
-                        playerPoints / team.roster[i].GamesPlayed +
+                        "<h1>PPG</h1><p style='color:white;'>" +
+                        playerPoints / team.roster[i].GamesPlayed +"</p>"+
                         "</div>" +
                         "<div class='column is-one-fifth has-text-centered'>" +
-                        "<h1><u>RPG</u></h1>" +
-                        playerRebounds / team.roster[i].GamesPlayed +
+                        "<h1>RPG</h1><p style='color:white;'>" +
+                        playerRebounds / team.roster[i].GamesPlayed +"</p>"+
                         "</div>" +
                         "<div class='column is-one-fifth has-text-centered'>" +
-                        "<h1><u>APG</u></h1>" +
-                        playerAssists / team.roster[i].GamesPlayed +
+                        "<h1>APG</h1><p style='color:white;'>" +
+                        playerAssists / team.roster[i].GamesPlayed +"</p>"+
                         "</div>" +
                         "<div class='column is-one-fifth has-text-centered'>" +
-                        "<h1><u>EFF</u></h1>" +
+                        "<h1>EFF</h1><p style='color:white;'>" +
                         (playerPoints + playerRebounds + playerAssists + playerSteals +
                             playerBlocks - (
                                 playerFGA - playerFGM) - (playerFTA - playerFTM) - playerTOV) / team
-                        .roster[i].GamesPlayed +
+                        .roster[i].GamesPlayed +"</p>"+
                         "</div>"
 
 
