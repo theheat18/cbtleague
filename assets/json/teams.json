@@ -1909,7 +1909,7 @@
             {
                 "name": "Ty Sands",
                 "number": 2,
-                "GamesPlayed":0,
+                "GamesPlayed":1,
                 "stats": [{
                         "game_number": 1,
                         "opponent": "YAGGA",
