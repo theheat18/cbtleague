@@ -7,6 +7,7 @@
                 "name": "Kevin Rivera",
                 "number": 3,
                 "GamesPlayed":1,
+                "PlayerHead":"kevinrivera.jpg",
                 "stats": [{
                         "game_number": 1,
                         "opponent": "Free Agents",
