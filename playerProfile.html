@@ -107,8 +107,7 @@
                     </h2>
                 </div>
 
-                <div class="column has-text-centered">
-                    <img src="" alt="playerimage" width="250px">
+                <div id="playerhead" class="column has-text-centered">
                 </div>
             </div>
         </div>
@@ -267,6 +266,12 @@
 
                     );
                     $("#team_name").append(team.Team + " | #" + team.roster[i].number);
+                    $("#playerhead").append(
+                        "<img src='assets/img/player-heads/"+team.roster[i].PlayerHead+"' alt='Player Image' style='width:200px !important;'>" 
+                    );
+
+
+
                 }
             }
         });
