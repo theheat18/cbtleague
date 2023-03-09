@@ -254,28 +254,28 @@
                         "<td>" + team.Team + "</td>" +
                         "<td>" + team.roster[i].GamesPlayed + "</td>" +
                         "<td>" + playerPoints + "</td>" +
-                        "<td>" + playerPoints / team.roster[i].GamesPlayed + "</td>" +
+                        "<td>" + (playerPoints / team.roster[i].GamesPlayed).toFixed(2) + "</td>" +
                         "<td>" + playerFGM + "</td>" +
                         "<td>" + playerFGA + "</td>" +
-                        "<td>" + playerFGM / playerFGA + "</td>" +
+                        "<td>" + (playerFGM / playerFGA).toFixed(2) + "</td>" +
                         "<td>" + player3PM + "</td>" +
                         "<td>" + player3PA + "</td>" +
-                        "<td>" + player3PM / player3PA + "</td>" +
+                        "<td>" + (player3PM / player3PA).toFixed(2) + "</td>" +
                         "<td>" + playerFTM + "</td>" +
                         "<td>" + playerFTA + "</td>" +
-                        "<td>" + playerFTM / playerFTA + "</td>" +
+                        "<td>" + (playerFTM / playerFTA).toFixed(2) + "</td>" +
                         "<td>" + playerRebounds + "</td>" +
-                        "<td>" + playerRebounds / team.roster[i].GamesPlayed + "</td>" +
+                        "<td>" + (playerRebounds / team.roster[i].GamesPlayed).toFixed(2) + "</td>" +
                         "<td>" + playerOREB + "</td>" +
                         "<td>" + playerDREB + "</td>" +
                         "<td>" + playerAssists + "</td>" +
-                        "<td>" + playerAssists / team.roster[i].GamesPlayed + "</td>" +
+                        "<td>" + (playerAssists / team.roster[i].GamesPlayed).toFixed(2) + "</td>" +
                         "<td>" + playerBlocks + "</td>" +
-                        "<td>" + playerBlocks / team.roster[i].GamesPlayed + "</td>" +
+                        "<td>" + (playerBlocks / team.roster[i].GamesPlayed).toFixed(2) + "</td>" +
                         "<td>" + playerSteals + "</td>" +
-                        "<td>" + playerSteals / team.roster[i].GamesPlayed + "</td>" +
+                        "<td>" + (playerSteals / team.roster[i].GamesPlayed).toFixed(2) + "</td>" +
                         "<td>" + playerTOV + "</td>" +
-                        "<td>" + playerTOV / team.roster[i].GamesPlayed + "</td>" +
+                        "<td>" + (playerTOV / team.roster[i].GamesPlayed).toFixed(2) + "</td>" +
                         "<td>" + playerPF + "</td>" +
                         "<td>" + (playerPoints + playerRebounds + playerAssists + playerBlocks - (
                             playerFGA - playerFGM) - (playerFTA - playerFTM) - playerTOV) / team

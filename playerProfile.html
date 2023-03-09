@@ -246,15 +246,15 @@
                         "</div>" +
                         "<div class='column is-one-fifth has-text-centered'>" +
                         "<h1>PPG</h1><p style='color:white;'>" +
-                        playerPoints / team.roster[i].GamesPlayed +"</p>"+
+                        (playerPoints / team.roster[i].GamesPlayed).toFixed(2) +"</p>"+
                         "</div>" +
                         "<div class='column is-one-fifth has-text-centered'>" +
                         "<h1>RPG</h1><p style='color:white;'>" +
-                        playerRebounds / team.roster[i].GamesPlayed +"</p>"+
+                        (playerRebounds / team.roster[i].GamesPlayed).toFixed(2) +"</p>"+
                         "</div>" +
                         "<div class='column is-one-fifth has-text-centered'>" +
                         "<h1>APG</h1><p style='color:white;'>" +
-                        playerAssists / team.roster[i].GamesPlayed +"</p>"+
+                        (playerAssists / team.roster[i].GamesPlayed).toFixed(2) +"</p>"+
                         "</div>" +
                         "<div class='column is-one-fifth has-text-centered'>" +
                         "<h1>EFF</h1><p style='color:white;'>" +
@@ -319,29 +319,28 @@
                       
                         "<td>" + player.GamesPlayed + "</td>" +
                         "<td>" + playerPoints + "</td>" +
-                        "<td>" + playerPoints / player.GamesPlayed + "</td>" +
+                        "<td>" + (playerPoints / player.GamesPlayed).toFixed(1) + "</td>" +
                         "<td>" + playerFGM + "</td>" +
                         "<td>" + playerFGA + "</td>" +
-                        "<td>" + playerFGM / playerFGA + "</td>" +
-
+                        "<td>" + ((playerFGM / playerFGA)*100).toFixed(1) + "</td>" +
                         "<td>" + player3PM + "</td>" +
                         "<td>" + player3PA + "</td>" +
-                        "<td>" + player3PM / player3PA + "</td>" +
+                        "<td>" + ((player3PM / player3PA)*100).toFixed(1) + "</td>" +
                         "<td>" + playerFTM + "</td>" +
                         "<td>" + playerFTA + "</td>" +
-                        "<td>" + playerFTM / playerFTA + "</td>" +
+                        "<td>" + ((playerFTM / playerFTA)*100).toFixed(1)+ "</td>" +
                         "<td>" + playerOREB + "</td>" +
                         "<td>" + playerDREB + "</td>" +
                         "<td>" + playerRebounds + "</td>" +
-                        "<td>" + playerRebounds / team.roster[i].GamesPlayed + "</td>" +
+                        "<td>" + (playerRebounds / team.roster[i].GamesPlayed).toFixed(1) + "</td>" +
                         "<td>" + playerAssists + "</td>" +
-                        "<td>" + playerAssists / team.roster[i].GamesPlayed + "</td>" +
+                        "<td>" + (playerAssists / team.roster[i].GamesPlayed).toFixed(1) + "</td>" +
                         "<td>" + playerSteals + "</td>" +
-                        "<td>" + playerSteals / team.roster[i].GamesPlayed + "</td>" +
+                        "<td>" + (playerSteals / team.roster[i].GamesPlayed).toFixed(1) + "</td>" +
                         "<td>" + playerBlocks + "</td>" +
-                        "<td>" + playerBlocks / team.roster[i].GamesPlayed + "</td>" +
+                        "<td>" + (playerBlocks / team.roster[i].GamesPlayed).toFixed(1) + "</td>" +
                         "<td>" + playerTOV + "</td>" +
-                        "<td>" + playerTOV / team.roster[i].GamesPlayed + "</td>" +
+                        "<td>" + (playerTOV / team.roster[i].GamesPlayed).toFixed(1) + "</td>" +
                         "<td>" + playerPF + "</td>" +
                         "<td>" + (playerPoints + playerRebounds + playerAssists +
                             playerSteals +
