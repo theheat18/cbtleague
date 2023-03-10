@@ -225,15 +225,16 @@
                             "<div class='content'>" +
                             "<div class='columns is-mobile'>" +
                             "<div class='column is-half'>" +
-                            "<h2 id='player-number'>" + team.roster[i].number + "</h2>" +
-                            
-                            "<figure class='image is-128x128' id='player-image' style='margin: auto; margin-top: -60px;'>" +
-                            "<img src='assets/img/player-heads/"+team.roster[i].PlayerHead+"' alt='Player Image' class='team-logo' data-team-name='Hidden Rain'>" +
+
+                            "<figure class='image is-128x128' id='player-image' style='height: inherit;margin: auto;'>" +
+                            "<img src='assets/img/player-heads/" + team.roster[i].PlayerHead +
+                            "' alt='Player Image' class='team-logo' data-team-name='Hidden Rain'>" +
                             "</figure>" +
 
                             "</div>" +
-                            "<div class='column is-half' style='text-align: center;'>" +
-                            "<h2 id='player-name'>" + team.roster[i].name + "</h2>" +
+                            "<div class='column is-half is-vcentered' style='text-align: center;'>" +
+                            "<h2 id='player-name'>#" + team.roster[i].number + " - " + team.roster[
+                                i].name + "</h2>" +
                             "<table class='table'>" +
                             "<tr>" +
                             "<th>GP</th>" +
@@ -254,7 +255,7 @@
                             .roster[i].GamesPlayed + "</td>" +
                             "</tr>" +
                             "</table>" +
-                            "<p style='font-size:small; color:#0000EE;'> View Player Profile </p>"+
+                            "<p style='font-size:small; color:#0000EE;'> View Player Profile </p>" +
                             "</div>" +
                             "</div>" +
                             "</div>" +
