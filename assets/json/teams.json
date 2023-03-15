@@ -1767,11 +1767,11 @@
                 "stats": [{
                         "game_number": 1,
                         "opponent": "YAGGA",
-                        "Points": 8,
+                        "Points": 11,
                         "FieldGoalAttempts": 8,
                         "FieldGoalsMade": 2,
                         "ThreesAttempts": 7,
-                        "ThreesMade": 2,
+                        "ThreesMade": 3,
                         "FreeThrowsAttempts": 4,
                         "FreeThrowsMade": 2,
                         "Rebounds": 7,
