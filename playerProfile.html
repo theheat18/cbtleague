@@ -101,7 +101,8 @@
         <div class="hero-body">
             <div class="columns is-vcentered is-mobile">
                 <div class="column is-half has-text-centered">
-                    <h2 class="title is-4" style="color: white; text-shadow: 2px 2px 3px black;" id="player_Name_title" ></h2>
+                    <h2 class="title is-4" style="color: white; text-shadow: 2px 2px 3px black;" id="player_Name_title">
+                    </h2>
                     <h2 class="subtitle" id="team_name" style="color: white; text-shadow: 2px 2px 3px black;">
                         <!-- team name -->
                     </h2>
@@ -161,7 +162,30 @@
     <section class="hero is-link">
         <div class="hero-body">
             <h1 class="title is-5"><u>Game Stats</u></h1>
-            <h1>Coming Soon</h1>
+            <div class="table-container">
+                <table class="table   is-hoverable " id="games-table">
+                    <tr style="border: 1px solid white;">
+                        <th>Opponent</th>
+                        <th>PTS</th>
+                        <th>FGM</th>
+                        <th>FGA</th>
+                        <th>FG%</th>
+                        <th>3PM</th>
+                        <th>3PA</th>
+                        <th>3P%</th>
+                        <th>FTM</th>
+                        <th>FTA</th>
+                        <th>FT%</th>
+                        <th>REB</th>
+                        <th>AST</th>
+                        <th>STL</th>
+                        <th>BLK</th>
+                        <th>TOV</th>
+                        <th>PF</th>
+                        <th>EFF</th>
+                    </tr>
+                </table>
+            </div>
         </div>
     </section>
 
@@ -240,34 +264,35 @@
 
                     $("#roster").append(
                         "<div class='column is-one-fifth has-text-centered'>" +
-                        "<h1>GP</h1> <p style='color:white;'>"+
-                        team.roster[i].GamesPlayed +"</p>"+
+                        "<h1>GP</h1> <p style='color:white;'>" +
+                        team.roster[i].GamesPlayed + "</p>" +
                         "</div>" +
                         "<div class='column is-one-fifth has-text-centered'>" +
                         "<h1>PPG</h1><p style='color:white;'>" +
-                        (playerPoints / team.roster[i].GamesPlayed).toFixed(2) +"</p>"+
+                        (playerPoints / team.roster[i].GamesPlayed).toFixed(2) + "</p>" +
                         "</div>" +
                         "<div class='column is-one-fifth has-text-centered'>" +
                         "<h1>RPG</h1><p style='color:white;'>" +
-                        (playerRebounds / team.roster[i].GamesPlayed).toFixed(2) +"</p>"+
+                        (playerRebounds / team.roster[i].GamesPlayed).toFixed(2) + "</p>" +
                         "</div>" +
                         "<div class='column is-one-fifth has-text-centered'>" +
                         "<h1>APG</h1><p style='color:white;'>" +
-                        (playerAssists / team.roster[i].GamesPlayed).toFixed(2) +"</p>"+
+                        (playerAssists / team.roster[i].GamesPlayed).toFixed(2) + "</p>" +
                         "</div>" +
                         "<div class='column is-one-fifth has-text-centered'>" +
                         "<h1>EFF</h1><p style='color:white;'>" +
                         (playerPoints + playerRebounds + playerAssists + playerSteals +
                             playerBlocks - (
                                 playerFGA - playerFGM) - (playerFTA - playerFTM) - playerTOV) / team
-                        .roster[i].GamesPlayed +"</p>"+
+                        .roster[i].GamesPlayed + "</p>" +
                         "</div>"
 
 
                     );
                     $("#team_name").append(team.Team + " | #" + team.roster[i].number);
                     $("#playerhead").append(
-                        "<img src='assets/img/player-heads/"+team.roster[i].PlayerHead+"' alt='Player Image' style='width:200px !important;'>" 
+                        "<img src='assets/img/player-heads/" + team.roster[i].PlayerHead +
+                        "' alt='Player Image' style='width:200px !important;'>"
                     );
 
 
@@ -321,37 +346,42 @@
 
                     $("#players-table").append(
                         "<tr>" +
-                      
+
                         "<td>" + player.GamesPlayed + "</td>" +
                         "<td>" + playerPoints + "</td>" +
                         "<td>" + (playerPoints / player.GamesPlayed).toFixed(1) + "</td>" +
                         "<td>" + playerFGM + "</td>" +
                         "<td>" + playerFGA + "</td>" +
-                        "<td>" + ((playerFGM / playerFGA)*100).toFixed(1) + "</td>" +
+                        "<td>" + ((playerFGM / playerFGA) * 100).toFixed(1) + "</td>" +
                         "<td>" + player3PM + "</td>" +
                         "<td>" + player3PA + "</td>" +
-                        "<td>" + ((player3PM / player3PA)*100).toFixed(1) + "</td>" +
+                        "<td>" + ((player3PM / player3PA) * 100).toFixed(1) + "</td>" +
                         "<td>" + playerFTM + "</td>" +
                         "<td>" + playerFTA + "</td>" +
-                        "<td>" + ((playerFTM / playerFTA)*100).toFixed(1)+ "</td>" +
+                        "<td>" + ((playerFTM / playerFTA) * 100).toFixed(1) + "</td>" +
                         "<td>" + playerOREB + "</td>" +
                         "<td>" + playerDREB + "</td>" +
                         "<td>" + playerRebounds + "</td>" +
-                        "<td>" + (playerRebounds / team.roster[i].GamesPlayed).toFixed(1) + "</td>" +
+                        "<td>" + (playerRebounds / team.roster[i].GamesPlayed).toFixed(1) +
+                        "</td>" +
                         "<td>" + playerAssists + "</td>" +
-                        "<td>" + (playerAssists / team.roster[i].GamesPlayed).toFixed(1) + "</td>" +
+                        "<td>" + (playerAssists / team.roster[i].GamesPlayed).toFixed(1) +
+                        "</td>" +
                         "<td>" + playerSteals + "</td>" +
-                        "<td>" + (playerSteals / team.roster[i].GamesPlayed).toFixed(1) + "</td>" +
+                        "<td>" + (playerSteals / team.roster[i].GamesPlayed).toFixed(1) +
+                        "</td>" +
                         "<td>" + playerBlocks + "</td>" +
-                        "<td>" + (playerBlocks / team.roster[i].GamesPlayed).toFixed(1) + "</td>" +
+                        "<td>" + (playerBlocks / team.roster[i].GamesPlayed).toFixed(1) +
+                        "</td>" +
                         "<td>" + playerTOV + "</td>" +
-                        "<td>" + (playerTOV / team.roster[i].GamesPlayed).toFixed(1) + "</td>" +
+                        "<td>" + (playerTOV / team.roster[i].GamesPlayed).toFixed(1) +
+                        "</td>" +
                         "<td>" + playerPF + "</td>" +
                         "<td>" + (playerPoints + playerRebounds + playerAssists +
                             playerSteals +
                             playerBlocks - (
                                 playerFGA - playerFGM) - (playerFTA - playerFTM) - playerTOV
-                            ) / team
+                        ) / team
                         .roster[i].GamesPlayed + "</td>" +
                         //(PTS + REB + AST + STL + BLK − Missed FG − Missed FT - TO) / GP.
                         "</tr>"
@@ -361,7 +391,82 @@
         })
     });
 
+    //Game by Game stats
 
+    $.getJSON("assets/json/teams.json", function (data) {
+        let playerName = sessionStorage.getItem("player_Name");
+        console.log(playerName);
+        $.each(data, function (i, team) {
+
+            team.roster.forEach(function (player) {
+                if (player.name === playerName) {
+                    let playerPoints = 0;
+                    let playerFGM = 0;
+                    let playerFGA = 0;
+                    let player3PM = 0;
+                    let player3PA = 0;
+                    let playerFTM = 0;
+                    let playerFTA = 0;
+                    let playerRebounds = 0;
+                    let playerOREB = 0;
+                    let playerDREB = 0;
+                    let playerAssists = 0;
+                    let playerBlocks = 0;
+                    let playerSteals = 0;
+                    let playerTOV = 0;
+                    let playerPF = 0;
+
+                    for (let j = 0; j < player.stats.length; j++) {
+                        if (player.stats[j].opponent !== "") {
+                        playerPoints = player.stats[j].Points;
+                        playerFGM = player.stats[j].FieldGoalsMade;
+                        playerFGA = player.stats[j].FieldGoalAttempts;
+                        player3PM = player.stats[j].ThreesMade;
+                        player3PA = player.stats[j].ThreesAttempts;
+                        playerFTM = player.stats[j].FreeThrowsMade;
+                        playerFTA = player.stats[j].FreeThrowsAttempts;
+                        playerRebounds = player.stats[j].Rebounds;
+                        playerAssists = player.stats[j].Assists;
+                        playerBlocks = player.stats[j].Blocks;
+                        playerSteals = player.stats[j].Steals;
+                        playerTOV = player.stats[j].Turnovers;
+                        playerPF = player.stats[j].PersonalFouls;
+
+
+                        $("#games-table").append(
+                            "<tr>" +
+                            "<td>" + player.stats[j].opponent + "</td>" +
+                            "<td>" + playerPoints + "</td>" +
+                            "<td>" + playerFGM + "</td>" +
+                            "<td>" + playerFGA + "</td>" +
+                            "<td>" + ((playerFGM / playerFGA) * 100).toFixed(1) + "</td>" +
+                            "<td>" + player3PM + "</td>" +
+                            "<td>" + player3PA + "</td>" +
+                            "<td>" + ((player3PM / player3PA) * 100).toFixed(1) + "</td>" +
+                            "<td>" + playerFTM + "</td>" +
+                            "<td>" + playerFTA + "</td>" +
+                            "<td>" + ((playerFTM / playerFTA) * 100).toFixed(1) + "</td>" +
+                            "<td>" + playerRebounds + "</td>" +
+                            "<td>" + playerAssists + "</td>" +
+                            "<td>" + playerBlocks + "</td>" +
+                            "<td>" + playerSteals + "</td>" +
+                            "<td>" + playerTOV + "</td>" +
+                            "<td>" + playerPF + "</td>" +
+                            "<td>" + (playerPoints + playerRebounds + playerAssists +
+                                playerSteals +
+                                playerBlocks - (
+                                    playerFGA - playerFGM) - (playerFTA - playerFTM) -
+                                playerTOV
+                            ) / team
+                            .roster[i].GamesPlayed + "</td>" +
+                            //(PTS + REB + AST + STL + BLK − Missed FG − Missed FT - TO) / GP.
+                            "</tr>"
+                        );
+                    }}
+                }
+            })
+        })
+    });
 </script>
 
 </html>

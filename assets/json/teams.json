@@ -2,11 +2,11 @@
         "Team": "Hidden Rain",
         "wins": 2,
         "loss": 0,
-        "gamesPlayed": 1,
+        "gamesPlayed": 2,
         "roster": [{
                 "name": "Kevin Rivera",
                 "number": 3,
-                "GamesPlayed": 1,
+                "GamesPlayed": 2,
                 "PlayerHead": "kevinrivera.jpg",
                 "stats": [{
                         "game_number": 1,
@@ -30,7 +30,7 @@
                     {
                         "game_number": 2,
                         "opponent": "Integral Construction",
-                        "Points": 0,
+                        "Points": 19,
                         "FieldGoalsMade": 0,
                         "FieldGoalAttempts": 0,
                         "ThreesMade": 0,
