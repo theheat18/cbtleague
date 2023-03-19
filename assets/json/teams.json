@@ -1,6 +1,6 @@
 [{
         "Team": "Hidden Rain",
-        "wins": 1,
+        "wins": 2,
         "loss": 0,
         "gamesPlayed": 1,
         "roster": [{
@@ -29,7 +29,7 @@
                     },
                     {
                         "game_number": 2,
-                        "opponent": "",
+                        "opponent": "Integral Construction",
                         "Points": 0,
                         "FieldGoalsMade": 0,
                         "FieldGoalAttempts": 0,
@@ -2878,7 +2878,7 @@
     {
         "Team": "Coulda Been",
         "wins": 1,
-        "loss": 0,
+        "loss": 1,
         "gamesPlayed":1,
         "roster": [{
                 "name": "John Fernandes",
@@ -4472,11 +4472,10 @@
             }
         ]
     },
-
     {
         "Team": "Integral Construction",
         "wins": 0,
-        "loss": 1,
+        "loss": 2,
         "gamesPlayed":1,
         "roster": [{
                 "name": "Stu Vargas",
@@ -6070,9 +6069,10 @@
             }
 
         ]
-    }, {
+    }, 
+    {
         "Team": "YAGGA",
-        "wins": 1,
+        "wins": 2,
         "loss": 0,
         "gamesPlayed":1,
         "roster": [{
@@ -7666,15 +7666,17 @@
                 ]
             }
         ]
-    }, {
+    }, 
+    {
         "Team": "OTF",
-        "wins": 0,
+        "wins": 1,
         "loss": 0,
         "gamesPlayed": 0,
         "roster": [{
                 "name": "Bryant Washington",
                 "number": 4,
-                "GamesPlayed": 0,
+                "GamesPlayed": 1,               
+                "PlayerHead": "bryantwashington.jpg",
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -7833,6 +7835,7 @@
                 "name": "Jason Baxter",
                 "number": 44,
                 "GamesPlayed": 0,
+                "PlayerHead": "jasonbaxter.jpg",
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -7991,6 +7994,7 @@
                 "name": "Kevin Caban Lorenzo",
                 "number": 3,
                 "GamesPlayed": 0,
+                "PlayerHead": "kevinlorenzo.jpg",
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -8149,6 +8153,7 @@
                 "name": "Nazier Medina",
                 "number": 1,
                 "GamesPlayed": 0,
+                "PlayerHead": "nasirmedina.jpg",
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -8307,6 +8312,7 @@
                 "name": "Terrell Sherman Jr.",
                 "number": 0,
                 "GamesPlayed": 0,
+                "PlayerHead": "terellsherman.jpg",
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -8465,6 +8471,7 @@
                 "name": "Michael Rapuano Jr",
                 "number": 12,
                 "GamesPlayed": 0,
+                "PlayerHead": "michaelrapuano.jpg",
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -8623,6 +8630,7 @@
                 "name": "Tamar Sherman",
                 "number": 2,
                 "GamesPlayed": 0,
+                "PlayerHead": "tamarsherman.jpg",
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -8778,9 +8786,10 @@
                 ]
             },
             {
-                "name": "Tamir Sherman ",
+                "name": "Tamir Sherman",
                 "number": 5,
                 "GamesPlayed": 0,
+                "PlayerHead": "tamirsherman.jpg",
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -8939,6 +8948,7 @@
                 "name": "Nass Edwards",
                 "number": 10,
                 "GamesPlayed": 0,
+                "PlayerHead": "nassedwards.jpg",
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -9094,10 +9104,11 @@
                 ]
             }
         ]
-    }, {
+    }, 
+    {
         "Team": "Free Agents",
         "wins": 0,
-        "loss": 1,
+        "loss": 2,
         "gamesPlayed":1,
         "roster": [{
                 "name": "Chris Estwan",
