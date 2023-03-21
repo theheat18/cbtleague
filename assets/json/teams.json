@@ -1922,7 +1922,7 @@
                 "name": "David Crenshaw",
                 "number": 13,
                 "GamesPlayed": 0,
-                "PlayerHead": "davidcrenshaw.jpg",
+                "PlayerHead": "tuneSquad.jpg",
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -2081,7 +2081,7 @@
                 "name": "Julian Allen",
                 "number": 23,
                 "GamesPlayed": 0,
-                "PlayerHead": "julianallen.jpg",
+                "PlayerHead": "tuneSquad.jpg",
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -2717,7 +2717,7 @@
                 "name": "",
                 "number":"" ,
                 "GamesPlayed":1,
-                "PlayerHead": "",
+                "PlayerHead": "tuneSquad.jpg",
                 "stats": [{
                         "game_number": 1,
                         "opponent": "YAGGA",
@@ -2872,8 +2872,6 @@
                     }
                 ]
             }
-
-
         ]
     },
     {
@@ -3044,7 +3042,7 @@
                 "name": "Rudy Kurowski",
                 "number": 2,
                 "GamesPlayed":2,
-                "PlayerHead": "rudyKurowski.jpg",
+                "PlayerHead": "couldabeen.jpg",
                 "stats": [{
                         "game_number": 1,
                         "opponent": "Integral Construction",
@@ -4157,7 +4155,7 @@
                 "name": "Shea Tracy",
                 "number": 5,
                 "GamesPlayed":0,
-                "PlayerHead": "sheatracy.jpg",
+                "PlayerHead": "couldabeen.jpg",
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -4316,7 +4314,7 @@
                 "name": "Lameik Black",
                 "number": 10,
                 "GamesPlayed":1,
-                "PlayerHead": "lameikblack.jpg",
+                "PlayerHead": "couldabeen.jpg",
                 "stats": [{
                         "game_number": 1,
                         "opponent": "Integral",
@@ -7034,7 +7032,7 @@
                 "name": "Mike Davis",
                 "number": 33,
                 "GamesPlayed": 1,
-                "PlayerHead": "mikedavis.jpg",
+                "PlayerHead": "yagga.jpg",
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
@@ -7995,7 +7993,7 @@
                 "name": "Kevin Caban Lorenzo",
                 "number": 3,
                 "GamesPlayed": 0,
-                "PlayerHead": "kevinlorenzo.jpg",
+                "PlayerHead": "otf.jpg",
                 "stats": [{
                         "game_number": 1,
                         "opponent": "",
