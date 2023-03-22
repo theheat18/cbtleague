@@ -245,14 +245,14 @@
                             "</tr>" +
                             "<tr>" +
                             "<td>" + team.roster[i].GamesPlayed + "</td>" +
-                            "<td>" + playerPoints / team.roster[i].GamesPlayed + "</td>" +
-                            "<td>" + playerRebounds / team.roster[i].GamesPlayed + "</td>" +
-                            "<td>" + playerAssists / team.roster[i].GamesPlayed + "</td>" +
-                            "<td>" + (playerPoints + playerRebounds + playerAssists + playerBlocks -
+                            "<td>" + (playerPoints / team.roster[i].GamesPlayed).toFixed(2) + "</td>" +
+                            "<td>" + (playerRebounds / team.roster[i].GamesPlayed).toFixed(2) + "</td>" +
+                            "<td>" + (playerAssists / team.roster[i].GamesPlayed).toFixed(2) + "</td>" +
+                            "<td>" + ((playerPoints + playerRebounds + playerAssists + playerBlocks -
                                 (
                                     playerFGA - playerFGM) - (playerFTA - playerFTM) - playerTOV) /
                             team
-                            .roster[i].GamesPlayed + "</td>" +
+                            .roster[i].GamesPlayed).toFixed(2) + "</td>" +
                             "</tr>" +
                             "</table>" +
                             "<p style='font-size:small; color:#0000EE;'> View Player Profile </p>" +
