@@ -693,11 +693,11 @@
           }
           // Calculate ppg only if gamesPlayed is not zero
           if (gamesPlayed > 0) {
-            players[players.length - 1].eff = (players[players.length - 1].points + players[players.length - 1]
+            players[players.length - 1].eff = ((players[players.length - 1].points + players[players.length - 1]
               .rebounds + players[players.length - 1].assists + players[players.length - 1].steals + players[
                 players.length - 1].blocks - (players[players.length - 1].fga - players[players.length - 1]
                 .fgm) - (players[players.length - 1].fta - players[players.length - 1].ftm) - players[players
-                .length - 1].tov) / gamesPlayed.toFixed(1)
+                .length - 1].tov) / gamesPlayed).toFixed(2)
           }
         }
       });

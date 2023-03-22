@@ -94,7 +94,7 @@
 
                         "<td>" + team.roster[i].GamesPlayed + "</td>" +
                         "<td>" + playerPoints + "</td>" +
-                        "<td>" + playerPoints / team.roster[i].GamesPlayed + "</td>" +
+                        "<td>" + (playerPoints / team.roster[i].GamesPlayed).toFixed(2) + "</td>" +
                         "<td>" + playerFGM + "</td>" +
                         "<td>" + playerFGA + "</td>" +
                         "<td>" + (playerFGM / playerFGA).toFixed(2) + "</td>" +
@@ -117,10 +117,10 @@
                         "<td>" + playerTOV + "</td>" +
                         "<td>" + (playerTOV / team.roster[i].GamesPlayed).toFixed(2) + "</td>" +
                         "<td>" + playerPF + "</td>" +
-                        "<td>" + (playerPoints + playerRebounds + playerAssists + playerSteals +
+                        "<td>" + ((playerPoints + playerRebounds + playerAssists + playerSteals +
                             playerBlocks - (
                                 playerFGA - playerFGM) - (playerFTA - playerFTM) - playerTOV) / team
-                        .roster[i].GamesPlayed + "</td>" +
+                        .roster[i].GamesPlayed).toFixed(2) + "</td>" +
                         //(PTS + REB + AST + STL + BLK − Missed FG − Missed FT - TO) / GP.
                         "</tr>"
                     );
