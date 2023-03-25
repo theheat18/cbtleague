@@ -269,22 +269,22 @@
                         "</div>" +
                         "<div class='column is-one-fifth has-text-centered'>" +
                         "<h1>PPG</h1><p style='color:white;'>" +
-                        (playerPoints / team.roster[i].GamesPlayed).toFixed(2) + "</p>" +
+                        (playerPoints / team.roster[i].GamesPlayed).toFixed(1) + "</p>" +
                         "</div>" +
                         "<div class='column is-one-fifth has-text-centered'>" +
                         "<h1>RPG</h1><p style='color:white;'>" +
-                        (playerRebounds / team.roster[i].GamesPlayed).toFixed(2) + "</p>" +
+                        (playerRebounds / team.roster[i].GamesPlayed).toFixed(1) + "</p>" +
                         "</div>" +
                         "<div class='column is-one-fifth has-text-centered'>" +
                         "<h1>APG</h1><p style='color:white;'>" +
-                        (playerAssists / team.roster[i].GamesPlayed).toFixed(2) + "</p>" +
+                        (playerAssists / team.roster[i].GamesPlayed).toFixed(1) + "</p>" +
                         "</div>" +
                         "<div class='column is-one-fifth has-text-centered'>" +
                         "<h1>EFF</h1><p style='color:white;'>" +
                         ((playerPoints + playerRebounds + playerAssists + playerSteals +
                             playerBlocks - (
                                 playerFGA - playerFGM) - (playerFTA - playerFTM) - playerTOV) / team
-                        .roster[i].GamesPlayed).toFixed(2) + "</p>" +
+                        .roster[i].GamesPlayed).toFixed(1) + "</p>" +
                         "</div>"
 
 
@@ -457,7 +457,7 @@
                                     playerFGA - playerFGM) - (playerFTA - playerFTM) -
                                 playerTOV
                             ) / team
-                            .roster[i].GamesPlayed).toFixed(2) + "</td>" +
+                            .roster[i].GamesPlayed).toFixed(1) + "</td>" +
                             //(PTS + REB + AST + STL + BLK − Missed FG − Missed FT - TO) / GP.
                             "</tr>"
                         );
