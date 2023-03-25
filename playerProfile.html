@@ -362,27 +362,26 @@
                         "<td>" + playerOREB + "</td>" +
                         "<td>" + playerDREB + "</td>" +
                         "<td>" + playerRebounds + "</td>" +
-                        "<td>" + (playerRebounds / team.roster[i].GamesPlayed).toFixed(1) +
+                        "<td>" + (playerRebounds / player.GamesPlayed).toFixed(1) +
                         "</td>" +
                         "<td>" + playerAssists + "</td>" +
-                        "<td>" + (playerAssists / team.roster[i].GamesPlayed).toFixed(1) +
+                        "<td>" + (playerAssists / player.GamesPlayed).toFixed(1) +
                         "</td>" +
                         "<td>" + playerSteals + "</td>" +
-                        "<td>" + (playerSteals / team.roster[i].GamesPlayed).toFixed(1) +
+                        "<td>" + (playerSteals / player.GamesPlayed).toFixed(1) +
                         "</td>" +
                         "<td>" + playerBlocks + "</td>" +
-                        "<td>" + (playerBlocks / team.roster[i].GamesPlayed).toFixed(1) +
+                        "<td>" + (playerBlocks / player.GamesPlayed).toFixed(1) +
                         "</td>" +
                         "<td>" + playerTOV + "</td>" +
-                        "<td>" + (playerTOV / team.roster[i].GamesPlayed).toFixed(1) +
+                        "<td>" + (playerTOV / player.GamesPlayed).toFixed(1) +
                         "</td>" +
                         "<td>" + playerPF + "</td>" +
                         "<td>" + ((playerPoints + playerRebounds + playerAssists +
                             playerSteals +
                             playerBlocks - (
                                 playerFGA - playerFGM) - (playerFTA - playerFTM) - playerTOV
-                        ) / team
-                        .roster[i].GamesPlayed).toFixed(1) + "</td>" +
+                        ) / player.GamesPlayed).toFixed(1) + "</td>" +
                         //(PTS + REB + AST + STL + BLK − Missed FG − Missed FT - TO) / GP.
                         "</tr>"
                     );
