@@ -100,7 +100,7 @@
             players[players.length - 1].points += team.roster[j].stats[k].Points;
           }
           // Calculate ppg only if gamesPlayed is not zero
-          if (gamesPlayed > 0) {
+          if (gamesPlayed >= 3) {
             players[players.length - 1].ppg = (players[players.length - 1].points / gamesPlayed).toFixed(1);
           }
         }
@@ -137,41 +137,39 @@
     $.getJSON("assets/json/teams.json", function (data) {
 
       // Flatten the data into an array of players
-      let players = [];
+      let qualifiedPlayers = [];
       $.each(data, function (i, team) {
         for (let j = 0; j < team.roster.length; j++) {
-          players.push({
+          let player = {
             team: team.Team,
             name: team.roster[j].name,
             FGM: 0,
             FGA: 0,
             FGP: 0
-          });
+          };
           for (let k = 0; k < team.roster[j].stats.length; k++) {
-            players[players.length - 1].FGM += team.roster[j].stats[k].FieldGoalsMade;
-            players[players.length - 1].FGA += team.roster[j].stats[k].FieldGoalAttempts;
-            const fga = players[players.length - 1].FGA;
-            players[players.length - 1].FGP = fga === 0 ? 0 : parseFloat(((players[players.length - 1].FGM /
-              fga) * 100).toFixed(1));
+            player.FGM += team.roster[j].stats[k].FieldGoalsMade;
+            player.FGA += team.roster[j].stats[k].FieldGoalAttempts;
           }
-
+          if (player.FGA > 10) {
+            const fieldgoalattempts = player.FGA;
+            player.FGP = parseFloat(((player.FGM / player.FGA) * 100).toFixed(1));
+            qualifiedPlayers.push(player);
+          }
         }
       });
 
 
-
-      // Sort the players by points
-      players.sort(function (a, b) {
+      // Sort the qualified players by threesPercent
+      qualifiedPlayers.sort(function (a, b) {
         return b.FGP - a.FGP;
       });
 
-
-
-      // Filter the top 5 players
-      players = players.slice(0, 5);
+      // Keep only the top 5 qualified players
+      qualifiedPlayers = qualifiedPlayers.slice(0, 5);
 
       // Build the table rows
-      $.each(players, function (i, player) {
+      $.each(qualifiedPlayers, function (i, player) {
         $("#fieldGoal-table").append(
           "<tr>" +
           "<td>" + (i + 1) + "</td>" +
@@ -197,7 +195,7 @@
           players.push({
             team: team.Team,
             name: team.roster[j].name,
-            threesMade: 0
+            threesMade: 0,
           });
           for (let k = 0; k < team.roster[j].stats.length; k++) {
             players[players.length - 1].threesMade += team.roster[j].stats[k].ThreesMade;
@@ -230,43 +228,44 @@
     //This is for 3p%       //
     //////////////////////////
 
+
     $.getJSON("assets/json/teams.json", function (data) {
 
+      // Initialize an array of qualified players
+      let qualifiedPlayers = [];
+
       // Flatten the data into an array of players
-      let players = [];
       $.each(data, function (i, team) {
         for (let j = 0; j < team.roster.length; j++) {
-          players.push({
+          let player = {
             team: team.Team,
             name: team.roster[j].name,
             threesMade: 0,
             threesAttempted: 0,
             threesPercent: 0
-          });
+          };
           for (let k = 0; k < team.roster[j].stats.length; k++) {
-            players[players.length - 1].threesMade += team.roster[j].stats[k].ThreesMade;
-            players[players.length - 1].threesAttempted += team.roster[j].stats[k].ThreesAttempts;
-            const threesAttempted = players[players.length - 1].threesAttempted;
-            players[players.length - 1].threesPercent = threesAttempted === 0 ? 0 : parseFloat(((players[players
-                .length - 1].threesMade /
-              threesAttempted) * 100).toFixed(1));
+            player.threesMade += team.roster[j].stats[k].ThreesMade;
+            player.threesAttempted += team.roster[j].stats[k].ThreesAttempts;
           }
-
+          if (player.threesAttempted > 10) {
+            const threesAttempted = player.threesAttempted;
+            player.threesPercent = parseFloat(((player.threesMade / threesAttempted) * 100).toFixed(1));
+            qualifiedPlayers.push(player);
+          }
         }
       });
 
-
-      // Sort the players by points
-      players.sort(function (a, b) {
+      // Sort the qualified players by threesPercent
+      qualifiedPlayers.sort(function (a, b) {
         return b.threesPercent - a.threesPercent;
       });
 
-
-      // Filter the top 5 players
-      players = players.slice(0, 5);
+      // Keep only the top 5 qualified players
+      qualifiedPlayers = qualifiedPlayers.slice(0, 5);
 
       // Build the table rows
-      $.each(players, function (i, player) {
+      $.each(qualifiedPlayers, function (i, player) {
         $("#threesPercent-table").append(
           "<tr>" +
           "<td>" + (i + 1) + "</td>" +
@@ -277,6 +276,7 @@
         );
       });
     });
+
 
     ////////////////////////
     //This is for rebounds//
@@ -341,7 +341,7 @@
             players[players.length - 1].rebounds += team.roster[j].stats[k].Rebounds;
           }
           // Calculate ppg only if gamesPlayed is not zero
-          if (gamesPlayed > 0) {
+          if (gamesPlayed >= 3) {
             players[players.length - 1].rpg = (players[players.length - 1].rebounds / gamesPlayed).toFixed(1);
           }
         }
@@ -435,7 +435,7 @@
             players[players.length - 1].assists += team.roster[j].stats[k].Assists;
           }
           // Calculate ppg only if gamesPlayed is not zero
-          if (gamesPlayed > 0) {
+          if (gamesPlayed >= 3) {
             players[players.length - 1].apg = (players[players.length - 1].assists / gamesPlayed).toFixed(1);
           }
         }
@@ -527,7 +527,7 @@
             players[players.length - 1].blocks += team.roster[j].stats[k].Blocks;
           }
           // Calculate ppg only if gamesPlayed is not zero
-          if (gamesPlayed > 0) {
+          if (gamesPlayed >= 3) {
             players[players.length - 1].bpg = (players[players.length - 1].blocks / gamesPlayed).toFixed(1);
           }
         }
@@ -619,7 +619,7 @@
             players[players.length - 1].steals += team.roster[j].stats[k].Steals;
           }
           // Calculate ppg only if gamesPlayed is not zero
-          if (gamesPlayed > 0) {
+          if (gamesPlayed >= 3) {
             players[players.length - 1].spg = (players[players.length - 1].steals / gamesPlayed).toFixed(1);
           }
         }
@@ -692,11 +692,13 @@
             players[players.length - 1].tov += team.roster[j].stats[k].Turnovers;
           }
           // Calculate ppg only if gamesPlayed is not zero
-          if (gamesPlayed > 0) {
+          if (gamesPlayed > 3) {
             players[players.length - 1].eff = ((players[players.length - 1].points + players[players.length - 1]
-              .rebounds + players[players.length - 1].assists + players[players.length - 1].steals + players[
+              .rebounds + players[players.length - 1].assists + players[players.length - 1].steals +
+              players[
                 players.length - 1].blocks - (players[players.length - 1].fga - players[players.length - 1]
-                .fgm) - (players[players.length - 1].fta - players[players.length - 1].ftm) - players[players
+                .fgm) - (players[players.length - 1].fta - players[players.length - 1].ftm) - players[
+                players
                 .length - 1].tov) / gamesPlayed).toFixed(2)
           }
         }
@@ -788,7 +790,7 @@
             players[players.length - 1].turnovers += team.roster[j].stats[k].Turnovers;
           }
           // Calculate ppg only if gamesPlayed is not zero
-          if (gamesPlayed > 0) {
+          if (gamesPlayed >= 3) {
             players[players.length - 1].tovpg = (players[players.length - 1].turnovers / gamesPlayed).toFixed(
               1);
           }
@@ -908,7 +910,7 @@
         <div class="card">
           <div class="card-content">
             <div class="content">
-              <p>PPG</p>
+              <p>PPG <span style="float: right; font-size: xx-small;">(3 Game Min.)</span></p>
               <div class="table-container">
                 <table class="table  is-hoverable " id="ppg-table">
                   <tr>
@@ -927,7 +929,7 @@
         <div class="card">
           <div class="card-content">
             <div class="content">
-              <p>Field Goal %</p>
+              <p>Field Goal % <span style="float: right; font-size: xx-small;">(10 Attempts Min.)</span></p>
               <div class="table-container">
                 <table class="table  is-hoverable " id="fieldGoal-table">
                   <tr>
@@ -965,7 +967,7 @@
         <div class="card">
           <div class="card-content">
             <div class="content">
-              <p>3PT%</p>
+              <p>3PT%<span style="float: right; font-size: xx-small;">(10 Attempts Min.)</span></p>
               <div class="table-container">
                 <table class="table  is-hoverable " id="threesPercent-table">
                   <tr>
@@ -1003,7 +1005,7 @@
         <div class="card">
           <div class="card-content">
             <div class="content">
-              <p>RPG</p>
+              <p>RPG<span style="float: right; font-size: xx-small;">(3 Game Min.)</span></p>
               <div class="table-container">
                 <table class="table  is-hoverable " id="rpg-table">
                   <tr>
@@ -1041,7 +1043,7 @@
         <div class="card">
           <div class="card-content">
             <div class="content">
-              <p>APG</p>
+              <p>APG<span style="float: right; font-size: xx-small;">(3 Game Min.)</span></p>
               <div class="table-container">
                 <table class="table  is-hoverable " id="apg-table">
                   <tr>
@@ -1079,7 +1081,7 @@
         <div class="card">
           <div class="card-content">
             <div class="content">
-              <p>BPG</p>
+              <p>BPG<span style="float: right; font-size: xx-small;">(3 Game Min.)</span></p>
               <div class="table-container">
                 <table class="table  is-hoverable " id="bpg-table">
                   <tr>
@@ -1117,7 +1119,7 @@
         <div class="card">
           <div class="card-content">
             <div class="content">
-              <p>SPG</p>
+              <p>SPG<span style="float: right; font-size: xx-small;">(3 Game Min.)</span></p>
               <div class="table-container">
                 <table class="table  is-hoverable " id="spg-table">
                   <tr>
@@ -1136,7 +1138,7 @@
         <div class="card">
           <div class="card-content">
             <div class="content">
-              <p>Efficiency</p>
+              <p>Efficiency<span style="float: right; font-size: xx-small;">(3 Game Min.)</span></p>
               <div class="table-container">
                 <table class="table  is-hoverable " id="eff-table">
                   <tr>
@@ -1174,7 +1176,7 @@
         <div class="card">
           <div class="card-content">
             <div class="content">
-              <p>TOVPG</p>
+              <p>TOVPG<span style="float: right; font-size: xx-small;">(3 Game Min.)</span></p>
               <div class="table-container">
                 <table class="table  is-hoverable " id="tovpg-table">
                   <tr>
