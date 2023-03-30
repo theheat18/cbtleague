@@ -451,13 +451,12 @@
                             "<td>" + playerBlocks + "</td>" +
                             "<td>" + playerTOV + "</td>" +
                             "<td>" + playerPF + "</td>" +
-                            "<td>" + ((playerPoints + playerRebounds + playerAssists +
+                            "<td>" + (playerPoints + playerRebounds + playerAssists +
                                 playerSteals +
                                 playerBlocks - (
                                     playerFGA - playerFGM) - (playerFTA - playerFTM) -
                                 playerTOV
-                            ) / team
-                            .roster[i].GamesPlayed).toFixed(1) + "</td>" +
+                            ).toFixed(1) + "</td>" +
                             //(PTS + REB + AST + STL + BLK − Missed FG − Missed FT - TO) / GP.
                             "</tr>"
                         );
