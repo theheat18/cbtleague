@@ -94,9 +94,9 @@
 
                         "<td>" + team.roster[i].GamesPlayed + "</td>" +
                         "<td>" + (playerPoints / team.roster[i].GamesPlayed).toFixed(1) + "</td>" +
-                        "<td>" + (playerFGM / playerFGA).toFixed(1) + "</td>" +
-                        "<td>" + (player3PM / player3PA).toFixed(1) + "</td>" +
-                        "<td>" + (playerFTM / playerFTA).toFixed(1) + "</td>" +
+                        "<td>" + ((playerFGM / playerFGA)*100).toFixed(1) + "%</td>" +
+                        "<td>" + ((player3PM / player3PA)*100).toFixed(1) + "%</td>" +
+                        "<td>" + ((playerFTM / playerFTA)*100).toFixed(1) + "%</td>" +
                         "<td>" + (playerRebounds / team.roster[i].GamesPlayed).toFixed(1) +
                         "</td>" +
                         "<td>" + (playerAssists / team.roster[i].GamesPlayed).toFixed(1) + "</td>" +
@@ -109,7 +109,7 @@
                             .roster[i].GamesPlayed).toFixed(1) + "</td>" +
                         //(PTS + REB + AST + STL + BLK − Missed FG − Missed FT - TO) / GP.
                         "<td>" + ((playerPoints / (2 * (playerFGA + (0.44 * playerFTA)))) * 100)
-                        .toFixed(2) + "</td>" +
+                        .toFixed(2) + "%</td>" +
                         //ts = pts/(3(fga+(0.44xfta))
                         "<td>" + ((playerPoints * (playerPoints / (2 * (playerFGA + (0.44 *
                                     playerFTA)))) + (1.5 * playerAssists) + (1.2 * playerRebounds) +
