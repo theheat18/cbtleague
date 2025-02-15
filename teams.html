@@ -36,6 +36,31 @@
             });
 
         });
+
+        document.addEventListener("DOMContentLoaded", function () {
+    const seasonDropdown = document.getElementById("seasonDropdown"); // Assign an id to the dropdown
+    const season1Container = document.getElementById("season1");
+    const season2Container = document.getElementById("season2");
+
+    function toggleSeason() {
+        const selectedSeason = seasonDropdown.value;
+
+        if (selectedSeason === "season1") {
+            season1Container.style.display = "block";
+            season2Container.style.display = "none";
+        } else {
+            season1Container.style.display = "none";
+            season2Container.style.display = "block";
+        }
+    }
+
+    // Initial toggle to show the correct season on page load
+    toggleSeason();
+
+    // Add event listener to dropdown
+    seasonDropdown.addEventListener("change", toggleSeason);
+});
+
     </script>
 </head>
 
@@ -47,7 +72,7 @@
         <div class="navbar-brand">
             <div class="container ">
 
-                <a href="index.html"><img class="logoContainer" src="assets/img/cbt-logo1.jpg" alt="" width="150px"></a>
+                <a href="index.html"><img class="logoContainer" src="assets/img/cbt-logo1.jpg" alt="" width="100px"></a>
 
             </div>
 
@@ -95,17 +120,27 @@
                     </a>
                 </div>
             </div>
-            <a href="playoffs.html" class="navbar-item">
-                Playoffs
-            </a>
         </div>
     </nav>
 
     <section class="section">
    <h1 class="title is-3">Teams</h1>
+
+   <div class="container">
+    <h3 style="color: white;">Season:</h3>
+    <div class="select is-small is-centered">
+        <select id="seasonDropdown">
+            <option value="season2">Season 2 - 2025</option>
+            <option value="season1">Season 1 - 2023</option>
+        </select>        
+    </div>
+    
+</div>
 </section>
 
-    <div class="container" style="top: 15px;">
+    <div class="container" id="season1" style="top: 15px;">
+
+        
 
         <div class="columns is-multiline is-centered">
             <div class="column is-one-quarter">
@@ -190,7 +225,94 @@
         </div>
 
     </div>
+   
+    <div class="container" id="season2" style="top: 15px;">
+
+        
+
+        <div class="columns is-multiline is-centered">
+            <div class="column is-one-quarter">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="content">
+                            <figure class="image is-3by2">
+                                <img src="assets/img/team-logos/hiddenRain.jpg" alt="Hidden Rain" class="team-logo" data-team-name="Hidden Rain">
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column is-one-quarter">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="content">
+                            <figure class="image is-3by2">
+                                <img src="assets/img/team-logos/otf.jpg" alt="Hall of Fame" class="team-logo" data-team-name="OTF">
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-one-quarter">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="content">
+                            <figure class="image is-3by2">
+                                <img src="assets/img/team-logos/1fam.jpg" alt="1Fam" class="team-logo" data-team-name="1Fam">
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-one-quarter">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="content">
+                            <figure class="image is-3by2">
+                                <img src="assets/img/team-logos/venom.jpg" alt="Venom" class="team-logo" data-team-name="Venom">
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-one-quarter">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="content">
+                            <figure class="image is-3by2">
+                                <img src="assets/img/team-logos/getbucks.jpg" alt="Get Bucks" class="team-logo" data-team-name="GetBuck$">
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-one-quarter">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="content">
+                            <figure class="image is-3by2">
+                                <img src="assets/img/team-logos/newfree.jpg" alt="New Free Agents" class="team-logo" data-team-name="FreeAgents">
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-one-quarter">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="content">
+                            <figure class="image is-3by2">
+                                <img src="assets/img/team-logos/bta.jpg" alt="bta" class="team-logo" data-team-name="BTA">
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
+
 
 </body>
 
@@ -229,6 +351,26 @@ teamLogos.forEach(logo => {
     if(teamName === "Integral Construction"){
         console.log("IC")
         teamColor = "darkgreen";
+    }
+    if(teamName === "BTA"){
+        console.log("BTA")
+        teamColor = "grey";
+    }
+    if(teamName === "Venom"){
+        console.log("venom")
+        teamColor = "black";
+    }
+    if(teamName === "1Fam"){
+        console.log("1fam")
+        teamColor = "black";
+    }
+    if(teamName === "GetBuck$"){
+        console.log("getbuck$")
+        teamColor = "darkblue";
+    }
+    if(teamName === "FreeAgents"){
+        console.log("FA")
+        teamColor = "yellow";
     };
    
 

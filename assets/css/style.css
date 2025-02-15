@@ -59,7 +59,7 @@ table {
   margin: 0 auto;
   border-collapse: collapse;
   text-align: center !important;
-  font-size: x-small !important;
+  font-size: small !important;
 }
 
 th {
@@ -120,3 +120,19 @@ img{
   position: sticky;
   top: 0;
 }
+
+#install-popup {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+#close-popup {
+  margin-top: 10px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+

@@ -40,7 +40,7 @@
 
 
         //This script gets individual player stats onto a table
-        $.getJSON("assets/json/teams_season2.json", function (data) {
+        $.getJSON("assets/json/teams.json", function (data) {
 
             $.each(data, function (i, team) {
 
@@ -192,9 +192,6 @@
             }
         }
 
-
-
-
     </script>
 </head>
 
@@ -265,7 +262,7 @@
             <div class="select is-small is-centered">
                 <select id="seasonSelector">
                     <option value="season2">Season 2 - 2025</option>
-                    <option value="season1">Season 1 - 2023</option>
+                    <option value="season1" selected>Season 1 - 2023 </option>
                 </select>                
             </div>
         </div>
@@ -445,7 +442,7 @@
         if (this.value === 'season1') {
             window.location.href = 'playerstats_1.html'; // Redirects to playerstats_1.html
         } else if (this.value === 'season2') {
-            window.location.href = 'playerstats.html'; // Redirects to playerstats_2.html (or wherever you'd want)
+            window.location.href = 'playerstats.html'; // Redirects to playerstats.html (or wherever you'd want)
         }
     });
 </script>

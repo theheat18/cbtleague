@@ -15,44 +15,34 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <script>
-    function filterTableRows() {
-        // Get the selected name from the dropdown
-        var select = document.getElementById("filterSelect");
-        var name = select.options[select.selectedIndex].value;
+function filterTableRows() {
+    var select = document.getElementById("filterSelect");
+    var name = select.value.toLowerCase();
 
-        // Get the table
-        var table = document.getElementById("scheduleTable");
+    // Determine the currently visible table
+    var seasonDropdown = document.getElementById("seasonDropdown");
+    var selectedSeason = seasonDropdown.value; // Either "scheduleTable" or "scheduleTableSeason2"
+    
+    var table = document.getElementById(selectedSeason); // Dynamically get the correct table
+    if (!table) return; // Safety check in case table is not found
 
-        // Get all the rows in the table
-        var rows = table.getElementsByTagName("tr");
+    var rows = table.getElementsByTagName("tr");
 
-        // Loop through each row
-        for (var i = 1; i < rows.length; i++) {
-            // Get all the cells in the row
-            var cells = rows[i].getElementsByTagName("td");
+    for (var i = 1; i < rows.length; i++) {
+        var cells = rows[i].getElementsByTagName("td");
+        var nameFound = false;
 
-            // Initialize a flag to indicate whether the name was found in the row
-            var nameFound = false;
-
-            // Loop through each cell
-            for (var j = 0; j < cells.length; j++) {
-                // Check if the cell's text content contains the name
-                if (cells[j].textContent.toLowerCase().indexOf(name.toLowerCase()) !== -1) {
-                    // If the name was found, set the flag to true and break the loop
-                    nameFound = true;
-                    break;
-                }
-            }
-
-            // If the name was not found in the row, hide the row
-            if (!nameFound) {
-                rows[i].style.display = "none";
-            } else {
-                // If the name was found, show the row
-                rows[i].style.display = "";
+        for (var j = 0; j < cells.length; j++) {
+            if (cells[j].textContent.toLowerCase().includes(name)) {
+                nameFound = true;
+                break;
             }
         }
+
+        rows[i].style.display = nameFound || name === "" ? "" : "none";
     }
+}
+
 
     document.addEventListener('DOMContentLoaded', () => {
 
@@ -76,52 +66,64 @@
 
     });
 
-    document.addEventListener('DOMContentLoaded', () => {
-        // Functions to open and close a modal
-        function openModal($el) {
-            $el.classList.add('is-active');
+
+    document.addEventListener("DOMContentLoaded", function () {
+    const seasonDropdown = document.getElementById("seasonDropdown");
+    const season1Table = document.getElementById("scheduleTable");
+    const season2Table = document.getElementById("scheduleTableSeason2");
+    const filterSelect = document.getElementById("filterSelect");
+
+    const teamsBySeason = {
+        "scheduleTable": [  // Season 1 - 2023
+            "Coulda Been", "Hidden Rain", "Integral Construction", 
+            "Tune Squad", "Free Agents", "YAGGA", "OTF"
+        ],
+        "scheduleTableSeason2": [  // Season 2 - 2025
+            "Hidden Rain", "Free Agents", "BTA", 
+            "1FAM", "OTF", "Venom", "Get Buck$"
+        ]
+    };
+
+    function toggleSeason() {
+        const selectedSeason = seasonDropdown.value;
+
+        if (selectedSeason === "scheduleTable") {
+            season1Table.style.display = "";
+            season2Table.style.display = "none";
+        } else {
+            season1Table.style.display = "none";
+            season2Table.style.display = "";
         }
 
-        function closeModal($el) {
-            $el.classList.remove('is-active');
-        }
+        updateTeamDropdown(selectedSeason);
+    }
 
-        function closeAllModals() {
-            (document.querySelectorAll('.modal') || []).forEach(($modal) => {
-                closeModal($modal);
-            });
-        }
+    function updateTeamDropdown(season) {
+        filterSelect.innerHTML = ''; // Clear existing options
 
-        // Add a click event on buttons to open a specific modal
-        (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
-            const modal = $trigger.dataset.target;
-            const $target = document.getElementById(modal);
+        // Add "Show All" option
+        const showAllOption = document.createElement("option");
+        showAllOption.value = "";
+        showAllOption.textContent = "Show All";
+        filterSelect.appendChild(showAllOption);
 
-            $trigger.addEventListener('click', () => {
-                openModal($target);
-            });
+        // Add teams for the selected season
+        teamsBySeason[season].forEach(team => {
+            const option = document.createElement("option");
+            option.value = team;
+            option.textContent = team;
+            filterSelect.appendChild(option);
         });
+    }
 
-        // Add a click event on various child elements to close the parent modal
-        (document.querySelectorAll(
-            '.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || [])
-        .forEach(($close) => {
-            const $target = $close.closest('.modal');
+    // Initial setup
+    toggleSeason();
 
-            $close.addEventListener('click', () => {
-                closeModal($target);
-            });
-        });
+    // Event listeners
+    seasonDropdown.addEventListener("change", toggleSeason);
+});
 
-        // Add a keyboard event to close all modals
-        document.addEventListener('keydown', (event) => {
-            const e = event || window.event;
 
-            if (e.keyCode === 27) { // Escape key
-                closeAllModals();
-            }
-        });
-    });
 </script>
 
 <body>
@@ -132,7 +134,7 @@
         <div class="navbar-brand">
             <div class="container ">
 
-                <a href="index.html"><img class="logoContainer" src="assets/img/cbt-logo1.jpg" alt="" width="150px"></a>
+                <a href="index.html"><img class="logoContainer" src="assets/img/cbt-logo1.jpg" alt="" width="100px"></a>
 
             </div>
 
@@ -177,9 +179,7 @@
                     </a>
                 </div>
             </div>
-            <a href="playoffs.html" class="navbar-item">
-                Playoffs
-            </a>
+            
         </div>
     </nav>
     <hr>
@@ -190,10 +190,18 @@
 
     <div class="container is-max-desktop">
         <div class="container">
+            <h3 style="color: white;">Season:</h3>
+            <div class="select is-small is-centered">
+                <select id="seasonDropdown">
+                    <option value="scheduleTableSeason2" selected>Season 2 - 2025</option> <!-- Added 'selected' to make this default -->
+                    <option value="scheduleTable">Season 1 - 2023</option>
+                </select>
+            </div>
+            
             <h3 style="color: white;">Team Selection:</h3>
             <div class="select is-small is-centered">
                 <select id="filterSelect" onchange="filterTableRows()">
-                    <option value="">Show all</option>
+                    <option value="">Show All</option>
                     <option value="Coulda Been">Coulda Been</option>
                     <option value="Hidden Rain">Hidden Rain</option>
                     <option value="Integral Construction">Integral Construction</option>
@@ -203,23 +211,23 @@
                     <option value="OTF">OTF</option>
                 </select>
             </div>
+            
         </div>
         <br>
-        <table id="scheduleTable" class="table is-striped is-bordered is-fullwidth">
+        <table id="scheduleTable" class="table is-striped is-bordered is-max-desktop">
             <thead>
                 <tr>
                     <th>Home Team</th>
                     <th>Score</th>
                     <th>Away Team</th>
                     <th>Score</th>
-                    <th>Date </th>
+                    <th>Date</th>
                     <th>Time</th>
-                    <th>Box Score</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td colspan="7" style="text-align: center; background-color: grey;"><strong>Week 1</strong></td>
+                    <td colspan="7" style="text-align: center; background-color: grey;"><strong>Week 1 - March 7, 2023</strong></td>
                 </tr>
                 <tr>
                     <td><strong><u>Hidden Rain</u></strong></td>
@@ -228,12 +236,6 @@
                     <td>67</td>
                     <td>March 7, 2023</td>
                     <td>6:15 PM</td>
-                    <td>
-                        <button class="js-modal-trigger button is-small is-light is-link"
-                            data-target="modal-js-game1">
-                            View
-                        </button>
-                    </td>
                 </tr>
                 <tr>
                     <td><strong><u>Coulda Been</u></strong></td>
@@ -242,12 +244,6 @@
                     <td>59</td>
                     <td>March 7, 2023</td>
                     <td>7:15 PM</td>
-                    <td>
-                        <button class="js-modal-trigger button is-small is-light is-link"
-                            data-target="modal-js-game2">
-                            View
-                        </button>
-                    </td>
                 </tr>
                 <tr>
                     <td><strong><u>YAGGA</u></strong></td>
@@ -256,21 +252,13 @@
                     <td>57</td>
                     <td>March 7, 2023</td>
                     <td>8:15 PM</td>
-                    <td>
-                        <button class="js-modal-trigger button is-small is-light is-link"
-                            data-target="modal-js-game3">
-                            View
-                        </button>
-                    </td>
                 </tr>
                 <tr>
                     <td colspan="4" style="text-align: center;">OTF - Bye</td>
                     <td>March 7, 2023</td>
-                    <td>-</td>
-                    <td>-</td>
                 </tr>
                 <tr>
-                    <td colspan="7" style="text-align: center; background-color:grey;"><strong>Week 2</strong></td>
+                    <td colspan="7" style="text-align: center; background-color:grey;"><strong>Week 2 - March 14, 2023</strong></td>
                 </tr>
                 <tr>
                     <td>Free Agents</td>
@@ -279,12 +267,6 @@
                     <td>68</td>
                     <td>March 14, 2023</td>
                     <td>6:15 PM</td>
-                    <td>
-                        <button class="js-modal-trigger button is-small is-light is-link"
-                            data-target="modal-js-comingSoon" disabled>
-                            View
-                        </button>
-                    </td>
                 </tr>
                 <tr>
                     <td><strong><u>Hidden Rain</u></strong></td>
@@ -293,12 +275,6 @@
                     <td>66</td>
                     <td>March 14, 2023</td>
                     <td>7:15 PM</td>
-                    <td>
-                        <button class="js-modal-trigger button is-small is-light is-link"
-                            data-target="modal-js-comingSoon" disabled>
-                            View
-                        </button>
-                    </td>
                 </tr>
                 <tr>
                     <td><strong><u>YAGGA</u></strong></td>
@@ -307,21 +283,13 @@
                     <td>70</td>
                     <td>March 14, 2023</td>
                     <td>8:15 PM</td>
-                    <td>
-                        <button class="js-modal-trigger button is-small is-light is-link"
-                            data-target="modal-js-comingSoon" disabled>
-                            View
-                        </button>
-                    </td>
                 </tr>
                 <tr>
                     <td colspan="4" style="text-align: center;">Tune Squad - Bye</td>
                     <td>March 14, 2023</td>
-                    <td>-</td>
-                    <td>-</td>
                 </tr>
                 <tr>
-                    <td colspan="7" style="text-align: center; background-color: grey;"><strong>Week 3</strong></td>
+                    <td colspan="7" style="text-align: center; background-color: grey;"><strong>Week 3 - March 21, 2023</strong></td>
                 </tr>
                 <tr>
                     <td><strong><u>Free Agents</u></strong></td>
@@ -330,12 +298,6 @@
                     <td>62</td>
                     <td>March 21, 2023</td>
                     <td>6:15 PM</td>
-                    <td>
-                        <button class="js-modal-trigger button is-small is-light is-link"
-                            data-target="modal-js-comingSoon" disabled>
-                            View
-                        </button>
-                    </td>
                 </tr>
                 <tr>
                     <td><strong><u>Hidden Rain</u></strong></td>
@@ -344,12 +306,6 @@
                     <td>69</td>
                     <td>March 21, 2023</td>
                     <td>7:15 PM</td>
-                    <td>
-                        <button class="js-modal-trigger button is-small is-light is-link"
-                            data-target="modal-js-comingSoon" disabled>
-                            View
-                        </button>
-                    </td>
                 </tr>
                 <tr>
                     <td>Coulda Been</td>
@@ -358,21 +314,13 @@
                     <td>91</td>
                     <td>March 21, 2023</td>
                     <td>8:15 PM</td>
-                    <td>
-                        <button class="js-modal-trigger button is-small is-light is-link"
-                            data-target="modal-js-comingSoon" disabled>
-                            View
-                        </button>
-                    </td>
                 </tr>
                 <tr>
                     <td colspan="4" style="text-align: center;">YAGGA - Bye</td>
                     <td>March 21, 2023</td>
-                    <td>-</td>
-                    <td>-</td>
                 </tr>
                 <tr>
-                    <td colspan="7" style="text-align: center; background-color: grey;"><strong>Week 4</strong></td>
+                    <td colspan="7" style="text-align: center; background-color: grey;"><strong>Week 4 - March 28, 2023</strong></td>
                 </tr>
                 <tr>
                     <td><strong><u>YAGGA</u></strong></td>
@@ -381,12 +329,6 @@
                     <td>86</td>
                     <td>March 28, 2023</td>
                     <td>6:15 PM</td>
-                    <td>
-                        <button class="js-modal-trigger button is-small is-light is-link"
-                            data-target="modal-js-comingSoon" disabled>
-                            View
-                        </button>
-                    </td>
                 </tr>
                 <tr>
                     <td><strong><u>Coulda Been</u></strong></td>
@@ -395,12 +337,6 @@
                     <td>73</td>
                     <td>March 28, 2023</td>
                     <td>7:15 PM</td>
-                    <td>
-                        <button class="js-modal-trigger button is-small is-light is-link"
-                            data-target="modal-js-comingSoon" disabled>
-                            View
-                        </button>
-                    </td>
                 </tr>
                 <tr>
                     <td>Integral Construction</td>
@@ -409,21 +345,13 @@
                     <td>129</td>
                     <td>March 28, 2023</td>
                     <td>8:15 PM</td>
-                    <td>
-                        <button class="js-modal-trigger button is-small is-light is-link"
-                            data-target="modal-js-comingSoon" disabled>
-                            View
-                        </button>
-                    </td>
                 </tr>
                 <tr>
                     <td colspan="4" style="text-align: center;">Hidden Rain - Bye</td>
                     <td>March 28, 2023</td>
-                    <td>-</td>
-                    <td>-</td>
                 </tr>
                 <tr>
-                    <td colspan="7" style="text-align: center;background-color: grey;"><strong>Week 5</strong></td>
+                    <td colspan="7" style="text-align: center;background-color: grey;"><strong>Week 5 - April 4, 2023</strong></td>
                 </tr>
                 <tr>
                     <td>Free Agents</td>
@@ -432,12 +360,6 @@
                     <td>73</td>
                     <td>April 4, 2023</td>
                     <td>6:15 PM</td>
-                    <td>
-                        <button class="js-modal-trigger button is-small is-light is-link"
-                            data-target="modal-js-comingSoon" disabled>
-                            View
-                        </button>
-                    </td>
                 </tr>
                 <tr>
                     <td>Hidden Rain</td>
@@ -446,12 +368,6 @@
                     <td>74</td>
                     <td>April 4, 2023</td>
                     <td>7:15 PM</td>
-                    <td>
-                        <button class="js-modal-trigger button is-small is-light is-link"
-                            data-target="modal-js-comingSoon" disabled>
-                            View
-                        </button>
-                    </td>
                 </tr>
                 <tr>
                     <td><strong><u>YAGGA</u></strong></td>
@@ -460,21 +376,13 @@
                     <td>71</td>
                     <td>April 4, 2023</td>
                     <td>8:15 PM</td>
-                    <td>
-                        <button class="js-modal-trigger button is-small is-light is-link"
-                            data-target="modal-js-comingSoon" disabled>
-                            View
-                        </button>
-                    </td>
                 </tr>
                 <tr>
                     <td colspan="4" style="text-align: center;">Integral Construction - Bye</td>
                     <td>April 4, 2023</td>
-                    <td>-</td>
-                    <td>-</td>
                 </tr>
                 <tr>
-                    <td colspan="7" style="text-align: center;background-color: grey;"><strong>Week 6</strong></td>
+                    <td colspan="7" style="text-align: center;background-color: grey;"><strong>Week 6 - April 18, 2023</strong></td>
                 </tr>
                 <tr>
                     <td><strong><u>Integral Construction</u></strong></td>
@@ -483,12 +391,6 @@
                     <td>72</td>
                     <td>April 18, 2023</td>
                     <td>6:15 PM</td>
-                    <td>
-                        <button class="js-modal-trigger button is-small is-light is-link"
-                            data-target="modal-js-comingSoon" disabled>
-                            View
-                        </button>
-                    </td>
                 </tr>
                 <tr>
                     <td><strong><u>Tune Squad</u></strong></td>
@@ -497,12 +399,6 @@
                     <td>69</td>
                     <td>April 18, 2023</td>
                     <td>7:15 PM</td>
-                    <td>
-                        <button class="js-modal-trigger button is-small is-light is-link"
-                            data-target="modal-js-comingSoon" disabled>
-                            View
-                        </button>
-                    </td>
                 </tr>
                 <tr>
                     <td>Hidden Rain</td>
@@ -511,21 +407,13 @@
                     <td>72</td>
                     <td>April 18, 2023</td>
                     <td>8:15 PM</td>
-                    <td>
-                        <button class="js-modal-trigger button is-small is-light is-link"
-                            data-target="modal-js-comingSoon" disabled>
-                            View
-                        </button>
-                    </td>
                 </tr>
                 <tr>
                     <td colspan="4" style="text-align: center;">Coulda Been - Bye</td>
                     <td>April 18, 2023</td>
-                    <td>-</td>
-                    <td>-</td>
                 </tr>
                 <tr>
-                    <td colspan="7" style="text-align: center;background-color: grey;"><strong>Week 7</strong></td>
+                    <td colspan="7" style="text-align: center;background-color: grey;"><strong>Week 7 - April 25, 2023</strong></td>
                 </tr>
                 <tr>
                     <td><strong><u>Tune Squad</u></strong></td>
@@ -534,12 +422,6 @@
                     <td>110</td>
                     <td>April 25, 2023</td>
                     <td>6:15 PM</td>
-                    <td>
-                        <button class="js-modal-trigger button is-small is-light is-link"
-                            data-target="modal-js-comingSoon" disabled>
-                            View
-                        </button>
-                    </td>
                 </tr>
                 <tr>
                     <td><strong><u>Coulda Been</u></strong></td>
@@ -548,12 +430,6 @@
                     <td>90</td>
                     <td>April 25, 2023</td>
                     <td>7:15 PM</td>
-                    <td>
-                        <button class="js-modal-trigger button is-small is-light is-link"
-                            data-target="modal-js-comingSoon" disabled>
-                            View
-                        </button>
-                    </td>
                 </tr>
                 <tr>
                     <td><strong><u>YAGGA</u></td>
@@ -562,21 +438,13 @@
                     <td>84</td>
                     <td>April 25, 2023</td>
                     <td>8:15 PM</td>
-                    <td>
-                        <button class="js-modal-trigger button is-small is-light is-link"
-                            data-target="modal-js-comingSoon" disabled>
-                            View
-                        </button>
-                    </td>
                 </tr>
                 <tr>
                     <td colspan="4" style="text-align: center;">Free Agents - Bye</td>
                     <td>April 25, 2023</td>
-                    <td>-</td>
-                    <td>-</td>
                 </tr>
                 <tr>
-                    <td colspan="7" style="text-align: center;background-color: grey;"><strong>Week 8</strong></td>
+                    <td colspan="7" style="text-align: center;background-color: grey;"><strong>Week 8 - May 2, 2023</strong></td>
                 </tr>
                 <tr>
                     <td><strong><u>Free Agents</u></strong></td>
@@ -585,12 +453,6 @@
                     <td>61</td>
                     <td>May 2, 2023</td>
                     <td>6:15 PM</td>
-                    <td>
-                        <button class="js-modal-trigger button is-small is-light is-link"
-                            data-target="modal-js-comingSoon" disabled>
-                            View
-                        </button>
-                    </td>
                 </tr>
                 <tr>
                     <td>Coulda Been</td>
@@ -599,12 +461,6 @@
                     <td>-</td>
                     <td>May 2, 2023</td>
                     <td>7:15 PM</td>
-                    <td>
-                        <button class="js-modal-trigger button is-small is-light is-link"
-                            data-target="modal-js-comingSoon" disabled>
-                            View
-                        </button>
-                    </td>
                 </tr>
                 <tr>
                     <td><strong><u>YAGGA</u></strong></td>
@@ -613,12 +469,6 @@
                     <td>-</td>
                     <td>May 2, 2023</td>
                     <td>Scrimmage</td>
-                    <td>
-                        <button class="js-modal-trigger button is-small is-light is-link"
-                            data-target="modal-js-comingSoon" disabled>
-                            View
-                        </button>
-                    </td>
                 </tr>
                 <tr>
                     <td>Hidden Rain</td>
@@ -627,21 +477,13 @@
                     <td>92</td>
                     <td>May 2, 2023</td>
                     <td>8:15 PM</td>
-                    <td>
-                        <button class="js-modal-trigger button is-small is-light is-link"
-                            data-target="modal-js-comingSoon" disabled>
-                            View
-                        </button>
-                    </td>
                 </tr>
                 <tr>
                     <td colspan="4" style="text-align: center;">YAGGA - Automatic Win for Best Record</td>
                     <td>May 2, 2023</td>
-                    <td>-</td>
-                    <td>-</td>
                 </tr>
                 <td colspan="7" style="text-align: center;background-color: Yellow; border: 2px solid black;"><strong>PLAYOFFS</strong></td>
-                <tr>                <td colspan="7" style="text-align: center;background-color: grey;"><strong>Round 1</strong></td>
+                <tr>                <td colspan="7" style="text-align: center;background-color: grey;"><strong>Round 1 - May 9, 2023</strong></td>
 </tr>
 
             </tr>
@@ -652,12 +494,6 @@
                 <td>67</td>
                 <td>May 9, 2023</td>
                 <td>6:15 PM</td>
-                <td>
-                    <button class="js-modal-trigger button is-small is-light is-link"
-                        data-target="modal-js-comingSoon" disabled>
-                        View
-                    </button>
-                </td>
             </tr>
             <tr>
                 <td><strong><u>Coulda Been</u></strong></td>
@@ -666,12 +502,6 @@
                 <td>70</td>
                 <td>May 9, 2023</td>
                 <td>7:15 PM</td>
-                <td>
-                    <button class="js-modal-trigger button is-small is-light is-link"
-                        data-target="modal-js-comingSoon" disabled>
-                        View
-                    </button>
-                </td>
             </tr>
             <tr>
                 <td><strong><u>Tune Squad</u></strong></td>
@@ -680,14 +510,8 @@
                 <td>97</td>
                 <td>May 9, 2023</td>
                 <td>8:15 PM</td>
-                <td>
-                    <button class="js-modal-trigger button is-small is-light is-link"
-                        data-target="modal-js-comingSoon" disabled>
-                        View
-                    </button>
-                </td>
             </tr>
-            <tr>                <td colspan="7" style="text-align: center;background-color: grey;"><strong>Round 2</strong></td>
+            <tr>                <td colspan="7" style="text-align: center;background-color: grey;"><strong>Round 2 - May 12, 2023</strong></td>
             </tr>
             
                         </tr>
@@ -699,12 +523,6 @@
                             <td>Forfeit</td>
                             <td>May 12, 2023</td>
                             <td>6:30 PM</td>
-                            <td>
-                                <button class="js-modal-trigger button is-small is-light is-link"
-                                    data-target="modal-js-comingSoon" disabled>
-                                    View
-                                </button>
-                            </td>
                         </tr>
                         <tr>
                             <td>YAGGA</td>
@@ -713,14 +531,8 @@
                             <td>90</td>
                             <td>May 12, 2023</td>
                             <td>7:30 PM</td>
-                            <td>
-                                <button class="js-modal-trigger button is-small is-light is-link"
-                                    data-target="modal-js-comingSoon" disabled>
-                                    View
-                                </button>
-                            </td>
                         </tr>
-                        <tr>                <td colspan="7" style="text-align: center;background-color: grey;"><strong>Championship</strong></td>
+                        <tr>                <td colspan="7" style="text-align: center;background-color: grey;"><strong>Championship - May 16, 2023</strong></td>
                         </tr>
                         <tr>
                             <td>Tune Squad</td>
@@ -729,14 +541,8 @@
                             <td>77</td>
                             <td>May 16, 2023</td>
                             <td>7:30 PM</td>
-                            <td>
-                                <button class="js-modal-trigger button is-small is-light is-link"
-                                    data-target="modal-js-comingSoon" disabled>
-                                    View
-                                </button>
-                            </td>
                         </tr>
-                        <tr>                <td colspan="7" style="text-align: center;background-color: Red;border: 2px solid black;"><strong style="color: white;">AllStar Weekend</strong></td>
+                        <tr>                <td colspan="7" style="text-align: center;background-color: Red;border: 2px solid black;"><strong style="color: white;">AllStar Weekend - May 19, 2023</strong></td>
                         </tr>
                         <tr>
                             <td>Skills Challenge</td>
@@ -777,311 +583,217 @@
                             <td>165</td>
                             <td>May 19, 2023</td>
                             <td>8:15 PM</td>
-                            <td>
-                                <button class="js-modal-trigger button is-small is-light is-link"
-                                    data-target="modal-js-comingSoon" disabled>
-                                    View
-                                </button>
-                            </td>
                         </tr>
             </tbody>
         </table>
+
+        <table id="scheduleTableSeason2" class="table is-striped is-bordered is-max-desktop">
+            <thead>
+                <tr>
+                    <th>Home Team</th>
+                    <th>Score</th>
+                    <th>Away Team</th>
+                    <th>Score</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="7" style="text-align: center; background-color: grey;"><strong>Week 1 - February 25, 2025</strong></td>
+                </tr>
+                <tr>
+                    <td>BTA</td>
+                    <td>-</td>
+                    <td>Venom</td>
+                    <td>-</td>
+                    <td>February 25, 2025</td>
+                    <td>6:00 PM</td>
+                </tr>
+                <tr>
+                    <td>1Fam</td>
+                    <td>-</td>
+                    <td>Get Buck$</td>
+                    <td>-</td>
+                    <td>February 25, 2025</td>
+                    <td>7:00 PM</td>
+                </tr>
+                <tr>
+                    <td>OTF</td>
+                    <td>-</td>
+                    <td>Hidden Rain</td>
+                    <td>-</td>
+                    <td>February 25, 2025</td>
+                    <td>8:00 PM</td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="text-align: center;">Free Agents - Bye</td>
+                    <td>February 25, 2025</td>
+                </tr>
+                <tr>
+                    <td colspan="7" style="text-align: center; background-color:grey;"><strong>Week 2 - March 4, 2025</strong></td>
+                </tr>
+                <tr>
+                    <td>Free Agents</td>
+                    <td>-</td>
+                    <td>1Fam</td>
+                    <td>-</td>
+                    <td>March 4, 2025</td>
+                    <td>6:00 PM</td>
+                </tr>
+                <tr>
+                    <td>Hidden Rain</td>
+                    <td>-</td>
+                    <td>Venom</td>
+                    <td>-</td>
+                    <td>March 4, 2025</td>
+                    <td>7:00 PM</td>
+                </tr>
+                <tr>
+                    <td>BTA</td>
+                    <td>-</td>
+                    <td>Get Buck$</td>
+                    <td>-</td>
+                    <td>March 4, 2025</td>
+                    <td>8:00 PM</td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="text-align: center;">OTF - Bye</td>
+                    <td>March 4, 2025</td>
+                </tr>
+                <tr>
+                    <td colspan="7" style="text-align: center; background-color: grey;"><strong>Week 3 - March 11, 2025</strong></td>
+                </tr>
+                <tr>
+                    <td>Free Agents</td>
+                    <td>-</td>
+                    <td>Get Buck$</td>
+                    <td>-</td>
+                    <td>March 11, 2025</td>
+                    <td>6:00 PM</td>
+                </tr>
+                <tr>
+                    <td>Hidden Rain</td>
+                    <td>-</td>
+                    <td>1Fam</td>
+                    <td>-</td>
+                    <td>March 11, 2025</td>
+                    <td>7:00 PM</td>
+                </tr>
+                <tr>
+                    <td>OTF</td>
+                    <td>-</td>
+                    <td>Venom</td>
+                    <td>-</td>
+                    <td>March 11, 2025</td>
+                    <td>8:00 PM</td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="text-align: center;">BTA - Bye</td>
+                    <td>March 11, 2025</td>
+                </tr>
+                <tr>
+                    <td colspan="7" style="text-align: center; background-color: grey;"><strong>Week 4 - March 18, 2025</strong></td>
+                </tr>
+                <tr>
+                    <td>Venom</td>
+                    <td>-</td>
+                    <td>Get Buck$</td>
+                    <td>-</td>
+                    <td>March 18, 2025</td>
+                    <td>6:00 PM</td>
+                </tr>
+                <tr>
+                    <td>Hidden Rain</td>
+                    <td>-</td>
+                    <td>Free Agents</td>
+                    <td>-</td>
+                    <td>March 18, 2025</td>
+                    <td>7:00 PM</td>
+                </tr>
+                <tr>
+                    <td>OTF</td>
+                    <td>-</td>
+                    <td>BTA</td>
+                    <td>-</td>
+                    <td>March 18, 2025</td>
+                    <td>8:00 PM</td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="text-align: center;">1Fam - Bye</td>
+                    <td>March 18, 2025</td>
+                </tr>
+                <tr>
+                    <td colspan="7" style="text-align: center;background-color: grey;"><strong>Week 5 - March 25, 2025</strong></td>
+                </tr>
+                <tr>
+                    <td>Free Agents</td>
+                    <td>-</td>
+                    <td>Venom</td>
+                    <td>-</td>
+                    <td>March 25, 2025</td>
+                    <td>6:00 PM</td>
+                </tr>
+                <tr>
+                    <td>Hidden Rain</td>
+                    <td>-</td>
+                    <td>BTA</td>
+                    <td>-</td>
+                    <td>March 25, 2025</td>
+                    <td>7:00 PM</td>
+                </tr>
+                <tr>
+                    <td>OTF</td>
+                    <td>-</td>
+                    <td>1Fam</td>
+                    <td>-</td>
+                    <td>March 25, 2025</td>
+                    <td>8:00 PM</td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="text-align: center;">Get Buck$ - Bye</td>
+                    <td>March 25, 2025</td>
+                </tr>
+                <tr>
+                    <td colspan="7" style="text-align: center;background-color: grey;"><strong>Week 6 - April 1, 2025</strong></td>
+                </tr>
+                <tr>
+                    <td>1Fam</td>
+                    <td>-</td>
+                    <td>BTA</td>
+                    <td>-</td>
+                    <td>April 1, 2025</td>
+                    <td>6:00 PM</td>
+                </tr>
+                <tr>
+                    <td>OTF</td>
+                    <td>-</td>
+                    <td>Free Agents</td>
+                    <td>-</td>
+                    <td>April 1, 2025</td>
+                    <td>7:00 PM</td>
+                </tr>
+                <tr>
+                    <td>Hidden Rain</td>
+                    <td>-</td>
+                    <td>Get Buck$</td>
+                    <td>-</td>
+                    <td>April 1, 2025</td>
+                    <td>8:00 PM</td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="text-align: center;">Venom - Bye</td>
+                    <td>April 1, 2025</td>
+                </tr>
+                <tr>
+                    <td colspan="7" style="text-align: center;background-color: grey;"><strong>Week 7 - TBA</strong></td>
+                </tr>
+            </tbody>
+
+        </table>
+
     </div>
 
 
-    <div id="modal-js-game1" class="modal">
-        <div class="modal-background"></div>
-
-        <div class="modal-content">
-            <div class="box has-text-centered">
-                <div class="columns is-mobile">
-                    <div class="column is-one-third has-text-centered"style="margin: auto;">
-                            <!-- Home team Logo goes here -->
-                        <img src="assets/img/team-logos/hiddenRain.jpg">
-                    </div>
-                    <div class="column is-one-third has-text-centered" style="margin: auto;">
-                         <p style="margin: auto;"><!-- Final Scores will go here-->77 -  67 </p> 
-                    </div>
-                    <div class="column is-one-third has-text-centered" style="margin: auto;">
-                        <div class="container has-text-centered">
-                            <!-- Away team logo goes here -->
-                                <img src="assets/img/team-logos/freeAgents.jpg">
-                        </div>
-                    </div>
-                </div>
-                <section>
-                    <div class="columns">
-                        <div class="column is-centered">
-                            <table class="table is-hoverable" id="hiddenMist-table">
-                                <tr>
-                                    <th style="text-align: left !important;" width="25%">Team</th>
-                                    <th width="50%"></th>
-                                    <th>1</th>
-                                    <th>2</th>
-                                    <th>3</th>
-                                    <th>4</th>
-                                    <th>OT</th>
-                                    <th>T</th>
-                                </tr>
-                              <!-- Append here for Home and away team quarter by quarter score -->
-                              <tr>
-                                  <td style="text-align: left !important;">Hidden Rain</td>
-                                  <td></td>
-                                  <td>0</td>
-                                  <td>0</td>
-                                  <td>0</td>
-                                  <td>0</td>
-                                  <td>0</td>
-                                  <td>0</td>
-                              </tr>
-                              <tr>
-                                <td style="text-align: left !important;">Free Agents</td>
-                                <td></td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                            </tr>
-                            </table>
-                        </div>
-                    </div>
-                </section>
-                <div class="container ">
-
-                    <div class="columns is-mobile">
-                        <div class="column is-one-half">
-                            <h3 id="homeTeamName">Hidden Rain</h3>
-                            <table class="table is-hoverable" id="home-table">
-                                <tr>
-                                    <th width="5%">#</th>
-                                    <th style="text-align: left !important;" width="50%">Player</th>
-                                    <th>Pts</th>
-                                    <th>Ast</th>
-                                    <th>Reb</th>
-                                </tr>
-                               <!-- Append here for Home team player stats -->
-                             
-                            </table>
-                        </div>
-                        <div class="column is-one-half" >
-                            <h3 id="awayTeamName">Free Agents</h3>
-                            <table class="table is-hoverable" id="Away-table">
-                                <tr>
-                                    <th width="5%">#</th>
-                                    <th style="text-align: left !important;" width="50%">Player</th>
-                                    <th>Pts</th>
-                                    <th>Ast</th>
-                                    <th>Reb</th>
-                                </tr>
-                               <!-- Append here for Away team player stats -->
-                             
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <button class="modal-close is-large" aria-label="close"></button>
-    </div>
-
-    <div id="modal-js-game2" class="modal">
-        <div class="modal-background"></div>
-
-        <div class="modal-content">
-            <div class="box has-text-centered">
-                <div class="columns is-mobile">
-                    <div class="column is-one-third has-text-centered"style="margin: auto;">
-                            <!-- Home team Logo goes here -->
-                        <img src="assets/img/team-logos/couldabeen.jpg">
-                    </div>
-                    <div class="column is-one-third has-text-centered" style="margin: auto;">
-                         <p style="margin: auto;"><!-- Final Scores will go here-->92 - 59 </p> 
-                    </div>
-                    <div class="column is-one-third has-text-centered" style="margin: auto;">
-                        <div class="container has-text-centered">
-                            <!-- Away team logo goes here -->
-                                <img src="assets/img/team-logos/integral.jpg">
-                        </div>
-                    </div>
-                </div>
-                <section>
-                    <div class="columns">
-                        <div class="column is-centered">
-                            <table class="table is-hoverable" id="hiddenMist-table">
-                                <tr>
-                                    <th style="text-align: left !important;" width="25%">Team</th>
-                                    <th width="50%"></th>
-                                    <th>1</th>
-                                    <th>2</th>
-                                    <th>3</th>
-                                    <th>4</th>
-                                    <th>OT</th>
-                                    <th>T</th>
-                                </tr>
-                              <!-- Append here for Home and away team quarter by quarter score -->
-                              <tr>
-                                  <td style="text-align: left !important;">Coulda Been</td>
-                                  <td></td>
-                                  <td>0</td>
-                                  <td>0</td>
-                                  <td>0</td>
-                                  <td>0</td>
-                                  <td>0</td>
-                                  <td>0</td>
-                              </tr>
-                              <tr>
-                                <td style="text-align: left !important;">Integral Construction</td>
-                                <td></td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                            </tr>
-                            </table>
-                        </div>
-                    </div>
-                </section>
-                <div class="container ">
-
-                    <div class="columns is-mobile">
-                        <div class="column is-one-half">
-                            <h3 id="homeTeamName">Coulda Been</h3>
-                            <table class="table is-hoverable" id="home-table">
-                                <tr>
-                                    <th width="5%">#</th>
-                                    <th style="text-align: left !important;" width="50%">Player</th>
-                                    <th>Pts</th>
-                                    <th>Ast</th>
-                                    <th>Reb</th>
-                                </tr>
-                               <!-- Append here for Home team player stats -->
-                            
-                            </table>
-                        </div>
-                        <div class="column is-one-half" >
-                            <h3 id="awayTeamName">Integral Construction</h3>
-                            <table class="table is-hoverable" id="Away-table">
-                                <tr>
-                                    <th width="5%">#</th>
-                                    <th style="text-align: left !important;" width="50%">Player</th>
-                                    <th>Pts</th>
-                                    <th>Ast</th>
-                                    <th>Reb</th>
-                                </tr>
-                               <!-- Append here for Away team player stats -->
-                              
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <button class="modal-close is-large" aria-label="close"></button>
-    </div>
-
-    <div id="modal-js-game3" class="modal">
-        <div class="modal-background"></div>
-
-        <div class="modal-content">
-            <div class="box has-text-centered">
-                <div class="columns is-mobile">
-                    <div class="column is-one-third has-text-centered"style="margin: auto;">
-                            <!-- Home team Logo goes here -->
-                        <img src="assets/img/team-logos/yagga.jpg">
-                    </div>
-                    <div class="column is-one-third has-text-centered" style="margin: auto;">
-                         <p style="margin: auto;"><!-- Final Scores will go here-->67 - 57 </p> 
-                    </div>
-                    <div class="column is-one-third has-text-centered" style="margin: auto;">
-                        <div class="container has-text-centered">
-                            <!-- Away team logo goes here -->
-                                <img src="assets/img/team-logos/tuneSquad.jpg">
-                        </div>
-                    </div>
-                </div>
-                <section>
-                    <div class="columns">
-                        <div class="column is-centered">
-                            <table class="table is-hoverable" id="hiddenMist-table">
-                                <tr>
-                                    <th style="text-align: left !important;" width="25%">Team</th>
-                                    <th width="50%"></th>
-                                    <th>1</th>
-                                    <th>2</th>
-                                    <th>3</th>
-                                    <th>4</th>
-                                    <th>OT</th>
-                                    <th>T</th>
-                                </tr>
-                              <!-- Append here for Home and away team quarter by quarter score -->
-                              <tr>
-                                  <td style="text-align: left !important;">YAGGA</td>
-                                  <td></td>
-                                  <td>19</td>
-                                  <td>8</td>
-                                  <td>15</td>
-                                  <td>25</td>
-                                  <td>-</td>
-                                  <td>67</td>
-                              </tr>
-                              <tr>
-                                <td style="text-align: left !important;">Tune Squad</td>
-                                <td></td>
-                                <td>12</td>
-                                <td>18</td>
-                                <td>5</td>
-                                <td>17</td>
-                                <td>-</td>
-                                <td>57</td>
-                            </tr>
-                            </table>
-                        </div>
-                    </div>
-                </section>
-                <div class="container ">
-
-                    <div class="columns is-mobile">
-                        <div class="column is-one-half">
-                            <h3 id="homeTeamName">YAGGA</h3>
-                            <table class="table is-hoverable" id="home-table">
-                                <tr>
-                                    <th width="5%">#</th>
-                                    <th style="text-align: left !important;" width="50%">Player</th>
-                                    <th>Pts</th>
-                                    <th>Ast</th>
-                                    <th>Reb</th>
-                                </tr>
-                               <!-- Append here for Home team player stats -->
-                          
-                            </table>
-                        </div>
-                        <div class="column is-one-half" >
-                            <h3 id="awayTeamName">Tune Squad</h3>
-                            <table class="table is-hoverable" id="Away-table">
-                                <tr>
-                                    <th width="5%">#</th>
-                                    <th style="text-align: left !important;" width="50%">Player</th>
-                                    <th>Pts</th>
-                                    <th>Ast</th>
-                                    <th>Reb</th>
-                                </tr>
-                               <!-- Append here for Away team player stats -->
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <button class="modal-close is-large" aria-label="close"></button>
-    </div>
-
-</body>
-
-</html>
+  </body>
+  </html>
