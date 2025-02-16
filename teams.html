@@ -236,7 +236,7 @@
                     <div class="card-content">
                         <div class="content">
                             <figure class="image is-3by2">
-                                <img src="assets/img/team-logos/hiddenRain.jpg" alt="Hidden Rain" class="team-logo" data-team-name="Hidden Rain">
+                                <img src="assets/img/team-logos/hiddenRain.jpg" alt="Hidden Rain" class="team-logo" data-team-name="Hidden Rain ">
                             </figure>
                         </div>
                     </div>
@@ -248,7 +248,7 @@
                     <div class="card-content">
                         <div class="content">
                             <figure class="image is-3by2">
-                                <img src="assets/img/team-logos/otf.jpg" alt="Hall of Fame" class="team-logo" data-team-name="OTF">
+                                <img src="assets/img/team-logos/otf.jpg" alt="Hall of Fame" class="team-logo" data-team-name="OTF ">
                             </figure>
                         </div>
                     </div>
@@ -292,7 +292,7 @@
                     <div class="card-content">
                         <div class="content">
                             <figure class="image is-3by2">
-                                <img src="assets/img/team-logos/newfree.jpg" alt="New Free Agents" class="team-logo" data-team-name="FreeAgents">
+                                <img src="assets/img/team-logos/newfree.jpg" alt="New Free Agents" class="team-logo" data-team-name="Free Agents ">
                             </figure>
                         </div>
                     </div>
@@ -332,7 +332,15 @@ teamLogos.forEach(logo => {
         console.log("hidden raine");
         teamColor = "grey"; // Assign a value inside the if statement
     }
+    if(teamName === "Hidden Rain "){
+        console.log("hidden raine");
+        teamColor = "grey"; // Assign a value inside the if statement
+    }
     if(teamName === "OTF"){
+        console.log("OTF")
+        teamColor = "midnightblue";
+    }
+    if(teamName === "OTF "){
         console.log("OTF")
         teamColor = "midnightblue";
     }
@@ -368,7 +376,7 @@ teamLogos.forEach(logo => {
         console.log("getbuck$")
         teamColor = "darkblue";
     }
-    if(teamName === "FreeAgents"){
+    if(teamName === "Free Agents "){
         console.log("FA")
         teamColor = "yellow";
     };
