@@ -1,7 +1,7 @@
 let jsonData = [];
 let selectedWeek = null;
 
-fetch("./teams_season2.json")
+fetch("assets/json/teams_season2.json")
   .then(response => response.json())
   .then(data => {
     jsonData = data;
