@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+body {
+    font-family: 'Kanit', sans-serif;
+    font-weight: 400;
+    background-color: #000000;
+    text-align: center;
+    padding: 20px;
+    
+}
+
+
+h1 {
+    color: #ffffff;
+    font-family: 'Kanit', sans-serif;
+    font-weight: 900 !important;
+}
+
+
+#week-selection {
+    margin-bottom: 20px;
+}
+
+#week-selection button {
+    background-color: #394149;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin: 2px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    font-family: 'Kanit', sans-serif;
+    font-weight: 400;
+   
+}
+
+#week-selection button:hover {
+    background-color: #57626e;
+}
+
+
+#content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: auto;
+    
+}
+
+
+#teamsContainer button {
+    display: block;
+    width: 100%;
+    background-color: #48535e;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin: 5px 0;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    font-family: 'Kanit', sans-serif;
+    font-weight: 400;
+}
+
+#teamsContainer button:hover {
+    background-color: #57626e;
+}
+
+
+input[type="number"] {
+    width: 60px;
+    padding: 5px;
+    font-size: 16px;
+    
+}
+
+
+button.back-button {
+    background-color: #394149;
+    color: white;
+    margin-top: 10px;
+}
+
+button.back-button:hover {
+    background-color: #57626e;
+}
+
+#logo {
+    margin-bottom: 10px;
+    max-width: 150px; /* Adjust size as needed */
+}
+
+#logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.separator {
+    width: 130%;
+    height: 1px;
+    background-color: white;
+    margin: 10px 0 20px 0;
+}
