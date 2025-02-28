@@ -1,11 +1,13 @@
 let jsonData = [];
 let selectedWeek = null;
 
-fetch("assets/json/teams_season2.json")
+fetch('assets/json/teams_season2.json')
   .then(response => response.json())
   .then(data => {
     jsonData = data;
-  });
+  })
+  .catch(error => console.error('Error:', error));
+
 
 function selectWeek(weekNumber) {
   selectedWeek = weekNumber;
